@@ -33,7 +33,7 @@ npm run check:swisstopo
 npm test
 ```
 
-The first command discovers the latest 2 m assets per geographic source tile and pins them in `source/catalog.json`. Later runs reuse that catalog and verify checksums before reusing downloads. Interrupted file downloads are retried on the next run; completed, checksum-valid files are not rewritten. Four downloads run concurrently, with bounded retries.
+Preparation first reuses `source/catalog.json`. If that local catalog is absent, it restores the pinned asset list from the committed manifest for the matching pilot bounds. Only when neither exists does it discover the latest 2 m assets per geographic source tile. Downloads are verified by checksum before reuse. Interrupted file downloads are retried on the next run; completed, checksum-valid files are not rewritten. Four downloads run concurrently, with bounded retries.
 
 To rebuild from the downloaded sources without downloading them again:
 
