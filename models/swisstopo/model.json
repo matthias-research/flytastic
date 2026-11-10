@@ -1,0 +1,50 @@
+{
+  "id": "swisstopo",
+  "name": "Locally prepared swisstopo model",
+  "status": "ready",
+  "coordinateSystem": "EPSG:21781",
+  "imagery": {
+    "source": "SWISSIMAGE",
+    "collection": "ch.swisstopo.swissimage-dop10",
+    "finestMetersPerPixel": 2,
+    "overviewMetersPerPixel": [
+      4,
+      8,
+      16,
+      32,
+      64,
+      128
+    ],
+    "directory": "imagery"
+  },
+  "terrain": {
+    "source": "swissALTI3D",
+    "collection": "ch.swisstopo.swissalti3d",
+    "sourceGridMeters": 2,
+    "finestGridMeters": 10,
+    "overviewGridMeters": [
+      20,
+      40,
+      80,
+      160,
+      320,
+      640
+    ],
+    "directory": "terrain"
+  },
+  "hierarchy": {
+    "status": "built",
+    "deriveOverviewsFromPreparedFinestLevel": true,
+    "sharedGridOrigin": [
+      627000,
+      168000
+    ],
+    "preserveNoData": true,
+    "retainSourceEditionAndChecksums": true
+  },
+  "sourceDirectory": "source",
+  "cacheDirectory": "cache",
+  "attribution": "\u00a9 swisstopo",
+  "viewerIntegration": "ready",
+  "manifest": "manifest.json"
+}

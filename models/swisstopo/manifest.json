@@ -1,0 +1,4136 @@
+{
+  "id": "swisstopo",
+  "name": "Swisstopo \u00b7 Interlaken pilot",
+  "status": "ready",
+  "buildId": "bb866c07960c1cd9",
+  "coordinateSystem": "EPSG:21781",
+  "sourceCoordinateSystem": "EPSG:2056",
+  "bounds": [
+    627.0,
+    168.0,
+    637.0,
+    178.0
+  ],
+  "terrain": {
+    "width": 1025,
+    "height": 1025,
+    "origin": [
+      627.0,
+      168.0
+    ],
+    "spacingMeters": 10,
+    "treeSize": 1024,
+    "treeDepth": 20,
+    "heightEncoding": "uint16",
+    "heightUnitMeters": 0.1,
+    "noData": 65535,
+    "bounds": [
+      627.0,
+      168.0,
+      637.0,
+      178.0
+    ]
+  },
+  "terrainLevels": [
+    {
+      "spacingMeters": 10,
+      "width": 1025,
+      "height": 1025,
+      "file": "10/heights.bin.gz",
+      "bytes": 1496747
+    },
+    {
+      "spacingMeters": 20,
+      "width": 513,
+      "height": 513,
+      "file": "20/heights.bin.gz",
+      "bytes": 389401
+    },
+    {
+      "spacingMeters": 40,
+      "width": 257,
+      "height": 257,
+      "file": "40/heights.bin.gz",
+      "bytes": 101440
+    },
+    {
+      "spacingMeters": 80,
+      "width": 129,
+      "height": 129,
+      "file": "80/heights.bin.gz",
+      "bytes": 26628
+    },
+    {
+      "spacingMeters": 160,
+      "width": 65,
+      "height": 65,
+      "file": "160/heights.bin.gz",
+      "bytes": 6934
+    },
+    {
+      "spacingMeters": 320,
+      "width": 33,
+      "height": 33,
+      "file": "320/heights.bin.gz",
+      "bytes": 1929
+    },
+    {
+      "spacingMeters": 640,
+      "width": 17,
+      "height": 17,
+      "file": "640/heights.bin.gz",
+      "bytes": 570
+    }
+  ],
+  "imageryLevelsMeters": [
+    2,
+    4,
+    8,
+    16,
+    32,
+    64,
+    128
+  ],
+  "packs": [
+    {
+      "id": "C",
+      "name": "SWISSIMAGE 2 m",
+      "factor": 500.0,
+      "divisor": 1000,
+      "xstart": 627000,
+      "ystart": 168000,
+      "width": 512,
+      "height": 512,
+      "minX": 0,
+      "maxX": 9,
+      "minY": 0,
+      "maxY": 9,
+      "tiles": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          0,
+          8
+        ],
+        [
+          0,
+          9
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          1,
+          8
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          5,
+          9
+        ],
+        [
+          6,
+          0
+        ],
+        [
+          6,
+          1
+        ],
+        [
+          6,
+          2
+        ],
+        [
+          6,
+          3
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          6,
+          9
+        ],
+        [
+          7,
+          0
+        ],
+        [
+          7,
+          1
+        ],
+        [
+          7,
+          2
+        ],
+        [
+          7,
+          3
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          7,
+          6
+        ],
+        [
+          7,
+          7
+        ],
+        [
+          7,
+          8
+        ],
+        [
+          7,
+          9
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          8,
+          2
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          8,
+          7
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          9,
+          0
+        ],
+        [
+          9,
+          1
+        ],
+        [
+          9,
+          2
+        ],
+        [
+          9,
+          3
+        ],
+        [
+          9,
+          4
+        ],
+        [
+          9,
+          5
+        ],
+        [
+          9,
+          6
+        ],
+        [
+          9,
+          7
+        ],
+        [
+          9,
+          8
+        ],
+        [
+          9,
+          9
+        ]
+      ],
+      "tileFiles": {
+        "0/0": "2/0/0.jpg",
+        "0/1": "2/0/1.jpg",
+        "0/2": "2/0/2.jpg",
+        "0/3": "2/0/3.jpg",
+        "0/4": "2/0/4.jpg",
+        "0/5": "2/0/5.jpg",
+        "0/6": "2/0/6.jpg",
+        "0/7": "2/0/7.jpg",
+        "0/8": "2/0/8.jpg",
+        "0/9": "2/0/9.png",
+        "1/0": "2/1/0.jpg",
+        "1/1": "2/1/1.jpg",
+        "1/2": "2/1/2.jpg",
+        "1/3": "2/1/3.jpg",
+        "1/4": "2/1/4.jpg",
+        "1/5": "2/1/5.jpg",
+        "1/6": "2/1/6.jpg",
+        "1/7": "2/1/7.jpg",
+        "1/8": "2/1/8.jpg",
+        "1/9": "2/1/9.png",
+        "2/0": "2/2/0.jpg",
+        "2/1": "2/2/1.jpg",
+        "2/2": "2/2/2.jpg",
+        "2/3": "2/2/3.jpg",
+        "2/4": "2/2/4.jpg",
+        "2/5": "2/2/5.jpg",
+        "2/6": "2/2/6.jpg",
+        "2/7": "2/2/7.jpg",
+        "2/8": "2/2/8.jpg",
+        "2/9": "2/2/9.png",
+        "3/0": "2/3/0.jpg",
+        "3/1": "2/3/1.jpg",
+        "3/2": "2/3/2.jpg",
+        "3/3": "2/3/3.jpg",
+        "3/4": "2/3/4.jpg",
+        "3/5": "2/3/5.jpg",
+        "3/6": "2/3/6.jpg",
+        "3/7": "2/3/7.jpg",
+        "3/8": "2/3/8.jpg",
+        "3/9": "2/3/9.png",
+        "4/0": "2/4/0.jpg",
+        "4/1": "2/4/1.jpg",
+        "4/2": "2/4/2.png",
+        "4/3": "2/4/3.jpg",
+        "4/4": "2/4/4.jpg",
+        "4/5": "2/4/5.jpg",
+        "4/6": "2/4/6.jpg",
+        "4/7": "2/4/7.jpg",
+        "4/8": "2/4/8.jpg",
+        "4/9": "2/4/9.png",
+        "5/0": "2/5/0.jpg",
+        "5/1": "2/5/1.jpg",
+        "5/2": "2/5/2.jpg",
+        "5/3": "2/5/3.jpg",
+        "5/4": "2/5/4.jpg",
+        "5/5": "2/5/5.jpg",
+        "5/6": "2/5/6.jpg",
+        "5/7": "2/5/7.jpg",
+        "5/8": "2/5/8.jpg",
+        "5/9": "2/5/9.png",
+        "6/0": "2/6/0.jpg",
+        "6/1": "2/6/1.jpg",
+        "6/2": "2/6/2.jpg",
+        "6/3": "2/6/3.jpg",
+        "6/4": "2/6/4.jpg",
+        "6/5": "2/6/5.jpg",
+        "6/6": "2/6/6.jpg",
+        "6/7": "2/6/7.jpg",
+        "6/8": "2/6/8.jpg",
+        "6/9": "2/6/9.png",
+        "7/0": "2/7/0.jpg",
+        "7/1": "2/7/1.jpg",
+        "7/2": "2/7/2.jpg",
+        "7/3": "2/7/3.jpg",
+        "7/4": "2/7/4.jpg",
+        "7/5": "2/7/5.jpg",
+        "7/6": "2/7/6.jpg",
+        "7/7": "2/7/7.jpg",
+        "7/8": "2/7/8.jpg",
+        "7/9": "2/7/9.png",
+        "8/0": "2/8/0.jpg",
+        "8/1": "2/8/1.jpg",
+        "8/2": "2/8/2.jpg",
+        "8/3": "2/8/3.jpg",
+        "8/4": "2/8/4.jpg",
+        "8/5": "2/8/5.jpg",
+        "8/6": "2/8/6.jpg",
+        "8/7": "2/8/7.jpg",
+        "8/8": "2/8/8.jpg",
+        "8/9": "2/8/9.png",
+        "9/0": "2/9/0.png",
+        "9/1": "2/9/1.png",
+        "9/2": "2/9/2.png",
+        "9/3": "2/9/3.png",
+        "9/4": "2/9/4.png",
+        "9/5": "2/9/5.png",
+        "9/6": "2/9/6.png",
+        "9/7": "2/9/7.png",
+        "9/8": "2/9/8.png",
+        "9/9": "2/9/9.png"
+      }
+    },
+    {
+      "id": "D",
+      "name": "SWISSIMAGE 4 m",
+      "factor": 250.0,
+      "divisor": 1000,
+      "xstart": 627000,
+      "ystart": 168000,
+      "width": 512,
+      "height": 512,
+      "minX": 0,
+      "maxX": 4,
+      "minY": 0,
+      "maxY": 4,
+      "tiles": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          4,
+          4
+        ]
+      ],
+      "tileFiles": {
+        "0/0": "4/0/0.jpg",
+        "0/1": "4/0/1.jpg",
+        "0/2": "4/0/2.jpg",
+        "0/3": "4/0/3.jpg",
+        "0/4": "4/0/4.png",
+        "1/0": "4/1/0.jpg",
+        "1/1": "4/1/1.jpg",
+        "1/2": "4/1/2.jpg",
+        "1/3": "4/1/3.jpg",
+        "1/4": "4/1/4.png",
+        "2/0": "4/2/0.jpg",
+        "2/1": "4/2/1.png",
+        "2/2": "4/2/2.jpg",
+        "2/3": "4/2/3.jpg",
+        "2/4": "4/2/4.png",
+        "3/0": "4/3/0.jpg",
+        "3/1": "4/3/1.jpg",
+        "3/2": "4/3/2.jpg",
+        "3/3": "4/3/3.jpg",
+        "3/4": "4/3/4.png",
+        "4/0": "4/4/0.png",
+        "4/1": "4/4/1.png",
+        "4/2": "4/4/2.png",
+        "4/3": "4/4/3.png",
+        "4/4": "4/4/4.png"
+      }
+    },
+    {
+      "id": "E",
+      "name": "SWISSIMAGE 8 m",
+      "factor": 125.0,
+      "divisor": 1000,
+      "xstart": 627000,
+      "ystart": 168000,
+      "width": 512,
+      "height": 512,
+      "minX": 0,
+      "maxX": 2,
+      "minY": 0,
+      "maxY": 2,
+      "tiles": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "tileFiles": {
+        "0/0": "8/0/0.jpg",
+        "0/1": "8/0/1.jpg",
+        "0/2": "8/0/2.png",
+        "1/0": "8/1/0.png",
+        "1/1": "8/1/1.jpg",
+        "1/2": "8/1/2.png",
+        "2/0": "8/2/0.png",
+        "2/1": "8/2/1.png",
+        "2/2": "8/2/2.png"
+      }
+    },
+    {
+      "id": "F",
+      "name": "SWISSIMAGE 16 m",
+      "factor": 62.5,
+      "divisor": 1000,
+      "xstart": 627000,
+      "ystart": 168000,
+      "width": 512,
+      "height": 512,
+      "minX": 0,
+      "maxX": 1,
+      "minY": 0,
+      "maxY": 1,
+      "tiles": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "tileFiles": {
+        "0/0": "16/0/0.png",
+        "0/1": "16/0/1.png",
+        "1/0": "16/1/0.png",
+        "1/1": "16/1/1.png"
+      }
+    },
+    {
+      "id": "G",
+      "name": "SWISSIMAGE 32 m",
+      "factor": 31.25,
+      "divisor": 1000,
+      "xstart": 627000,
+      "ystart": 168000,
+      "width": 512,
+      "height": 512,
+      "minX": 0,
+      "maxX": 0,
+      "minY": 0,
+      "maxY": 0,
+      "tiles": [
+        [
+          0,
+          0
+        ]
+      ],
+      "tileFiles": {
+        "0/0": "32/0/0.png"
+      }
+    },
+    {
+      "id": "H",
+      "name": "SWISSIMAGE 64 m",
+      "factor": 15.625,
+      "divisor": 1000,
+      "xstart": 627000,
+      "ystart": 168000,
+      "width": 512,
+      "height": 512,
+      "minX": 0,
+      "maxX": 0,
+      "minY": 0,
+      "maxY": 0,
+      "tiles": [
+        [
+          0,
+          0
+        ]
+      ],
+      "tileFiles": {
+        "0/0": "64/0/0.png"
+      }
+    },
+    {
+      "id": "I",
+      "name": "SWISSIMAGE 128 m",
+      "factor": 7.8125,
+      "divisor": 1000,
+      "xstart": 627000,
+      "ystart": 168000,
+      "width": 512,
+      "height": 512,
+      "minX": 0,
+      "maxX": 0,
+      "minY": 0,
+      "maxY": 0,
+      "tiles": [
+        [
+          0,
+          0
+        ]
+      ],
+      "tileFiles": {
+        "0/0": "128/0/0.png"
+      }
+    }
+  ],
+  "attribution": "\u00a9 swisstopo \u00b7 Includes material \u00a9 (2016\u20132018) Planet. All rights reserved",
+  "sourceFiles": [
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2626-1167",
+      "cell": "2626-1167",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2626-1167/swissimage-dop10_2024_2626-1167_2_2056.tif",
+      "checksum": "1220AC5FF5B1A254F77359F311B5B3DA20EE5DF63A062FBEB8F1AC1DD3565DB5D44F",
+      "filename": "swissimage-dop10_2024_2626-1167_2_2056.tif",
+      "bytes": 119275,
+      "sha256": "ac5ff5b1a254f77359f311b5b3da20ee5df63a062fbeb8f1ac1dd3565db5d44f"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2626-1168",
+      "cell": "2626-1168",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2626-1168/swissimage-dop10_2024_2626-1168_2_2056.tif",
+      "checksum": "12207E91805C5F9CDB71154287BBC507B70ECE7B439FE2127ADCCA7249FCDB4E085D",
+      "filename": "swissimage-dop10_2024_2626-1168_2_2056.tif",
+      "bytes": 41270,
+      "sha256": "7e91805c5f9cdb71154287bbc507b70ece7b439fe2127adcca7249fcdb4e085d"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2626-1169",
+      "cell": "2626-1169",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2626-1169/swissimage-dop10_2024_2626-1169_2_2056.tif",
+      "checksum": "12201B48DD6D6C6DD775F0B6CAB2C5776A4991F195E7309782F96545449B9E8C5CCC",
+      "filename": "swissimage-dop10_2024_2626-1169_2_2056.tif",
+      "bytes": 42414,
+      "sha256": "1b48dd6d6c6dd775f0b6cab2c5776a4991f195e7309782f96545449b9e8c5ccc"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2626-1170",
+      "cell": "2626-1170",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2626-1170/swissimage-dop10_2024_2626-1170_2_2056.tif",
+      "checksum": "1220603EE005D4866C12AC91F7C2AD7E194C0AAD93FD24D33625E3DAFD6D285D323E",
+      "filename": "swissimage-dop10_2024_2626-1170_2_2056.tif",
+      "bytes": 150250,
+      "sha256": "603ee005d4866c12ac91f7c2ad7e194c0aad93fd24d33625e3dafd6d285d323e"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2626-1171",
+      "cell": "2626-1171",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2626-1171/swissimage-dop10_2024_2626-1171_2_2056.tif",
+      "checksum": "1220779D704BFBEA5DFB8E0606FC82C5E5493774A1907C0FE3F2FF5E19A2D6107AD9",
+      "filename": "swissimage-dop10_2024_2626-1171_2_2056.tif",
+      "bytes": 192848,
+      "sha256": "779d704bfbea5dfb8e0606fc82c5e5493774a1907c0fe3f2ff5e19a2d6107ad9"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2626-1172",
+      "cell": "2626-1172",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2626-1172/swissimage-dop10_2024_2626-1172_2_2056.tif",
+      "checksum": "1220C720C725AAE0027EC944CFBBD9BBC2EA1671A893C47DB2AADAC322E90D413A00",
+      "filename": "swissimage-dop10_2024_2626-1172_2_2056.tif",
+      "bytes": 212471,
+      "sha256": "c720c725aae0027ec944cfbbd9bbc2ea1671a893c47db2aadac322e90d413a00"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2626-1173",
+      "cell": "2626-1173",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2626-1173/swissimage-dop10_2024_2626-1173_2_2056.tif",
+      "checksum": "1220C5572601AE38CB0BBEA2741E2EB38DBB8279035CA5EBFE111197554DB981EB56",
+      "filename": "swissimage-dop10_2024_2626-1173_2_2056.tif",
+      "bytes": 186491,
+      "sha256": "c5572601ae38cb0bbea2741e2eb38dbb8279035ca5ebfe111197554db981eb56"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2626-1174",
+      "cell": "2626-1174",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2626-1174/swissimage-dop10_2024_2626-1174_2_2056.tif",
+      "checksum": "1220D3E33D4A5F40DA005576DD59C0527A6F61089E9DFFE040338B1B5EEC13EF1265",
+      "filename": "swissimage-dop10_2024_2626-1174_2_2056.tif",
+      "bytes": 177738,
+      "sha256": "d3e33d4a5f40da005576dd59c0527a6f61089e9dffe040338b1b5eec13ef1265"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2626-1175",
+      "cell": "2626-1175",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2626-1175/swissimage-dop10_2024_2626-1175_2_2056.tif",
+      "checksum": "122001F9401DA67C2C2589EDAB19369279956B0F4EBB524CE27C2DD2C78EC1BAD692",
+      "filename": "swissimage-dop10_2024_2626-1175_2_2056.tif",
+      "bytes": 167607,
+      "sha256": "01f9401da67c2c2589edab19369279956b0f4ebb524ce27c2dd2c78ec1bad692"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2626-1176",
+      "cell": "2626-1176",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2626-1176/swissimage-dop10_2024_2626-1176_2_2056.tif",
+      "checksum": "12203F00D253E7930FD2517B62AC47743E2E32D70335DF8F6A6BA94288730AF4A9DF",
+      "filename": "swissimage-dop10_2024_2626-1176_2_2056.tif",
+      "bytes": 187060,
+      "sha256": "3f00d253e7930fd2517b62ac47743e2e32d70335df8f6a6ba94288730af4a9df"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2626-1177",
+      "cell": "2626-1177",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2626-1177/swissimage-dop10_2024_2626-1177_2_2056.tif",
+      "checksum": "12202CC46E0B01CFB3B1950947821F95F12BB42BCD0CC3FFE5A1D4E3E7A7403CD462",
+      "filename": "swissimage-dop10_2024_2626-1177_2_2056.tif",
+      "bytes": 131757,
+      "sha256": "2cc46e0b01cfb3b1950947821f95f12bb42bcd0cc3ffe5a1d4e3e7a7403cd462"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2626-1178",
+      "cell": "2626-1178",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2626-1178/swissimage-dop10_2024_2626-1178_2_2056.tif",
+      "checksum": "12200D9E9A7BA1DE9B6B8DCB1F2CC57770F7E1DF2C4F02D1ECE61A2B202612E78D14",
+      "filename": "swissimage-dop10_2024_2626-1178_2_2056.tif",
+      "bytes": 150370,
+      "sha256": "0d9e9a7ba1de9b6b8dcb1f2cc57770f7e1df2c4f02d1ece61a2b202612e78d14"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2627-1167",
+      "cell": "2627-1167",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2627-1167/swissimage-dop10_2024_2627-1167_2_2056.tif",
+      "checksum": "1220C61126B44730E5C753028C107CDA66D82BBE925E0ADC2EF622E26F505D6FEDEC",
+      "filename": "swissimage-dop10_2024_2627-1167_2_2056.tif",
+      "bytes": 167313,
+      "sha256": "c61126b44730e5c753028c107cda66d82bbe925e0adc2ef622e26f505d6fedec"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2627-1168",
+      "cell": "2627-1168",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2627-1168/swissimage-dop10_2024_2627-1168_2_2056.tif",
+      "checksum": "122044CAA83D518BF8EEAB70B594F069A7B36C9339BC3EA39514E9E8722208E77246",
+      "filename": "swissimage-dop10_2024_2627-1168_2_2056.tif",
+      "bytes": 55920,
+      "sha256": "44caa83d518bf8eeab70b594f069a7b36c9339bc3ea39514e9e8722208e77246"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2627-1169",
+      "cell": "2627-1169",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2627-1169/swissimage-dop10_2024_2627-1169_2_2056.tif",
+      "checksum": "1220516D18910E4C313C36DF347E9EE2A0017D74E8E6DC713E330A5B6E5BD2D4D8F1",
+      "filename": "swissimage-dop10_2024_2627-1169_2_2056.tif",
+      "bytes": 42331,
+      "sha256": "516d18910e4c313c36df347e9ee2a0017d74e8e6dc713e330a5b6e5bd2d4d8f1"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2627-1170",
+      "cell": "2627-1170",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2627-1170/swissimage-dop10_2024_2627-1170_2_2056.tif",
+      "checksum": "1220D78024106CBCE7AF53E682E17F12E1C59A5387323949F1842D69C3C5F1E84DE8",
+      "filename": "swissimage-dop10_2024_2627-1170_2_2056.tif",
+      "bytes": 137611,
+      "sha256": "d78024106cbce7af53e682e17f12e1c59a5387323949f1842d69c3c5f1e84de8"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2627-1171",
+      "cell": "2627-1171",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2627-1171/swissimage-dop10_2024_2627-1171_2_2056.tif",
+      "checksum": "1220F713FB6ADA32D867DBEF4680781CC6D8746B0B99B3AA9DEE974EFE8E31B1C6F5",
+      "filename": "swissimage-dop10_2024_2627-1171_2_2056.tif",
+      "bytes": 193396,
+      "sha256": "f713fb6ada32d867dbef4680781cc6d8746b0b99b3aa9dee974efe8e31b1c6f5"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2627-1172",
+      "cell": "2627-1172",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2627-1172/swissimage-dop10_2024_2627-1172_2_2056.tif",
+      "checksum": "12203CC51DB40AFF1BD0B710D5A78D1D478C8EDE10BE42212B48BCCFC8BCF61EF3AC",
+      "filename": "swissimage-dop10_2024_2627-1172_2_2056.tif",
+      "bytes": 198352,
+      "sha256": "3cc51db40aff1bd0b710d5a78d1d478c8ede10be42212b48bccfc8bcf61ef3ac"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2627-1173",
+      "cell": "2627-1173",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2627-1173/swissimage-dop10_2024_2627-1173_2_2056.tif",
+      "checksum": "1220BE12576729AA853067010FD7554423230DB444ED0E0C2668841D02796389D17A",
+      "filename": "swissimage-dop10_2024_2627-1173_2_2056.tif",
+      "bytes": 203656,
+      "sha256": "be12576729aa853067010fd7554423230db444ed0e0c2668841d02796389d17a"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2627-1174",
+      "cell": "2627-1174",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2627-1174/swissimage-dop10_2024_2627-1174_2_2056.tif",
+      "checksum": "12203603C00A5EE6489A7AE84742BF239229D6D941837966AACB1B8640B6BC70C84B",
+      "filename": "swissimage-dop10_2024_2627-1174_2_2056.tif",
+      "bytes": 172147,
+      "sha256": "3603c00a5ee6489a7ae84742bf239229d6d941837966aacb1b8640b6bc70c84b"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2627-1175",
+      "cell": "2627-1175",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2627-1175/swissimage-dop10_2024_2627-1175_2_2056.tif",
+      "checksum": "122014C324AC2EFDD6A42C50D2B6C74316F2C921DBBE41504F330C62328B404F0221",
+      "filename": "swissimage-dop10_2024_2627-1175_2_2056.tif",
+      "bytes": 185594,
+      "sha256": "14c324ac2efdd6a42c50d2b6c74316f2c921dbbe41504f330c62328b404f0221"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2627-1176",
+      "cell": "2627-1176",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2627-1176/swissimage-dop10_2024_2627-1176_2_2056.tif",
+      "checksum": "1220A016DDF55047BFEF830A41A3563187636A8BC2514E6942E0E6096310CFFF8E67",
+      "filename": "swissimage-dop10_2024_2627-1176_2_2056.tif",
+      "bytes": 156136,
+      "sha256": "a016ddf55047bfef830a41a3563187636a8bc2514e6942e0e6096310cfff8e67"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2627-1177",
+      "cell": "2627-1177",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2627-1177/swissimage-dop10_2024_2627-1177_2_2056.tif",
+      "checksum": "1220D9C54758FA04D723151700639FDC21F034ECAFB55086BB07F5B16309EF5ED6D9",
+      "filename": "swissimage-dop10_2024_2627-1177_2_2056.tif",
+      "bytes": 142636,
+      "sha256": "d9c54758fa04d723151700639fdc21f034ecafb55086bb07f5b16309ef5ed6d9"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2627-1178",
+      "cell": "2627-1178",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2627-1178/swissimage-dop10_2024_2627-1178_2_2056.tif",
+      "checksum": "1220C9414F27F827A6EC6197B439422651B9434FAC76FA0D8A593F1AC7E9CD885736",
+      "filename": "swissimage-dop10_2024_2627-1178_2_2056.tif",
+      "bytes": 148454,
+      "sha256": "c9414f27f827a6ec6197b439422651b9434fac76fa0d8a593f1ac7e9cd885736"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2628-1167",
+      "cell": "2628-1167",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2628-1167/swissimage-dop10_2024_2628-1167_2_2056.tif",
+      "checksum": "1220FA9CBC3C70B179994B168A17014C00C024E21BC1BC13C90442DD9BAA9BEDE29B",
+      "filename": "swissimage-dop10_2024_2628-1167_2_2056.tif",
+      "bytes": 171124,
+      "sha256": "fa9cbc3c70b179994b168a17014c00c024e21bc1bc13c90442dd9baa9bede29b"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2628-1168",
+      "cell": "2628-1168",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2628-1168/swissimage-dop10_2024_2628-1168_2_2056.tif",
+      "checksum": "122086AA5FB2265A1581341DB02DB8E6647EB54AA9C9EBFB4E765802AEF17D728BFF",
+      "filename": "swissimage-dop10_2024_2628-1168_2_2056.tif",
+      "bytes": 55776,
+      "sha256": "86aa5fb2265a1581341db02db8e6647eb54aa9c9ebfb4e765802aef17d728bff"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2628-1169",
+      "cell": "2628-1169",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2628-1169/swissimage-dop10_2024_2628-1169_2_2056.tif",
+      "checksum": "12207496CF65552A4BEA7F2C381EFB98A10E433F0D30BBFFBDD6AAF279977F3AABF6",
+      "filename": "swissimage-dop10_2024_2628-1169_2_2056.tif",
+      "bytes": 62295,
+      "sha256": "7496cf65552a4bea7f2c381efb98a10e433f0d30bbffbdd6aaf279977f3aabf6"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2628-1170",
+      "cell": "2628-1170",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2628-1170/swissimage-dop10_2024_2628-1170_2_2056.tif",
+      "checksum": "1220C8F5DB0C935880DFD1F3455E686FB53DDD1E0BC69DE5B41791F02EBB7FA3F9A5",
+      "filename": "swissimage-dop10_2024_2628-1170_2_2056.tif",
+      "bytes": 181392,
+      "sha256": "c8f5db0c935880dfd1f3455e686fb53ddd1e0bc69de5b41791f02ebb7fa3f9a5"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2628-1171",
+      "cell": "2628-1171",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2628-1171/swissimage-dop10_2024_2628-1171_2_2056.tif",
+      "checksum": "12205977CEECF60E10032F2B69D3B935DC2D5541250081254A2BB272F2289912D43C",
+      "filename": "swissimage-dop10_2024_2628-1171_2_2056.tif",
+      "bytes": 183750,
+      "sha256": "5977ceecf60e10032f2b69d3b935dc2d5541250081254a2bb272f2289912d43c"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2628-1172",
+      "cell": "2628-1172",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2628-1172/swissimage-dop10_2024_2628-1172_2_2056.tif",
+      "checksum": "1220FD31B421F936A589AFE930E73CA2076ADB170C85322D7D4BF3DB2B99DF10AA3B",
+      "filename": "swissimage-dop10_2024_2628-1172_2_2056.tif",
+      "bytes": 186114,
+      "sha256": "fd31b421f936a589afe930e73ca2076adb170c85322d7d4bf3db2b99df10aa3b"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2628-1173",
+      "cell": "2628-1173",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2628-1173/swissimage-dop10_2024_2628-1173_2_2056.tif",
+      "checksum": "122024CCCEE1658240EFFC102486A79C0796042CF47ED614E8EA8A9BD43C5C85F9B2",
+      "filename": "swissimage-dop10_2024_2628-1173_2_2056.tif",
+      "bytes": 201533,
+      "sha256": "24cccee1658240effc102486a79c0796042cf47ed614e8ea8a9bd43c5c85f9b2"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2628-1174",
+      "cell": "2628-1174",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2628-1174/swissimage-dop10_2024_2628-1174_2_2056.tif",
+      "checksum": "1220957F2877130A1A5F480D6A5086DAB446DCA02BAAB4F396C81BDCBF58BC1A6B31",
+      "filename": "swissimage-dop10_2024_2628-1174_2_2056.tif",
+      "bytes": 205017,
+      "sha256": "957f2877130a1a5f480d6a5086dab446dca02baab4f396c81bdcbf58bc1a6b31"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2628-1175",
+      "cell": "2628-1175",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2628-1175/swissimage-dop10_2024_2628-1175_2_2056.tif",
+      "checksum": "12209D16FD8B0F272A332E0987D5189479C30C204C5961636CCDE7E0D26A1036D0B1",
+      "filename": "swissimage-dop10_2024_2628-1175_2_2056.tif",
+      "bytes": 174217,
+      "sha256": "9d16fd8b0f272a332e0987d5189479c30c204c5961636ccde7e0d26a1036d0b1"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2628-1176",
+      "cell": "2628-1176",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2628-1176/swissimage-dop10_2024_2628-1176_2_2056.tif",
+      "checksum": "1220FE15A38071BB9528864005EAA0FDE39A1A1E0ADCF55842332C71332AB040521A",
+      "filename": "swissimage-dop10_2024_2628-1176_2_2056.tif",
+      "bytes": 177057,
+      "sha256": "fe15a38071bb9528864005eaa0fde39a1a1e0adcf55842332c71332ab040521a"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2628-1177",
+      "cell": "2628-1177",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2628-1177/swissimage-dop10_2024_2628-1177_2_2056.tif",
+      "checksum": "12201BCCF614CE882C2E357584BE7B9E751289344BC3A56BA8F84E2D42927804B529",
+      "filename": "swissimage-dop10_2024_2628-1177_2_2056.tif",
+      "bytes": 162646,
+      "sha256": "1bccf614ce882c2e357584be7b9e751289344bc3a56ba8f84e2d42927804b529"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2628-1178",
+      "cell": "2628-1178",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2628-1178/swissimage-dop10_2024_2628-1178_2_2056.tif",
+      "checksum": "1220DD0FFF5289FC22BA5D550268A7994DE915185B5350FC9BD169085093511408E3",
+      "filename": "swissimage-dop10_2024_2628-1178_2_2056.tif",
+      "bytes": 131346,
+      "sha256": "dd0fff5289fc22ba5d550268a7994de915185b5350fc9bd169085093511408e3"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2629-1167",
+      "cell": "2629-1167",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2629-1167/swissimage-dop10_2024_2629-1167_2_2056.tif",
+      "checksum": "1220C90C690D09D06432C8D0D106E66B00A8EE92E1EBE3B8A288534D614396DB4E88",
+      "filename": "swissimage-dop10_2024_2629-1167_2_2056.tif",
+      "bytes": 124029,
+      "sha256": "c90c690d09d06432c8d0d106e66b00a8ee92e1ebe3b8a288534d614396db4e88"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2629-1168",
+      "cell": "2629-1168",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2629-1168/swissimage-dop10_2024_2629-1168_2_2056.tif",
+      "checksum": "1220BDFD51F2B533AAED63DB32F6C0A14062C6CCC86844B9C4BA39D921428A2D7315",
+      "filename": "swissimage-dop10_2024_2629-1168_2_2056.tif",
+      "bytes": 79938,
+      "sha256": "bdfd51f2b533aaed63db32f6c0a14062c6ccc86844b9c4ba39d921428a2d7315"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2629-1169",
+      "cell": "2629-1169",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2629-1169/swissimage-dop10_2024_2629-1169_2_2056.tif",
+      "checksum": "1220816315AF62937CD1D8ECE9278A1A65DF047DCD78199EEC27815B84D7D7A555B4",
+      "filename": "swissimage-dop10_2024_2629-1169_2_2056.tif",
+      "bytes": 147331,
+      "sha256": "816315af62937cd1d8ece9278a1a65df047dcd78199eec27815b84d7d7a555b4"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2629-1170",
+      "cell": "2629-1170",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2629-1170/swissimage-dop10_2024_2629-1170_2_2056.tif",
+      "checksum": "12201427F482B2FFE25747489DCF2A07E798C75513ABC499C3C2169B5CE6FDE8E989",
+      "filename": "swissimage-dop10_2024_2629-1170_2_2056.tif",
+      "bytes": 174709,
+      "sha256": "1427f482b2ffe25747489dcf2a07e798c75513abc499c3c2169b5ce6fde8e989"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2629-1171",
+      "cell": "2629-1171",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2629-1171/swissimage-dop10_2024_2629-1171_2_2056.tif",
+      "checksum": "1220E08C6775F7F711EE8F2A66F4541540DC9B2FDE458385216326CB63D4A8810CE9",
+      "filename": "swissimage-dop10_2024_2629-1171_2_2056.tif",
+      "bytes": 202253,
+      "sha256": "e08c6775f7f711ee8f2a66f4541540dc9b2fde458385216326cb63d4a8810ce9"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2629-1172",
+      "cell": "2629-1172",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2629-1172/swissimage-dop10_2024_2629-1172_2_2056.tif",
+      "checksum": "12204D286A7898CA1B18A14207930FD448A55B0EF5FF79010E576957A8101F838FC0",
+      "filename": "swissimage-dop10_2024_2629-1172_2_2056.tif",
+      "bytes": 180220,
+      "sha256": "4d286a7898ca1b18a14207930fd448a55b0ef5ff79010e576957a8101f838fc0"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2629-1173",
+      "cell": "2629-1173",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2629-1173/swissimage-dop10_2024_2629-1173_2_2056.tif",
+      "checksum": "1220CF3C3552CF56EB76744F19DABE69711D2453BC991568519602E6BE279D29942D",
+      "filename": "swissimage-dop10_2024_2629-1173_2_2056.tif",
+      "bytes": 181778,
+      "sha256": "cf3c3552cf56eb76744f19dabe69711d2453bc991568519602e6be279d29942d"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2629-1174",
+      "cell": "2629-1174",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2629-1174/swissimage-dop10_2024_2629-1174_2_2056.tif",
+      "checksum": "1220CB30EE3141EF1F50D6534C80EDDBC56640F307C10329053C8B41695CFC096E9E",
+      "filename": "swissimage-dop10_2024_2629-1174_2_2056.tif",
+      "bytes": 199947,
+      "sha256": "cb30ee3141ef1f50d6534c80eddbc56640f307c10329053c8b41695cfc096e9e"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2629-1175",
+      "cell": "2629-1175",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2629-1175/swissimage-dop10_2024_2629-1175_2_2056.tif",
+      "checksum": "122063517DD0D8A0E5C0D3F68BBF1D93B96750CB9C467F4F7C1482A49F428C4C8665",
+      "filename": "swissimage-dop10_2024_2629-1175_2_2056.tif",
+      "bytes": 200409,
+      "sha256": "63517dd0d8a0e5c0d3f68bbf1d93b96750cb9c467f4f7c1482a49f428c4c8665"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2629-1176",
+      "cell": "2629-1176",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2629-1176/swissimage-dop10_2024_2629-1176_2_2056.tif",
+      "checksum": "12207F6443C2035AC52E815E0C0343ADBA7505E95C2A5546C2535D80CDC7A7ABFC40",
+      "filename": "swissimage-dop10_2024_2629-1176_2_2056.tif",
+      "bytes": 199613,
+      "sha256": "7f6443c2035ac52e815e0c0343adba7505e95c2a5546c2535d80cdc7a7abfc40"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2629-1177",
+      "cell": "2629-1177",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2629-1177/swissimage-dop10_2024_2629-1177_2_2056.tif",
+      "checksum": "122059F39527598F3C41D3DE3261379810923C61B54382EB223B5DD0942C3D98567E",
+      "filename": "swissimage-dop10_2024_2629-1177_2_2056.tif",
+      "bytes": 191945,
+      "sha256": "59f39527598f3c41d3de3261379810923c61b54382eb223b5dd0942c3d98567e"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2629-1178",
+      "cell": "2629-1178",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2629-1178/swissimage-dop10_2024_2629-1178_2_2056.tif",
+      "checksum": "1220507D1CA3732CBCE348F65696F7A478AE84EE3A6A726A2C2FDD07DDD82A38B450",
+      "filename": "swissimage-dop10_2024_2629-1178_2_2056.tif",
+      "bytes": 196904,
+      "sha256": "507d1ca3732cbce348f65696f7a478ae84ee3a6a726a2c2fdd07ddd82a38b450"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2630-1167",
+      "cell": "2630-1167",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2630-1167/swissimage-dop10_2024_2630-1167_2_2056.tif",
+      "checksum": "122061B5F757961A1898F8A309EA21A5B2CE04939B2595C086425B1E491DED42558A",
+      "filename": "swissimage-dop10_2024_2630-1167_2_2056.tif",
+      "bytes": 180543,
+      "sha256": "61b5f757961a1898f8a309ea21a5b2ce04939b2595c086425b1e491ded42558a"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2630-1168",
+      "cell": "2630-1168",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2630-1168/swissimage-dop10_2024_2630-1168_2_2056.tif",
+      "checksum": "1220FEBBD37E59D0AECA8D923070452327DC61F93479F3E7D2DFF154FDCAD7371EEC",
+      "filename": "swissimage-dop10_2024_2630-1168_2_2056.tif",
+      "bytes": 165747,
+      "sha256": "febbd37e59d0aeca8d923070452327dc61f93479f3e7d2dff154fdcad7371eec"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2630-1169",
+      "cell": "2630-1169",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2630-1169/swissimage-dop10_2024_2630-1169_2_2056.tif",
+      "checksum": "1220FBEE6C332ED35296BA540613DAA4E4773E9CD122C03466C4C77722BC9EEF6D2C",
+      "filename": "swissimage-dop10_2024_2630-1169_2_2056.tif",
+      "bytes": 142962,
+      "sha256": "fbee6c332ed35296ba540613daa4e4773e9cd122c03466c4c77722bc9eef6d2c"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2630-1170",
+      "cell": "2630-1170",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2630-1170/swissimage-dop10_2024_2630-1170_2_2056.tif",
+      "checksum": "122006604725FFDBAAAAE5387C98F75E11F7A8C8F88364AE94EC42FB614BDEB8FCC0",
+      "filename": "swissimage-dop10_2024_2630-1170_2_2056.tif",
+      "bytes": 183764,
+      "sha256": "06604725ffdbaaaae5387c98f75e11f7a8c8f88364ae94ec42fb614bdeb8fcc0"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2630-1171",
+      "cell": "2630-1171",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2630-1171/swissimage-dop10_2024_2630-1171_2_2056.tif",
+      "checksum": "1220F6742771508017FC2155AA3D740E30496352EB7450EEF449A4F98A2359BBCEB3",
+      "filename": "swissimage-dop10_2024_2630-1171_2_2056.tif",
+      "bytes": 184510,
+      "sha256": "f6742771508017fc2155aa3d740e30496352eb7450eef449a4f98a2359bbceb3"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2630-1172",
+      "cell": "2630-1172",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2630-1172/swissimage-dop10_2024_2630-1172_2_2056.tif",
+      "checksum": "1220AB06D5588BA890026EC0662B1CB653DB2EFC464FE34D3821839699D43766A8F1",
+      "filename": "swissimage-dop10_2024_2630-1172_2_2056.tif",
+      "bytes": 191798,
+      "sha256": "ab06d5588ba890026ec0662b1cb653db2efc464fe34d3821839699d43766a8f1"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2630-1173",
+      "cell": "2630-1173",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2630-1173/swissimage-dop10_2024_2630-1173_2_2056.tif",
+      "checksum": "1220E1BC6E94F50BA86B6D9159D95AFA22CEB24DA0E5C295342D75BD11AD7CDA4E7C",
+      "filename": "swissimage-dop10_2024_2630-1173_2_2056.tif",
+      "bytes": 197351,
+      "sha256": "e1bc6e94f50ba86b6d9159d95afa22ceb24da0e5c295342d75bd11ad7cda4e7c"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2630-1174",
+      "cell": "2630-1174",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2630-1174/swissimage-dop10_2024_2630-1174_2_2056.tif",
+      "checksum": "122085354FAB312DB93058E67797950AB7F9F8A913773CD15FB402DD7FC7122765C1",
+      "filename": "swissimage-dop10_2024_2630-1174_2_2056.tif",
+      "bytes": 169487,
+      "sha256": "85354fab312db93058e67797950ab7f9f8a913773cd15fb402dd7fc7122765c1"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2630-1175",
+      "cell": "2630-1175",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2630-1175/swissimage-dop10_2024_2630-1175_2_2056.tif",
+      "checksum": "12202E3B4029CA69DEB2962ECB593B307F33FE8B0B1CB479E28D774C775CC212CDAF",
+      "filename": "swissimage-dop10_2024_2630-1175_2_2056.tif",
+      "bytes": 191834,
+      "sha256": "2e3b4029ca69deb2962ecb593b307f33fe8b0b1cb479e28d774c775cc212cdaf"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2630-1176",
+      "cell": "2630-1176",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2630-1176/swissimage-dop10_2024_2630-1176_2_2056.tif",
+      "checksum": "1220E4175A11C061A2DC5F4F4ADAFED7E2D875250B7A1D6294721FE2CA081944515E",
+      "filename": "swissimage-dop10_2024_2630-1176_2_2056.tif",
+      "bytes": 205703,
+      "sha256": "e4175a11c061a2dc5f4f4adafed7e2d875250b7a1d6294721fe2ca081944515e"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2630-1177",
+      "cell": "2630-1177",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2630-1177/swissimage-dop10_2024_2630-1177_2_2056.tif",
+      "checksum": "12206850A4AE95388E9322588CE587F59C41EC1A5D4108D1C853C7D8E72CC962E24A",
+      "filename": "swissimage-dop10_2024_2630-1177_2_2056.tif",
+      "bytes": 195787,
+      "sha256": "6850a4ae95388e9322588ce587f59c41ec1a5d4108d1c853c7d8e72cc962e24a"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2630-1178",
+      "cell": "2630-1178",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2630-1178/swissimage-dop10_2024_2630-1178_2_2056.tif",
+      "checksum": "12200FDCFE82420AB49BF4A259E1E521719E870E271542A84D1A5D496379FA4545C6",
+      "filename": "swissimage-dop10_2024_2630-1178_2_2056.tif",
+      "bytes": 202949,
+      "sha256": "0fdcfe82420ab49bf4a259e1e521719e870e271542a84d1a5d496379fa4545c6"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2631-1167",
+      "cell": "2631-1167",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2631-1167/swissimage-dop10_2024_2631-1167_2_2056.tif",
+      "checksum": "12205E676BA003391CE63F8C966571623AE51E0C4B07753AC7CD81A7F14DCF8949F3",
+      "filename": "swissimage-dop10_2024_2631-1167_2_2056.tif",
+      "bytes": 187455,
+      "sha256": "5e676ba003391ce63f8c966571623ae51e0c4b07753ac7cd81a7f14dcf8949f3"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2631-1168",
+      "cell": "2631-1168",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2631-1168/swissimage-dop10_2024_2631-1168_2_2056.tif",
+      "checksum": "12207737626145BA705B5B2E37B12242A3F4A55E85489FB6C7FC062FA9FACFBDE491",
+      "filename": "swissimage-dop10_2024_2631-1168_2_2056.tif",
+      "bytes": 191844,
+      "sha256": "7737626145ba705b5b2e37b12242a3f4a55e85489fb6c7fc062fa9facfbde491"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2631-1169",
+      "cell": "2631-1169",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2631-1169/swissimage-dop10_2024_2631-1169_2_2056.tif",
+      "checksum": "12207BD58003A9631CA589244478297FC77838D5DB26E1A288D3C1009E8ABB510305",
+      "filename": "swissimage-dop10_2024_2631-1169_2_2056.tif",
+      "bytes": 191729,
+      "sha256": "7bd58003a9631ca589244478297fc77838d5db26e1a288d3c1009e8abb510305"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2631-1170",
+      "cell": "2631-1170",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2631-1170/swissimage-dop10_2024_2631-1170_2_2056.tif",
+      "checksum": "1220D71A691711D6B6F64D5CDF4395CF913D40D66B58477E9B0EF16B883FE763B8C7",
+      "filename": "swissimage-dop10_2024_2631-1170_2_2056.tif",
+      "bytes": 218129,
+      "sha256": "d71a691711d6b6f64d5cdf4395cf913d40d66b58477e9b0ef16b883fe763b8c7"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2631-1171",
+      "cell": "2631-1171",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2631-1171/swissimage-dop10_2024_2631-1171_2_2056.tif",
+      "checksum": "1220895CE31ED52EBF82CB2303B46FA9ED44C28206947DBA6C617C038C74ACB11347",
+      "filename": "swissimage-dop10_2024_2631-1171_2_2056.tif",
+      "bytes": 200270,
+      "sha256": "895ce31ed52ebf82cb2303b46fa9ed44c28206947dba6c617c038c74acb11347"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2631-1172",
+      "cell": "2631-1172",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2631-1172/swissimage-dop10_2024_2631-1172_2_2056.tif",
+      "checksum": "1220A39408EADA6AE086279EE3D2DD9BE49127E9E5341B1207626C4A600C9EE63F32",
+      "filename": "swissimage-dop10_2024_2631-1172_2_2056.tif",
+      "bytes": 201928,
+      "sha256": "a39408eada6ae086279ee3d2dd9be49127e9e5341b1207626c4a600c9ee63f32"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2631-1173",
+      "cell": "2631-1173",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2631-1173/swissimage-dop10_2024_2631-1173_2_2056.tif",
+      "checksum": "1220398681BFE58A84C111D0FB88F20D77239C76DD7E156F958AB7FD2226247B0665",
+      "filename": "swissimage-dop10_2024_2631-1173_2_2056.tif",
+      "bytes": 198068,
+      "sha256": "398681bfe58a84c111d0fb88f20d77239c76dd7e156f958ab7fd2226247b0665"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2631-1174",
+      "cell": "2631-1174",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2631-1174/swissimage-dop10_2024_2631-1174_2_2056.tif",
+      "checksum": "1220EA4BA29E48B20BBA878D5C209E04DB1ADC3607F3A416504863F5847741031BE9",
+      "filename": "swissimage-dop10_2024_2631-1174_2_2056.tif",
+      "bytes": 159866,
+      "sha256": "ea4ba29e48b20bba878d5c209e04db1adc3607f3a416504863f5847741031be9"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2631-1175",
+      "cell": "2631-1175",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2631-1175/swissimage-dop10_2024_2631-1175_2_2056.tif",
+      "checksum": "12200C09171F9D27106970EBC00B89D79998D612C8ED3EB9F1331C5520BD46C8CD05",
+      "filename": "swissimage-dop10_2024_2631-1175_2_2056.tif",
+      "bytes": 145990,
+      "sha256": "0c09171f9d27106970ebc00b89d79998d612c8ed3eb9f1331c5520bd46c8cd05"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2631-1176",
+      "cell": "2631-1176",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2631-1176/swissimage-dop10_2024_2631-1176_2_2056.tif",
+      "checksum": "1220AEAE93854068D3349B223CE470128D0A09C82BD3062366B7246222974ABC5D42",
+      "filename": "swissimage-dop10_2024_2631-1176_2_2056.tif",
+      "bytes": 194372,
+      "sha256": "aeae93854068d3349b223ce470128d0a09c82bd3062366b7246222974abc5d42"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2631-1177",
+      "cell": "2631-1177",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2631-1177/swissimage-dop10_2024_2631-1177_2_2056.tif",
+      "checksum": "12205E56E07AEA868D37DD9B9297A27CA1AF330867A57ADE445995FDD3053257F492",
+      "filename": "swissimage-dop10_2024_2631-1177_2_2056.tif",
+      "bytes": 201171,
+      "sha256": "5e56e07aea868d37dd9b9297a27ca1af330867a57ade445995fdd3053257f492"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2631-1178",
+      "cell": "2631-1178",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2631-1178/swissimage-dop10_2024_2631-1178_2_2056.tif",
+      "checksum": "12204A5DD617BF284F8838CF1F4A4518E2E6ED0704679429E659E64B2A7B161FE6F9",
+      "filename": "swissimage-dop10_2024_2631-1178_2_2056.tif",
+      "bytes": 206115,
+      "sha256": "4a5dd617bf284f8838cf1f4a4518e2e6ed0704679429e659e64b2a7b161fe6f9"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2632-1167",
+      "cell": "2632-1167",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2632-1167/swissimage-dop10_2024_2632-1167_2_2056.tif",
+      "checksum": "122041D78785CD5F4D55F50E1B0FF6399A6C560E61214CB2F9FA4D8A719FFACA2194",
+      "filename": "swissimage-dop10_2024_2632-1167_2_2056.tif",
+      "bytes": 181497,
+      "sha256": "41d78785cd5f4d55f50e1b0ff6399a6c560e61214cb2f9fa4d8a719ffaca2194"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2632-1168",
+      "cell": "2632-1168",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2632-1168/swissimage-dop10_2024_2632-1168_2_2056.tif",
+      "checksum": "1220141E72DBE3992D34A70988EF2451F5DADFD61850A9AC672D15722B4DF984E6E3",
+      "filename": "swissimage-dop10_2024_2632-1168_2_2056.tif",
+      "bytes": 170557,
+      "sha256": "141e72dbe3992d34a70988ef2451f5dadfd61850a9ac672d15722b4df984e6e3"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2632-1169",
+      "cell": "2632-1169",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2632-1169/swissimage-dop10_2024_2632-1169_2_2056.tif",
+      "checksum": "12200EBB18D867E8CDF20FA3960E6850437001EF21C76261959175D7834E304F2E25",
+      "filename": "swissimage-dop10_2024_2632-1169_2_2056.tif",
+      "bytes": 193366,
+      "sha256": "0ebb18d867e8cdf20fa3960e6850437001ef21c76261959175d7834e304f2e25"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2632-1170",
+      "cell": "2632-1170",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2632-1170/swissimage-dop10_2024_2632-1170_2_2056.tif",
+      "checksum": "1220D47154A368A44153F23640B95F838B2E967D9F6DF19367D85770BBEDA0CBBB0C",
+      "filename": "swissimage-dop10_2024_2632-1170_2_2056.tif",
+      "bytes": 208678,
+      "sha256": "d47154a368a44153f23640b95f838b2e967d9f6df19367d85770bbeda0cbbb0c"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2632-1171",
+      "cell": "2632-1171",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2632-1171/swissimage-dop10_2024_2632-1171_2_2056.tif",
+      "checksum": "12202F086527CF0D353E565986CD2B8C86906435C62B7F99CB1EA734BDB4911A2BEB",
+      "filename": "swissimage-dop10_2024_2632-1171_2_2056.tif",
+      "bytes": 194645,
+      "sha256": "2f086527cf0d353e565986cd2b8c86906435c62b7f99cb1ea734bdb4911a2beb"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2632-1172",
+      "cell": "2632-1172",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2632-1172/swissimage-dop10_2024_2632-1172_2_2056.tif",
+      "checksum": "12209355D647DE146B27B0237DDB94C531492500256B369A768ED4433BE2EF6D35DE",
+      "filename": "swissimage-dop10_2024_2632-1172_2_2056.tif",
+      "bytes": 207447,
+      "sha256": "9355d647de146b27b0237ddb94c531492500256b369a768ed4433be2ef6d35de"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2632-1173",
+      "cell": "2632-1173",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2632-1173/swissimage-dop10_2024_2632-1173_2_2056.tif",
+      "checksum": "1220CDDE689293B7C6B78AD9B263CE6BD98CCCC12248D8BA534304F14E792B5CAEA5",
+      "filename": "swissimage-dop10_2024_2632-1173_2_2056.tif",
+      "bytes": 204565,
+      "sha256": "cdde689293b7c6b78ad9b263ce6bd98cccc12248d8ba534304f14e792b5caea5"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2632-1174",
+      "cell": "2632-1174",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2632-1174/swissimage-dop10_2024_2632-1174_2_2056.tif",
+      "checksum": "1220C2935B8B6D1682789566DA2D9CC53ECD9AB49628D258E93E78BFFEE78ACCD720",
+      "filename": "swissimage-dop10_2024_2632-1174_2_2056.tif",
+      "bytes": 184385,
+      "sha256": "c2935b8b6d1682789566da2d9cc53ecd9ab49628d258e93e78bffee78accd720"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2632-1175",
+      "cell": "2632-1175",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2632-1175/swissimage-dop10_2024_2632-1175_2_2056.tif",
+      "checksum": "1220F01FD5A9F10A3EAC1E65F3AF079A0976BF0B62EC2837AB96E306CAB0E2141078",
+      "filename": "swissimage-dop10_2024_2632-1175_2_2056.tif",
+      "bytes": 161918,
+      "sha256": "f01fd5a9f10a3eac1e65f3af079a0976bf0b62ec2837ab96e306cab0e2141078"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2632-1176",
+      "cell": "2632-1176",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2632-1176/swissimage-dop10_2024_2632-1176_2_2056.tif",
+      "checksum": "1220AB2A4D8527CE8B1E4CA377CEF6FDF8CDAA2A1FA66A870BCFD62245891AE70CF7",
+      "filename": "swissimage-dop10_2024_2632-1176_2_2056.tif",
+      "bytes": 159591,
+      "sha256": "ab2a4d8527ce8b1e4ca377cef6fdf8cdaa2a1fa66a870bcfd62245891ae70cf7"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2632-1177",
+      "cell": "2632-1177",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2632-1177/swissimage-dop10_2024_2632-1177_2_2056.tif",
+      "checksum": "1220E8AA41B712089BBD3D5451413D0040EAF6EB319B0AEB3AB52F57F61ABBB48B24",
+      "filename": "swissimage-dop10_2024_2632-1177_2_2056.tif",
+      "bytes": 165825,
+      "sha256": "e8aa41b712089bbd3d5451413d0040eaf6eb319b0aeb3ab52f57f61abbb48b24"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2632-1178",
+      "cell": "2632-1178",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2632-1178/swissimage-dop10_2024_2632-1178_2_2056.tif",
+      "checksum": "1220147E080B7CFF8E903BEBF8E25901C539057E355FB1C3D847CB88E383A6084B3F",
+      "filename": "swissimage-dop10_2024_2632-1178_2_2056.tif",
+      "bytes": 179236,
+      "sha256": "147e080b7cff8e903bebf8e25901c539057e355fb1c3d847cb88e383a6084b3f"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2633-1167",
+      "cell": "2633-1167",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2633-1167/swissimage-dop10_2024_2633-1167_2_2056.tif",
+      "checksum": "12209D7AF3BE5BC8B151B0527D00E2A5DD559C051558F385407984E45810C8D22A63",
+      "filename": "swissimage-dop10_2024_2633-1167_2_2056.tif",
+      "bytes": 181921,
+      "sha256": "9d7af3be5bc8b151b0527d00e2a5dd559c051558f385407984e45810c8d22a63"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2633-1168",
+      "cell": "2633-1168",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2633-1168/swissimage-dop10_2024_2633-1168_2_2056.tif",
+      "checksum": "1220297A0A234E1C74B2C5CE36295E1CBD9935066FF281F7780BAA9AD5E2B95F529B",
+      "filename": "swissimage-dop10_2024_2633-1168_2_2056.tif",
+      "bytes": 183809,
+      "sha256": "297a0a234e1c74b2c5ce36295e1cbd9935066ff281f7780baa9ad5e2b95f529b"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2633-1169",
+      "cell": "2633-1169",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2633-1169/swissimage-dop10_2024_2633-1169_2_2056.tif",
+      "checksum": "1220A4DB244A648B88DADB64DB2FFC0A8157014F02DDA0B94A01BDCAE5345BDF8392",
+      "filename": "swissimage-dop10_2024_2633-1169_2_2056.tif",
+      "bytes": 144260,
+      "sha256": "a4db244a648b88dadb64db2ffc0a8157014f02dda0b94a01bdcae5345bdf8392"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2633-1170",
+      "cell": "2633-1170",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2633-1170/swissimage-dop10_2024_2633-1170_2_2056.tif",
+      "checksum": "12202A86568F46E21979A3686A0DDBD37EA1147B24B167F6FF5FBCDCD4CC64C82610",
+      "filename": "swissimage-dop10_2024_2633-1170_2_2056.tif",
+      "bytes": 168490,
+      "sha256": "2a86568f46e21979a3686a0ddbd37ea1147b24b167f6ff5fbcdcd4cc64c82610"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2633-1171",
+      "cell": "2633-1171",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2633-1171/swissimage-dop10_2024_2633-1171_2_2056.tif",
+      "checksum": "12209D0E4B2ACBD82AE54609D45183D1FD50557EF119708C5EA07FA8FF373AFD2BFD",
+      "filename": "swissimage-dop10_2024_2633-1171_2_2056.tif",
+      "bytes": 183552,
+      "sha256": "9d0e4b2acbd82ae54609d45183d1fd50557ef119708c5ea07fa8ff373afd2bfd"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2633-1172",
+      "cell": "2633-1172",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2633-1172/swissimage-dop10_2024_2633-1172_2_2056.tif",
+      "checksum": "1220615E6075622858E8E24D40CD4BF6C60C12B3B770847F13363C73DF7C104FB7C7",
+      "filename": "swissimage-dop10_2024_2633-1172_2_2056.tif",
+      "bytes": 183774,
+      "sha256": "615e6075622858e8e24d40cd4bf6c60c12b3b770847f13363c73df7c104fb7c7"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2633-1173",
+      "cell": "2633-1173",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2633-1173/swissimage-dop10_2024_2633-1173_2_2056.tif",
+      "checksum": "122035EA34C937F15E98DA7615E19081C219EC606C38C6D508FF6E58FEBBF7BA1CCA",
+      "filename": "swissimage-dop10_2024_2633-1173_2_2056.tif",
+      "bytes": 211977,
+      "sha256": "35ea34c937f15e98da7615e19081c219ec606c38c6d508ff6e58febbf7ba1cca"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2633-1174",
+      "cell": "2633-1174",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2633-1174/swissimage-dop10_2024_2633-1174_2_2056.tif",
+      "checksum": "122042A792172DB2D91A36DDD9EB79367482A84E177777C05890AC49D8B7D549A8AA",
+      "filename": "swissimage-dop10_2024_2633-1174_2_2056.tif",
+      "bytes": 199039,
+      "sha256": "42a792172db2d91a36ddd9eb79367482a84e177777c05890ac49d8b7d549a8aa"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2633-1175",
+      "cell": "2633-1175",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2633-1175/swissimage-dop10_2024_2633-1175_2_2056.tif",
+      "checksum": "1220486559DE825BF5F129D98B8537CF067A2567F51628320236EAEB5B79C48633A4",
+      "filename": "swissimage-dop10_2024_2633-1175_2_2056.tif",
+      "bytes": 155052,
+      "sha256": "486559de825bf5f129d98b8537cf067a2567f51628320236eaeb5b79c48633a4"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2633-1176",
+      "cell": "2633-1176",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2633-1176/swissimage-dop10_2024_2633-1176_2_2056.tif",
+      "checksum": "122067BEDDB324E2C661CF4063F923CEEDA2406BD2184A238D170C536D07FF56D741",
+      "filename": "swissimage-dop10_2024_2633-1176_2_2056.tif",
+      "bytes": 168297,
+      "sha256": "67beddb324e2c661cf4063f923ceeda2406bd2184a238d170c536d07ff56d741"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2633-1177",
+      "cell": "2633-1177",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2633-1177/swissimage-dop10_2024_2633-1177_2_2056.tif",
+      "checksum": "1220C2E486BF225BD7177231E2A86987339FAAA74B919E0DC2190DA4FB7BFD9E12FC",
+      "filename": "swissimage-dop10_2024_2633-1177_2_2056.tif",
+      "bytes": 177106,
+      "sha256": "c2e486bf225bd7177231e2a86987339faaa74b919e0dc2190da4fb7bfd9e12fc"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2633-1178",
+      "cell": "2633-1178",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2633-1178/swissimage-dop10_2024_2633-1178_2_2056.tif",
+      "checksum": "122053C1210E3916533AF794F3C1D6A2D9DB649B1A2B526865BAA31DC3BB448026D0",
+      "filename": "swissimage-dop10_2024_2633-1178_2_2056.tif",
+      "bytes": 175950,
+      "sha256": "53c1210e3916533af794f3c1d6a2d9db649b1a2b526865baa31dc3bb448026d0"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2634-1167",
+      "cell": "2634-1167",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2634-1167/swissimage-dop10_2024_2634-1167_2_2056.tif",
+      "checksum": "1220C0876E6C6E9031AB5B101112A558E015BA1440C3DF158821BBD9DC878945E76D",
+      "filename": "swissimage-dop10_2024_2634-1167_2_2056.tif",
+      "bytes": 178425,
+      "sha256": "c0876e6c6e9031ab5b101112a558e015ba1440c3df158821bbd9dc878945e76d"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2634-1168",
+      "cell": "2634-1168",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2634-1168/swissimage-dop10_2024_2634-1168_2_2056.tif",
+      "checksum": "1220C3481C5D42F09CCF554B254170B1571739626906EFD5EDA436AA968065CB10CA",
+      "filename": "swissimage-dop10_2024_2634-1168_2_2056.tif",
+      "bytes": 186640,
+      "sha256": "c3481c5d42f09ccf554b254170b1571739626906efd5eda436aa968065cb10ca"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2634-1169",
+      "cell": "2634-1169",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2634-1169/swissimage-dop10_2024_2634-1169_2_2056.tif",
+      "checksum": "122090634274FFF066DF5CF03FDB17298DD558CE811727827A94A4486CEAE28580ED",
+      "filename": "swissimage-dop10_2024_2634-1169_2_2056.tif",
+      "bytes": 163174,
+      "sha256": "90634274fff066df5cf03fdb17298dd558ce811727827a94a4486ceae28580ed"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2634-1170",
+      "cell": "2634-1170",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2634-1170/swissimage-dop10_2024_2634-1170_2_2056.tif",
+      "checksum": "1220B785D553FDFCFC603CE4E620CE440326419548C7975629D3350454C9E15C8587",
+      "filename": "swissimage-dop10_2024_2634-1170_2_2056.tif",
+      "bytes": 178622,
+      "sha256": "b785d553fdfcfc603ce4e620ce440326419548c7975629d3350454c9e15c8587"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2634-1171",
+      "cell": "2634-1171",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2634-1171/swissimage-dop10_2024_2634-1171_2_2056.tif",
+      "checksum": "122014C0995FE70C0622843092FA8F9F533FA5921CC70374DF1DE10135AE2F9DC3E8",
+      "filename": "swissimage-dop10_2024_2634-1171_2_2056.tif",
+      "bytes": 120254,
+      "sha256": "14c0995fe70c0622843092fa8f9f533fa5921cc70374df1de10135ae2f9dc3e8"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2634-1172",
+      "cell": "2634-1172",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2634-1172/swissimage-dop10_2024_2634-1172_2_2056.tif",
+      "checksum": "12200EDDEDFB6BDE1C07B7EEFACB2124EEA982953172324E8F923DF3DB4F8F05E31C",
+      "filename": "swissimage-dop10_2024_2634-1172_2_2056.tif",
+      "bytes": 183771,
+      "sha256": "0eddedfb6bde1c07b7eefacb2124eea982953172324e8f923df3db4f8f05e31c"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2634-1173",
+      "cell": "2634-1173",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2634-1173/swissimage-dop10_2024_2634-1173_2_2056.tif",
+      "checksum": "1220B68D0053B2E7782CF85AC7077F15FB4AA96D30355CFE42E0F99442A97F5F73BC",
+      "filename": "swissimage-dop10_2024_2634-1173_2_2056.tif",
+      "bytes": 200543,
+      "sha256": "b68d0053b2e7782cf85ac7077f15fb4aa96d30355cfe42e0f99442a97f5f73bc"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2634-1174",
+      "cell": "2634-1174",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2634-1174/swissimage-dop10_2024_2634-1174_2_2056.tif",
+      "checksum": "12208E2C1ABEE6A7B6E3FBA47F99BADE9CB7E661211D3E59AE1273FE838A8B135C58",
+      "filename": "swissimage-dop10_2024_2634-1174_2_2056.tif",
+      "bytes": 197115,
+      "sha256": "8e2c1abee6a7b6e3fba47f99bade9cb7e661211d3e59ae1273fe838a8b135c58"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2634-1175",
+      "cell": "2634-1175",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2634-1175/swissimage-dop10_2024_2634-1175_2_2056.tif",
+      "checksum": "1220765B8D5F50B44DA182E5435ECD4E8BEDB08CF7ED620FACD5BC6B5E739ADDD10D",
+      "filename": "swissimage-dop10_2024_2634-1175_2_2056.tif",
+      "bytes": 188151,
+      "sha256": "765b8d5f50b44da182e5435ecd4e8bedb08cf7ed620facd5bc6b5e739addd10d"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2634-1176",
+      "cell": "2634-1176",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2634-1176/swissimage-dop10_2024_2634-1176_2_2056.tif",
+      "checksum": "122042FCC31E80BDD94B63E3F8973633D6F76CE82C35151E6EA46D0F340AD3C76AB3",
+      "filename": "swissimage-dop10_2024_2634-1176_2_2056.tif",
+      "bytes": 177963,
+      "sha256": "42fcc31e80bdd94b63e3f8973633d6f76ce82c35151e6ea46d0f340ad3c76ab3"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2634-1177",
+      "cell": "2634-1177",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2634-1177/swissimage-dop10_2024_2634-1177_2_2056.tif",
+      "checksum": "12209283A09E3A14B1B093AEE3D07B5B6BDEA08A37B5A7D47CCE6219B638211A1FAF",
+      "filename": "swissimage-dop10_2024_2634-1177_2_2056.tif",
+      "bytes": 159679,
+      "sha256": "9283a09e3a14b1b093aee3d07b5b6bdea08a37b5a7d47cce6219b638211a1faf"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2634-1178",
+      "cell": "2634-1178",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2634-1178/swissimage-dop10_2024_2634-1178_2_2056.tif",
+      "checksum": "1220B65DE26144F7DF066E31020FE315D9E37FE14CDA6060499D6A62A2FA08D93518",
+      "filename": "swissimage-dop10_2024_2634-1178_2_2056.tif",
+      "bytes": 170476,
+      "sha256": "b65de26144f7df066e31020fe315d9e37fe14cda6060499d6a62a2fa08d93518"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2635-1167",
+      "cell": "2635-1167",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2635-1167/swissimage-dop10_2024_2635-1167_2_2056.tif",
+      "checksum": "12200629AC29EF29ECB3DB081F81AAF7686E1BEC4EF001ACD50C060B8010C420A242",
+      "filename": "swissimage-dop10_2024_2635-1167_2_2056.tif",
+      "bytes": 183194,
+      "sha256": "0629ac29ef29ecb3db081f81aaf7686e1bec4ef001acd50c060b8010c420a242"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2635-1168",
+      "cell": "2635-1168",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2635-1168/swissimage-dop10_2024_2635-1168_2_2056.tif",
+      "checksum": "12205F8EA65E00E2ABCF5A8823B34626A44E02A4E8107B95BF6F1C0D646B49F9B7B3",
+      "filename": "swissimage-dop10_2024_2635-1168_2_2056.tif",
+      "bytes": 194756,
+      "sha256": "5f8ea65e00e2abcf5a8823b34626a44e02a4e8107b95bf6f1c0d646b49f9b7b3"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2635-1169",
+      "cell": "2635-1169",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2635-1169/swissimage-dop10_2024_2635-1169_2_2056.tif",
+      "checksum": "122043F67E7769408F2641F1B33F56A89AA29A6510CDC4F59A9126830EB7A3710F9D",
+      "filename": "swissimage-dop10_2024_2635-1169_2_2056.tif",
+      "bytes": 201122,
+      "sha256": "43f67e7769408f2641f1b33f56a89aa29a6510cdc4f59a9126830eb7a3710f9d"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2635-1170",
+      "cell": "2635-1170",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2635-1170/swissimage-dop10_2024_2635-1170_2_2056.tif",
+      "checksum": "1220CAA719906435EBCFF8AE3ED12503E13AB6424AFF74A61C4117B1CB45028F3A2F",
+      "filename": "swissimage-dop10_2024_2635-1170_2_2056.tif",
+      "bytes": 183951,
+      "sha256": "caa719906435ebcff8ae3ed12503e13ab6424aff74a61c4117b1cb45028f3a2f"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2635-1171",
+      "cell": "2635-1171",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2635-1171/swissimage-dop10_2024_2635-1171_2_2056.tif",
+      "checksum": "12201F81B300F1B8438E8692823D7F63777F8572BF5899639DBE77B217DFC13E9CEE",
+      "filename": "swissimage-dop10_2024_2635-1171_2_2056.tif",
+      "bytes": 52584,
+      "sha256": "1f81b300f1b8438e8692823d7f63777f8572bf5899639dbe77b217dfc13e9cee"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2635-1172",
+      "cell": "2635-1172",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2635-1172/swissimage-dop10_2024_2635-1172_2_2056.tif",
+      "checksum": "1220B6E6F239B6751445F1B5719322CC3E6A34255A091E98C565B543ACA3D6B77FE3",
+      "filename": "swissimage-dop10_2024_2635-1172_2_2056.tif",
+      "bytes": 105322,
+      "sha256": "b6e6f239b6751445f1b5719322cc3e6a34255a091e98c565b543aca3d6b77fe3"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2635-1173",
+      "cell": "2635-1173",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2635-1173/swissimage-dop10_2024_2635-1173_2_2056.tif",
+      "checksum": "1220293E7B9C0FB129B53AF210ADE031ACCF65EEC6B0B245244AC0806F1B855719BD",
+      "filename": "swissimage-dop10_2024_2635-1173_2_2056.tif",
+      "bytes": 184191,
+      "sha256": "293e7b9c0fb129b53af210ade031accf65eec6b0b245244ac0806f1b855719bd"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2635-1174",
+      "cell": "2635-1174",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2635-1174/swissimage-dop10_2024_2635-1174_2_2056.tif",
+      "checksum": "122078CFC703793EC85DD91A7277C840CE6B7B5FEDDE6470CB1715F98E314306DF4C",
+      "filename": "swissimage-dop10_2024_2635-1174_2_2056.tif",
+      "bytes": 187805,
+      "sha256": "78cfc703793ec85dd91a7277c840ce6b7b5fedde6470cb1715f98e314306df4c"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2635-1175",
+      "cell": "2635-1175",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2635-1175/swissimage-dop10_2024_2635-1175_2_2056.tif",
+      "checksum": "1220E746CC69262E4A92205F9C14A218F426E79D4290420C8B7AEF970A762E87266A",
+      "filename": "swissimage-dop10_2024_2635-1175_2_2056.tif",
+      "bytes": 187368,
+      "sha256": "e746cc69262e4a92205f9c14a218f426e79d4290420c8b7aef970a762e87266a"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2635-1176",
+      "cell": "2635-1176",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2635-1176/swissimage-dop10_2024_2635-1176_2_2056.tif",
+      "checksum": "1220E999D550FCAE0FC1C1FFEEED2EE2E39D3F4121B9109B03A5FCCD052E23F27800",
+      "filename": "swissimage-dop10_2024_2635-1176_2_2056.tif",
+      "bytes": 170447,
+      "sha256": "e999d550fcae0fc1c1ffeeed2ee2e39d3f4121b9109b03a5fccd052e23f27800"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2635-1177",
+      "cell": "2635-1177",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2635-1177/swissimage-dop10_2024_2635-1177_2_2056.tif",
+      "checksum": "12207D896558BA3A6F5F06FDA377F95415F5DB1ACDEBC774E927FE5A7EA7214E86AA",
+      "filename": "swissimage-dop10_2024_2635-1177_2_2056.tif",
+      "bytes": 164388,
+      "sha256": "7d896558ba3a6f5f06fda377f95415f5db1acdebc774e927fe5a7ea7214e86aa"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2635-1178",
+      "cell": "2635-1178",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2635-1178/swissimage-dop10_2024_2635-1178_2_2056.tif",
+      "checksum": "122040ECD99ADCF47A2B55E3D9C54CDB239C006FD14FC6738063BE458DFE0F4FD8CB",
+      "filename": "swissimage-dop10_2024_2635-1178_2_2056.tif",
+      "bytes": 187028,
+      "sha256": "40ecd99adcf47a2b55e3d9c54cdb239c006fd14fc6738063be458dfe0f4fd8cb"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2636-1167",
+      "cell": "2636-1167",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2636-1167/swissimage-dop10_2024_2636-1167_2_2056.tif",
+      "checksum": "1220A4085A8C3035D56E4594FCE8A91AAA4AF45BCF2359BA29ADDB6384A5C375BE20",
+      "filename": "swissimage-dop10_2024_2636-1167_2_2056.tif",
+      "bytes": 150463,
+      "sha256": "a4085a8c3035d56e4594fce8a91aaa4af45bcf2359ba29addb6384a5c375be20"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2636-1168",
+      "cell": "2636-1168",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2636-1168/swissimage-dop10_2024_2636-1168_2_2056.tif",
+      "checksum": "1220C142849FE4C8D8699E4401CFEDB699309C3C8A7F64DFAFFE3EB6BF33FB1AFB4B",
+      "filename": "swissimage-dop10_2024_2636-1168_2_2056.tif",
+      "bytes": 181292,
+      "sha256": "c142849fe4c8d8699e4401cfedb699309c3c8a7f64dfaffe3eb6bf33fb1afb4b"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2636-1169",
+      "cell": "2636-1169",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2636-1169/swissimage-dop10_2024_2636-1169_2_2056.tif",
+      "checksum": "12200E0AFBC6C9A0FFFB1B6DFB36B9973F372F83DDE69BEEA37894A2AA8F44632F38",
+      "filename": "swissimage-dop10_2024_2636-1169_2_2056.tif",
+      "bytes": 208072,
+      "sha256": "0e0afbc6c9a0fffb1b6dfb36b9973f372f83dde69beea37894a2aa8f44632f38"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2636-1170",
+      "cell": "2636-1170",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2636-1170/swissimage-dop10_2024_2636-1170_2_2056.tif",
+      "checksum": "12208A6A8A8ACBEDFB7D4367AB2E878C39FA3CD5139A2BEFEF004216CB3314D43AA6",
+      "filename": "swissimage-dop10_2024_2636-1170_2_2056.tif",
+      "bytes": 188252,
+      "sha256": "8a6a8a8acbedfb7d4367ab2e878c39fa3cd5139a2befef004216cb3314d43aa6"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2636-1171",
+      "cell": "2636-1171",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2636-1171/swissimage-dop10_2024_2636-1171_2_2056.tif",
+      "checksum": "122075858A6BFC1343E0264198309386C71DABDEC204749B72856E1DA354F76953D8",
+      "filename": "swissimage-dop10_2024_2636-1171_2_2056.tif",
+      "bytes": 47991,
+      "sha256": "75858a6bfc1343e0264198309386c71dabdec204749b72856e1da354f76953d8"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2636-1172",
+      "cell": "2636-1172",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2636-1172/swissimage-dop10_2024_2636-1172_2_2056.tif",
+      "checksum": "1220F29A0E50787653A78D24299A7F15556BCFEF2882ED5706436D23B6ED186659C8",
+      "filename": "swissimage-dop10_2024_2636-1172_2_2056.tif",
+      "bytes": 49000,
+      "sha256": "f29a0e50787653a78d24299a7f15556bcfef2882ed5706436d23b6ed186659c8"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2636-1173",
+      "cell": "2636-1173",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2636-1173/swissimage-dop10_2024_2636-1173_2_2056.tif",
+      "checksum": "122033E1A17CCEA7D4B207C885B2B40CA702637E10BDCCB37F6CE6844D9953098FD5",
+      "filename": "swissimage-dop10_2024_2636-1173_2_2056.tif",
+      "bytes": 151379,
+      "sha256": "33e1a17ccea7d4b207c885b2b40ca702637e10bdccb37f6ce6844d9953098fd5"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2636-1174",
+      "cell": "2636-1174",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2636-1174/swissimage-dop10_2024_2636-1174_2_2056.tif",
+      "checksum": "1220BC3462F21851696AF3548628247EF18B78E02CA9792DC0C644E04987DAA29ACF",
+      "filename": "swissimage-dop10_2024_2636-1174_2_2056.tif",
+      "bytes": 186856,
+      "sha256": "bc3462f21851696af3548628247ef18b78e02ca9792dc0c644e04987daa29acf"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2636-1175",
+      "cell": "2636-1175",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2636-1175/swissimage-dop10_2024_2636-1175_2_2056.tif",
+      "checksum": "1220884C89DE1344877FFFF9A8619A0B5DFB97F1C695BBB435E7914E8C2380FDBF57",
+      "filename": "swissimage-dop10_2024_2636-1175_2_2056.tif",
+      "bytes": 187468,
+      "sha256": "884c89de1344877ffff9a8619a0b5dfb97f1c695bbb435e7914e8c2380fdbf57"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2636-1176",
+      "cell": "2636-1176",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2636-1176/swissimage-dop10_2024_2636-1176_2_2056.tif",
+      "checksum": "122089EE72347FDB131ABBB62B238C4CC2D926162FBFA97877BA6B34B131DFD9CCA2",
+      "filename": "swissimage-dop10_2024_2636-1176_2_2056.tif",
+      "bytes": 151110,
+      "sha256": "89ee72347fdb131abbb62b238c4cc2d926162fbfa97877ba6b34b131dfd9cca2"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2636-1177",
+      "cell": "2636-1177",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2636-1177/swissimage-dop10_2024_2636-1177_2_2056.tif",
+      "checksum": "122078E1654906D90CEF7626C3FEEC555A8805B20CBBECBED8CEF106724D9EF631A5",
+      "filename": "swissimage-dop10_2024_2636-1177_2_2056.tif",
+      "bytes": 144504,
+      "sha256": "78e1654906d90cef7626c3feec555a8805b20cbbecbed8cef106724d9ef631a5"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2636-1178",
+      "cell": "2636-1178",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2636-1178/swissimage-dop10_2024_2636-1178_2_2056.tif",
+      "checksum": "1220EFB465A76133EF27AB6AB83C7F972C3BE7732A887433ACE3E4C6E8D2C6BCD4EB",
+      "filename": "swissimage-dop10_2024_2636-1178_2_2056.tif",
+      "bytes": 174067,
+      "sha256": "efb465a76133ef27ab6ab83c7f972c3be7732a887433ace3e4c6e8d2c6bcd4eb"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2637-1167",
+      "cell": "2637-1167",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2637-1167/swissimage-dop10_2024_2637-1167_2_2056.tif",
+      "checksum": "12200847CD54583376E293201C2F5F540E00B9C3FB3AAFE786C3361A7F83DAF033C5",
+      "filename": "swissimage-dop10_2024_2637-1167_2_2056.tif",
+      "bytes": 134940,
+      "sha256": "0847cd54583376e293201c2f5f540e00b9c3fb3aafe786c3361a7f83daf033c5"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2637-1168",
+      "cell": "2637-1168",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2637-1168/swissimage-dop10_2024_2637-1168_2_2056.tif",
+      "checksum": "1220F23B7A3FBCE5CFEDD520395C1DAA1BBD607D308286E9B477AF0A03BD52418B0B",
+      "filename": "swissimage-dop10_2024_2637-1168_2_2056.tif",
+      "bytes": 172777,
+      "sha256": "f23b7a3fbce5cfedd520395c1daa1bbd607d308286e9b477af0a03bd52418b0b"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2637-1169",
+      "cell": "2637-1169",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2637-1169/swissimage-dop10_2024_2637-1169_2_2056.tif",
+      "checksum": "122040E92808EA890A8DBA8A9F5BD3336CCBBCB15FC90F4451A76E89EE1C37A62DB3",
+      "filename": "swissimage-dop10_2024_2637-1169_2_2056.tif",
+      "bytes": 198175,
+      "sha256": "40e92808ea890a8dba8a9f5bd3336ccbbcb15fc90f4451a76e89ee1c37a62db3"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2637-1170",
+      "cell": "2637-1170",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2637-1170/swissimage-dop10_2024_2637-1170_2_2056.tif",
+      "checksum": "1220ED7A5AAA737D575E08B6AD1E25527CDAD67EC9753ACBE5486C0DF0D83C6D9C0C",
+      "filename": "swissimage-dop10_2024_2637-1170_2_2056.tif",
+      "bytes": 201395,
+      "sha256": "ed7a5aaa737d575e08b6ad1e25527cdad67ec9753acbe5486c0df0d83c6d9c0c"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2637-1171",
+      "cell": "2637-1171",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2637-1171/swissimage-dop10_2024_2637-1171_2_2056.tif",
+      "checksum": "122015CF85361733ED4516E571774A6FB312BF5758F5E14F4EF10B1A7AD8D38AC1BC",
+      "filename": "swissimage-dop10_2024_2637-1171_2_2056.tif",
+      "bytes": 120313,
+      "sha256": "15cf85361733ed4516e571774a6fb312bf5758f5e14f4ef10b1a7ad8d38ac1bc"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2637-1172",
+      "cell": "2637-1172",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2637-1172/swissimage-dop10_2024_2637-1172_2_2056.tif",
+      "checksum": "12203B44D0E9422678E5428B18E3C9CDDEB5CDC011FA4D99D99A5947674A0CE34581",
+      "filename": "swissimage-dop10_2024_2637-1172_2_2056.tif",
+      "bytes": 42321,
+      "sha256": "3b44d0e9422678e5428b18e3c9cddeb5cdc011fa4d99d99a5947674a0ce34581"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2637-1173",
+      "cell": "2637-1173",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2637-1173/swissimage-dop10_2024_2637-1173_2_2056.tif",
+      "checksum": "122047D52611AC42FCDB3930BE6EAD205396DE3564F0C9F45911CC48F846AAE53211",
+      "filename": "swissimage-dop10_2024_2637-1173_2_2056.tif",
+      "bytes": 55302,
+      "sha256": "47d52611ac42fcdb3930be6ead205396de3564f0c9f45911cc48f846aae53211"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2637-1174",
+      "cell": "2637-1174",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2637-1174/swissimage-dop10_2024_2637-1174_2_2056.tif",
+      "checksum": "122000FE9571D7FFEC59AA02AE5DB63E89F71D31E4E8F016A6BBA85C900664886F7D",
+      "filename": "swissimage-dop10_2024_2637-1174_2_2056.tif",
+      "bytes": 175605,
+      "sha256": "00fe9571d7ffec59aa02ae5db63e89f71d31e4e8f016a6bba85c900664886f7d"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2637-1175",
+      "cell": "2637-1175",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2637-1175/swissimage-dop10_2024_2637-1175_2_2056.tif",
+      "checksum": "1220A78A1E7E1C085A45C40647505A0874C700762CF6A2977FE7C51B04DEA22810FD",
+      "filename": "swissimage-dop10_2024_2637-1175_2_2056.tif",
+      "bytes": 184527,
+      "sha256": "a78a1e7e1c085a45c40647505a0874c700762cf6a2977fe7c51b04dea22810fd"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2637-1176",
+      "cell": "2637-1176",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2637-1176/swissimage-dop10_2024_2637-1176_2_2056.tif",
+      "checksum": "1220B6828BC226F618B71C6360F8415DC887D884AEBF9C348800E82C6E88FE7BE344",
+      "filename": "swissimage-dop10_2024_2637-1176_2_2056.tif",
+      "bytes": 167086,
+      "sha256": "b6828bc226f618b71c6360f8415dc887d884aebf9c348800e82c6e88fe7be344"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2637-1177",
+      "cell": "2637-1177",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2637-1177/swissimage-dop10_2024_2637-1177_2_2056.tif",
+      "checksum": "1220CE2D6B6A23B0FAE9F555C443861B1BAB193148DD8B35EF5EB1D239529430AFFD",
+      "filename": "swissimage-dop10_2024_2637-1177_2_2056.tif",
+      "bytes": 159166,
+      "sha256": "ce2d6b6a23b0fae9f555c443861b1bab193148dd8b35ef5eb1d239529430affd"
+    },
+    {
+      "collection": "ch.swisstopo.swissimage-dop10",
+      "item": "swissimage-dop10_2024_2637-1178",
+      "cell": "2637-1178",
+      "date": "2024-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2024_2637-1178/swissimage-dop10_2024_2637-1178_2_2056.tif",
+      "checksum": "12208A7B8F82AF41873493989676EFF6F349D3049300066B10B8B2C377D0A755B5C4",
+      "filename": "swissimage-dop10_2024_2637-1178_2_2056.tif",
+      "bytes": 186282,
+      "sha256": "8a7b8f82af41873493989676eff6f349d3049300066b10b8b2c377d0a755b5c4"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2626-1167",
+      "cell": "2626-1167",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2626-1167/swissalti3d_2025_2626-1167_2_2056_5728.tif",
+      "checksum": "12207E705E2A56F0FF52DB1E7783038A5556476C7CDE75B21A38D4F310D048CCF91A",
+      "filename": "swissalti3d_2025_2626-1167_2_2056_5728.tif",
+      "bytes": 616244,
+      "sha256": "7e705e2a56f0ff52db1e7783038a5556476c7cde75b21a38d4f310d048ccf91a"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2626-1168",
+      "cell": "2626-1168",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2626-1168/swissalti3d_2025_2626-1168_2_2056_5728.tif",
+      "checksum": "1220EB1432C3DE0DC4EF1BDDDFB902504B0AD4BF23A826CF506738422E4B2CAA0D60",
+      "filename": "swissalti3d_2025_2626-1168_2_2056_5728.tif",
+      "bytes": 76800,
+      "sha256": "eb1432c3de0dc4ef1bdddfb902504b0ad4bf23a826cf506738422e4b2caa0d60"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2626-1169",
+      "cell": "2626-1169",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2626-1169/swissalti3d_2025_2626-1169_2_2056_5728.tif",
+      "checksum": "1220E990ABA5EE0DFE3C762FA10B47AF59AA9641CFE98CCA1E375929870A055D6B7B",
+      "filename": "swissalti3d_2025_2626-1169_2_2056_5728.tif",
+      "bytes": 113614,
+      "sha256": "e990aba5ee0dfe3c762fa10b47af59aa9641cfe98cca1e375929870a055d6b7b"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2626-1170",
+      "cell": "2626-1170",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2626-1170/swissalti3d_2025_2626-1170_2_2056_5728.tif",
+      "checksum": "1220A166B00C2F29543FED999E449AF5C24A793C6CC92F39EF44874C82575CA4172E",
+      "filename": "swissalti3d_2025_2626-1170_2_2056_5728.tif",
+      "bytes": 854022,
+      "sha256": "a166b00c2f29543fed999e449af5c24a793c6cc92f39ef44874c82575ca4172e"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2626-1171",
+      "cell": "2626-1171",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2626-1171/swissalti3d_2025_2626-1171_2_2056_5728.tif",
+      "checksum": "1220F36ACD8795ACDC87024B7846B44A84CA56D5699BC4258FDB58F6481769802D93",
+      "filename": "swissalti3d_2025_2626-1171_2_2056_5728.tif",
+      "bytes": 1168409,
+      "sha256": "f36acd8795acdc87024b7846b44a84ca56d5699bc4258fdb58f6481769802d93"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2626-1172",
+      "cell": "2626-1172",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2626-1172/swissalti3d_2025_2626-1172_2_2056_5728.tif",
+      "checksum": "1220BAA8BC4D172AB59839BACB0063822F392969794343381AED0A4E61C1F9B54207",
+      "filename": "swissalti3d_2025_2626-1172_2_2056_5728.tif",
+      "bytes": 1140645,
+      "sha256": "baa8bc4d172ab59839bacb0063822f392969794343381aed0a4e61c1f9b54207"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2626-1173",
+      "cell": "2626-1173",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2626-1173/swissalti3d_2025_2626-1173_2_2056_5728.tif",
+      "checksum": "12204A393300C08CB99806CAE6764712104B55ACB1A5F1DF9CC41D01BB7C8DA9878F",
+      "filename": "swissalti3d_2025_2626-1173_2_2056_5728.tif",
+      "bytes": 1179498,
+      "sha256": "4a393300c08cb99806cae6764712104b55acb1a5f1df9cc41d01bb7c8da9878f"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2626-1174",
+      "cell": "2626-1174",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2626-1174/swissalti3d_2025_2626-1174_2_2056_5728.tif",
+      "checksum": "1220AC39DB1A2B56C7CF2D48F8D561D401D3774363029D94EF8D5D7B73F0808A4062",
+      "filename": "swissalti3d_2025_2626-1174_2_2056_5728.tif",
+      "bytes": 1217840,
+      "sha256": "ac39db1a2b56c7cf2d48f8d561d401d3774363029d94ef8d5d7b73f0808a4062"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2626-1175",
+      "cell": "2626-1175",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2626-1175/swissalti3d_2025_2626-1175_2_2056_5728.tif",
+      "checksum": "12209D6C5B355567AF8492CAD83450089F62413BCDB91CC773010512675B102E3C99",
+      "filename": "swissalti3d_2025_2626-1175_2_2056_5728.tif",
+      "bytes": 1176897,
+      "sha256": "9d6c5b355567af8492cad83450089f62413bcdb91cc773010512675b102e3c99"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2626-1176",
+      "cell": "2626-1176",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2626-1176/swissalti3d_2025_2626-1176_2_2056_5728.tif",
+      "checksum": "1220C88C350367666A14AF64BDCC5F6873279625197E1F594C3502D3090776B4A782",
+      "filename": "swissalti3d_2025_2626-1176_2_2056_5728.tif",
+      "bytes": 1242837,
+      "sha256": "c88c350367666a14af64bdcc5f6873279625197e1f594c3502d3090776b4a782"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2626-1177",
+      "cell": "2626-1177",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2626-1177/swissalti3d_2025_2626-1177_2_2056_5728.tif",
+      "checksum": "12200C4EA528F8D16FF5A6D7386B99F60DFB3035C257D976F36FA307A82C3CDC3DE0",
+      "filename": "swissalti3d_2025_2626-1177_2_2056_5728.tif",
+      "bytes": 1212567,
+      "sha256": "0c4ea528f8d16ff5a6d7386b99f60dfb3035c257d976f36fa307a82c3cdc3de0"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2626-1178",
+      "cell": "2626-1178",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2626-1178/swissalti3d_2025_2626-1178_2_2056_5728.tif",
+      "checksum": "1220D396A41197335EF35627FEAD8839471B1AC45CCE3BE162113851B08F6D8E48C9",
+      "filename": "swissalti3d_2025_2626-1178_2_2056_5728.tif",
+      "bytes": 1177961,
+      "sha256": "d396a41197335ef35627fead8839471b1ac45cce3be162113851b08f6d8e48c9"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2627-1167",
+      "cell": "2627-1167",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2627-1167/swissalti3d_2025_2627-1167_2_2056_5728.tif",
+      "checksum": "1220847A515394D2978E6FC749C9E708A120E7D9A4E2C3C2B6AC37F572FF6444DEAA",
+      "filename": "swissalti3d_2025_2627-1167_2_2056_5728.tif",
+      "bytes": 1071496,
+      "sha256": "847a515394d2978e6fc749c9e708a120e7d9a4e2c3c2b6ac37f572ff6444deaa"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2627-1168",
+      "cell": "2627-1168",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2627-1168/swissalti3d_2025_2627-1168_2_2056_5728.tif",
+      "checksum": "122061925E94E3F3E84C556624E51AFF87B1D21EFA741182E78768AEF61FC01EA041",
+      "filename": "swissalti3d_2025_2627-1168_2_2056_5728.tif",
+      "bytes": 140430,
+      "sha256": "61925e94e3f3e84c556624e51aff87b1d21efa741182e78768aef61fc01ea041"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2627-1169",
+      "cell": "2627-1169",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2627-1169/swissalti3d_2025_2627-1169_2_2056_5728.tif",
+      "checksum": "12201AFED34437AE4F07FC306283A468341698D2CAAE6CF2893D52E29293F534CA43",
+      "filename": "swissalti3d_2025_2627-1169_2_2056_5728.tif",
+      "bytes": 101103,
+      "sha256": "1afed34437ae4f07fc306283a468341698d2caae6cf2893d52e29293f534ca43"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2627-1170",
+      "cell": "2627-1170",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2627-1170/swissalti3d_2025_2627-1170_2_2056_5728.tif",
+      "checksum": "12205CCC0BDD6147258E2B272E4BC1C15A5E6051AE563A2A66C1E764771528EE237F",
+      "filename": "swissalti3d_2025_2627-1170_2_2056_5728.tif",
+      "bytes": 770573,
+      "sha256": "5ccc0bdd6147258e2b272e4bc1c15a5e6051ae563a2a66c1e764771528ee237f"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2627-1171",
+      "cell": "2627-1171",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2627-1171/swissalti3d_2025_2627-1171_2_2056_5728.tif",
+      "checksum": "1220B465D871E8E5936BB114496592B8E24C36AFF004C24D716BEDA37A69201D24F0",
+      "filename": "swissalti3d_2025_2627-1171_2_2056_5728.tif",
+      "bytes": 1254047,
+      "sha256": "b465d871e8e5936bb114496592b8e24c36aff004c24d716beda37a69201d24f0"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2627-1172",
+      "cell": "2627-1172",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2627-1172/swissalti3d_2025_2627-1172_2_2056_5728.tif",
+      "checksum": "1220B71CF4DC7CE98CBCDDF829B315D631FA5B3BB7EDD0BEB466D0138078F49F5586",
+      "filename": "swissalti3d_2025_2627-1172_2_2056_5728.tif",
+      "bytes": 1162545,
+      "sha256": "b71cf4dc7ce98cbcddf829b315d631fa5b3bb7edd0beb466d0138078f49f5586"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2627-1173",
+      "cell": "2627-1173",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2627-1173/swissalti3d_2025_2627-1173_2_2056_5728.tif",
+      "checksum": "12204B884041F1C9706AFC9C772A9D5E624EF9EA66E607B55784D4DF0C79F6950705",
+      "filename": "swissalti3d_2025_2627-1173_2_2056_5728.tif",
+      "bytes": 1152667,
+      "sha256": "4b884041f1c9706afc9c772a9d5e624ef9ea66e607b55784d4df0c79f6950705"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2627-1174",
+      "cell": "2627-1174",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2627-1174/swissalti3d_2025_2627-1174_2_2056_5728.tif",
+      "checksum": "122029135EBC257421A2E2F1A3AC269DEA6F6E2EBC372802A08FE1C4770AB9DDF070",
+      "filename": "swissalti3d_2025_2627-1174_2_2056_5728.tif",
+      "bytes": 1201299,
+      "sha256": "29135ebc257421a2e2f1a3ac269dea6f6e2ebc372802a08fe1c4770ab9ddf070"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2627-1175",
+      "cell": "2627-1175",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2627-1175/swissalti3d_2025_2627-1175_2_2056_5728.tif",
+      "checksum": "1220742F51E65E0275B6D0405CBFBDD1F02F3989C6BE7BEE76B5565517C4069652B4",
+      "filename": "swissalti3d_2025_2627-1175_2_2056_5728.tif",
+      "bytes": 1248749,
+      "sha256": "742f51e65e0275b6d0405cbfbdd1f02f3989c6be7bee76b5565517c4069652b4"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2627-1176",
+      "cell": "2627-1176",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2627-1176/swissalti3d_2025_2627-1176_2_2056_5728.tif",
+      "checksum": "1220103987F04CE2C6D2C5F5B204301645C0F4DECA3EB41ED9D5DAC8C400EFB9C484",
+      "filename": "swissalti3d_2025_2627-1176_2_2056_5728.tif",
+      "bytes": 1190063,
+      "sha256": "103987f04ce2c6d2c5f5b204301645c0f4deca3eb41ed9d5dac8c400efb9c484"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2627-1177",
+      "cell": "2627-1177",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2627-1177/swissalti3d_2025_2627-1177_2_2056_5728.tif",
+      "checksum": "1220034F1EADA002C5BB2A94B04AECE1D028CFFB5BB1D880C82DA3AB69F9B4AB29BD",
+      "filename": "swissalti3d_2025_2627-1177_2_2056_5728.tif",
+      "bytes": 1242578,
+      "sha256": "034f1eada002c5bb2a94b04aece1d028cffb5bb1d880c82da3ab69f9b4ab29bd"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2627-1178",
+      "cell": "2627-1178",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2627-1178/swissalti3d_2025_2627-1178_2_2056_5728.tif",
+      "checksum": "122029E73413E15F99C70C2BDA50BD3E1EB1A1CC432CC95DD0084ED9D9716585DDAA",
+      "filename": "swissalti3d_2025_2627-1178_2_2056_5728.tif",
+      "bytes": 1235939,
+      "sha256": "29e73413e15f99c70c2bda50bd3e1eb1a1cc432cc95dd0084ed9d9716585ddaa"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2628-1167",
+      "cell": "2628-1167",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2628-1167/swissalti3d_2025_2628-1167_2_2056_5728.tif",
+      "checksum": "1220C20556C90060FB853134684A807BA46849E86F6AA8381E5E95F5CB6E1DEE2C0F",
+      "filename": "swissalti3d_2025_2628-1167_2_2056_5728.tif",
+      "bytes": 1024725,
+      "sha256": "c20556c90060fb853134684a807ba46849e86f6aa8381e5e95f5cb6e1dee2c0f"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2628-1168",
+      "cell": "2628-1168",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2628-1168/swissalti3d_2025_2628-1168_2_2056_5728.tif",
+      "checksum": "122099947F1C19DD840BD7D369C9012D7A4D91D064D788DCEED0AE4730AF50BBECB0",
+      "filename": "swissalti3d_2025_2628-1168_2_2056_5728.tif",
+      "bytes": 141259,
+      "sha256": "99947f1c19dd840bd7d369c9012d7a4d91d064d788dceed0ae4730af50bbecb0"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2628-1169",
+      "cell": "2628-1169",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2628-1169/swissalti3d_2025_2628-1169_2_2056_5728.tif",
+      "checksum": "1220084F0EF04AA35E15EE3EBF33D23B86682AA96DCA9EA8800324EFE6195ADC8CE0",
+      "filename": "swissalti3d_2025_2628-1169_2_2056_5728.tif",
+      "bytes": 168646,
+      "sha256": "084f0ef04aa35e15ee3ebf33d23b86682aa96dca9ea8800324efe6195adc8ce0"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2628-1170",
+      "cell": "2628-1170",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2628-1170/swissalti3d_2025_2628-1170_2_2056_5728.tif",
+      "checksum": "1220D776F2155C90C09346DF414ADF47AFCEF400F3F20D5F673D4101F1FD1A8DC3B4",
+      "filename": "swissalti3d_2025_2628-1170_2_2056_5728.tif",
+      "bytes": 1059243,
+      "sha256": "d776f2155c90c09346df414adf47afcef400f3f20d5f673d4101f1fd1a8dc3b4"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2628-1171",
+      "cell": "2628-1171",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2628-1171/swissalti3d_2025_2628-1171_2_2056_5728.tif",
+      "checksum": "12204B7A3BBE5232B337D089F7A8C62DF8EC4D714D4F68BD5E2FA13234D6A3E60A2E",
+      "filename": "swissalti3d_2025_2628-1171_2_2056_5728.tif",
+      "bytes": 1141228,
+      "sha256": "4b7a3bbe5232b337d089f7a8c62df8ec4d714d4f68bd5e2fa13234d6a3e60a2e"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2628-1172",
+      "cell": "2628-1172",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2628-1172/swissalti3d_2025_2628-1172_2_2056_5728.tif",
+      "checksum": "1220D541FEE26A4EF5634C901B99A75EDF64118BE14EC7F8CE4489851A0F91B017F3",
+      "filename": "swissalti3d_2025_2628-1172_2_2056_5728.tif",
+      "bytes": 1175070,
+      "sha256": "d541fee26a4ef5634c901b99a75edf64118be14ec7f8ce4489851a0f91b017f3"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2628-1173",
+      "cell": "2628-1173",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2628-1173/swissalti3d_2025_2628-1173_2_2056_5728.tif",
+      "checksum": "1220DF8DF39BA6B326247FB6A3B09FE677F575075B247E38E98C7193FA34F2056D0B",
+      "filename": "swissalti3d_2025_2628-1173_2_2056_5728.tif",
+      "bytes": 1224365,
+      "sha256": "df8df39ba6b326247fb6a3b09fe677f575075b247e38e98c7193fa34f2056d0b"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2628-1174",
+      "cell": "2628-1174",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2628-1174/swissalti3d_2025_2628-1174_2_2056_5728.tif",
+      "checksum": "1220B50B45F3C20E97B73F31B981EB3EA1F5B854F37493B06A8795185313B2300D40",
+      "filename": "swissalti3d_2025_2628-1174_2_2056_5728.tif",
+      "bytes": 1138070,
+      "sha256": "b50b45f3c20e97b73f31b981eb3ea1f5b854f37493b06a8795185313b2300d40"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2628-1175",
+      "cell": "2628-1175",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2628-1175/swissalti3d_2025_2628-1175_2_2056_5728.tif",
+      "checksum": "1220A0573E2C134B2359F1DAC929BE4FE9FCD44CAB1A49ECC785EE982F6B3CD08C81",
+      "filename": "swissalti3d_2025_2628-1175_2_2056_5728.tif",
+      "bytes": 1185109,
+      "sha256": "a0573e2c134b2359f1dac929be4fe9fcd44cab1a49ecc785ee982f6b3cd08c81"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2628-1176",
+      "cell": "2628-1176",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2628-1176/swissalti3d_2025_2628-1176_2_2056_5728.tif",
+      "checksum": "122022F524B9B23179BC995BBA12CA82457D4DE771A9F9E44E6D972F3F8D13C7015B",
+      "filename": "swissalti3d_2025_2628-1176_2_2056_5728.tif",
+      "bytes": 1191117,
+      "sha256": "22f524b9b23179bc995bba12ca82457d4de771a9f9e44e6d972f3f8d13c7015b"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2628-1177",
+      "cell": "2628-1177",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2628-1177/swissalti3d_2025_2628-1177_2_2056_5728.tif",
+      "checksum": "12208DDAE15FC2D8E5031050ED30908CF8DF476C37985C4448A67800EBD272AD4EDC",
+      "filename": "swissalti3d_2025_2628-1177_2_2056_5728.tif",
+      "bytes": 1175655,
+      "sha256": "8ddae15fc2d8e5031050ed30908cf8df476c37985c4448a67800ebd272ad4edc"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2628-1178",
+      "cell": "2628-1178",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2628-1178/swissalti3d_2025_2628-1178_2_2056_5728.tif",
+      "checksum": "122064EFD04A756624A0D61B2C0A2A650FD393A0BDC04E34587A2FD82DAF7DA80CB6",
+      "filename": "swissalti3d_2025_2628-1178_2_2056_5728.tif",
+      "bytes": 1241922,
+      "sha256": "64efd04a756624a0d61b2c0a2a650fd393a0bdc04e34587a2fd82daf7da80cb6"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2629-1167",
+      "cell": "2629-1167",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2629-1167/swissalti3d_2025_2629-1167_2_2056_5728.tif",
+      "checksum": "1220107F24FA54E48C529DC08926AE3BCF07C3A0A804B62CFDD2CA0851FE92093B94",
+      "filename": "swissalti3d_2025_2629-1167_2_2056_5728.tif",
+      "bytes": 1151952,
+      "sha256": "107f24fa54e48c529dc08926ae3bcf07c3a0a804b62cfdd2ca0851fe92093b94"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2629-1168",
+      "cell": "2629-1168",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2629-1168/swissalti3d_2025_2629-1168_2_2056_5728.tif",
+      "checksum": "122051D9E90C5549F3B60758EAAD168E79522B8A47E4A29850169A98FEE39CE9F641",
+      "filename": "swissalti3d_2025_2629-1168_2_2056_5728.tif",
+      "bytes": 273317,
+      "sha256": "51d9e90c5549f3b60758eaad168e79522b8a47e4a29850169a98fee39ce9f641"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2629-1169",
+      "cell": "2629-1169",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2629-1169/swissalti3d_2025_2629-1169_2_2056_5728.tif",
+      "checksum": "12204C5F909803B7B9F612885F76DEA142B1E2E408375D00889E7209CD58891CFD0B",
+      "filename": "swissalti3d_2025_2629-1169_2_2056_5728.tif",
+      "bytes": 764237,
+      "sha256": "4c5f909803b7b9f612885f76dea142b1e2e408375d00889e7209cd58891cfd0b"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2629-1170",
+      "cell": "2629-1170",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2629-1170/swissalti3d_2025_2629-1170_2_2056_5728.tif",
+      "checksum": "1220FAEA29E60A3CD68D4BBFF08480735A8295309B40578263EF43A143925AFA02B4",
+      "filename": "swissalti3d_2025_2629-1170_2_2056_5728.tif",
+      "bytes": 1071345,
+      "sha256": "faea29e60a3cd68d4bbff08480735a8295309b40578263ef43a143925afa02b4"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2629-1171",
+      "cell": "2629-1171",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2629-1171/swissalti3d_2025_2629-1171_2_2056_5728.tif",
+      "checksum": "12206F60B0D4CDCC071A83747FC3E5E7419838E6F5E2CBA93C87FC0F1A04F0660731",
+      "filename": "swissalti3d_2025_2629-1171_2_2056_5728.tif",
+      "bytes": 1253139,
+      "sha256": "6f60b0d4cdcc071a83747fc3e5e7419838e6f5e2cba93c87fc0f1a04f0660731"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2629-1172",
+      "cell": "2629-1172",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2629-1172/swissalti3d_2025_2629-1172_2_2056_5728.tif",
+      "checksum": "122095A1377AA235EECCAFA05D197C0C8E398A98600E65738E224C93223E7E82FD94",
+      "filename": "swissalti3d_2025_2629-1172_2_2056_5728.tif",
+      "bytes": 1191539,
+      "sha256": "95a1377aa235eeccafa05d197c0c8e398a98600e65738e224c93223e7e82fd94"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2629-1173",
+      "cell": "2629-1173",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2629-1173/swissalti3d_2025_2629-1173_2_2056_5728.tif",
+      "checksum": "12202AE0995E8B189C1169CF29110108CEBED16046229F220621D8875F16741BF71E",
+      "filename": "swissalti3d_2025_2629-1173_2_2056_5728.tif",
+      "bytes": 1167685,
+      "sha256": "2ae0995e8b189c1169cf29110108cebed16046229f220621d8875f16741bf71e"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2629-1174",
+      "cell": "2629-1174",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2629-1174/swissalti3d_2025_2629-1174_2_2056_5728.tif",
+      "checksum": "1220BC4EB83A2D7B2D715CFB64DBFAEEDBC72BEC0EE2490D3B1D40513655EBE5407B",
+      "filename": "swissalti3d_2025_2629-1174_2_2056_5728.tif",
+      "bytes": 1226184,
+      "sha256": "bc4eb83a2d7b2d715cfb64dbfaeedbc72bec0ee2490d3b1d40513655ebe5407b"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2629-1175",
+      "cell": "2629-1175",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2629-1175/swissalti3d_2025_2629-1175_2_2056_5728.tif",
+      "checksum": "12204D54F270648965057F255CB573841FF1E1C19917FD7A3BDBFA2B873E54ADB697",
+      "filename": "swissalti3d_2025_2629-1175_2_2056_5728.tif",
+      "bytes": 1183622,
+      "sha256": "4d54f270648965057f255cb573841ff1e1c19917fd7a3bdbfa2b873e54adb697"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2629-1176",
+      "cell": "2629-1176",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2629-1176/swissalti3d_2025_2629-1176_2_2056_5728.tif",
+      "checksum": "122050ABEF1CDF61EC85CB0B8BE4BDAB3D516A398EA6B7DC13209AC1BC459A416F35",
+      "filename": "swissalti3d_2025_2629-1176_2_2056_5728.tif",
+      "bytes": 1163368,
+      "sha256": "50abef1cdf61ec85cb0b8be4bdab3d516a398ea6b7dc13209ac1bc459a416f35"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2629-1177",
+      "cell": "2629-1177",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2629-1177/swissalti3d_2025_2629-1177_2_2056_5728.tif",
+      "checksum": "1220991CFFC83E884A5518E0E17B4A2499CDB737D77B28DF5AB98C4A21ADD0B5A07A",
+      "filename": "swissalti3d_2025_2629-1177_2_2056_5728.tif",
+      "bytes": 1127367,
+      "sha256": "991cffc83e884a5518e0e17b4a2499cdb737d77b28df5ab98c4a21add0b5a07a"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2629-1178",
+      "cell": "2629-1178",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2629-1178/swissalti3d_2025_2629-1178_2_2056_5728.tif",
+      "checksum": "12206D0AB68990D007E5214C77B1D0525BB4E027E426D852EDF08843DDEA914076AC",
+      "filename": "swissalti3d_2025_2629-1178_2_2056_5728.tif",
+      "bytes": 1135052,
+      "sha256": "6d0ab68990d007e5214c77b1d0525bb4e027e426d852edf08843ddea914076ac"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2630-1167",
+      "cell": "2630-1167",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2630-1167/swissalti3d_2025_2630-1167_2_2056_5728.tif",
+      "checksum": "1220FB702D3285A2F633E505A77489A600D1AFA22382D954D7EFC84A7B00A04128D2",
+      "filename": "swissalti3d_2025_2630-1167_2_2056_5728.tif",
+      "bytes": 1251660,
+      "sha256": "fb702d3285a2f633e505a77489a600d1afa22382d954d7efc84a7b00a04128d2"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2630-1168",
+      "cell": "2630-1168",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2630-1168/swissalti3d_2025_2630-1168_2_2056_5728.tif",
+      "checksum": "1220156A31BCB0ED38B2E6AD81E8BE2BADB0C375E202291E34C72D19F3CAFFAC3FD7",
+      "filename": "swissalti3d_2025_2630-1168_2_2056_5728.tif",
+      "bytes": 1149270,
+      "sha256": "156a31bcb0ed38b2e6ad81e8be2badb0c375e202291e34c72d19f3caffac3fd7"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2630-1169",
+      "cell": "2630-1169",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2630-1169/swissalti3d_2025_2630-1169_2_2056_5728.tif",
+      "checksum": "122009C1692D9A2C3DC028BA17C5572852BB586025ED98B0D2DEE691AE5013D0DD12",
+      "filename": "swissalti3d_2025_2630-1169_2_2056_5728.tif",
+      "bytes": 908428,
+      "sha256": "09c1692d9a2c3dc028ba17c5572852bb586025ed98b0d2dee691ae5013d0dd12"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2630-1170",
+      "cell": "2630-1170",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2630-1170/swissalti3d_2025_2630-1170_2_2056_5728.tif",
+      "checksum": "1220131C72CD69DC1A1DBC7B7D27DC7E47DB53A80AA1AA91B911184D5EEE22E5FCEB",
+      "filename": "swissalti3d_2025_2630-1170_2_2056_5728.tif",
+      "bytes": 950979,
+      "sha256": "131c72cd69dc1a1dbc7b7d27dc7e47db53a80aa1aa91b911184d5eee22e5fceb"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2630-1171",
+      "cell": "2630-1171",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2630-1171/swissalti3d_2025_2630-1171_2_2056_5728.tif",
+      "checksum": "1220D65F10617A32FE2C11C13375797FDCD095737486DDD503260F85D1D995315419",
+      "filename": "swissalti3d_2025_2630-1171_2_2056_5728.tif",
+      "bytes": 1188518,
+      "sha256": "d65f10617a32fe2c11c13375797fdcd095737486ddd503260f85d1d995315419"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2630-1172",
+      "cell": "2630-1172",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2630-1172/swissalti3d_2025_2630-1172_2_2056_5728.tif",
+      "checksum": "122082E94FC9E3054082810D98D7B317AF6D2BFF798F6892EBE25D5FFF28E012B073",
+      "filename": "swissalti3d_2025_2630-1172_2_2056_5728.tif",
+      "bytes": 1270179,
+      "sha256": "82e94fc9e3054082810d98d7b317af6d2bff798f6892ebe25d5fff28e012b073"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2630-1173",
+      "cell": "2630-1173",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2630-1173/swissalti3d_2025_2630-1173_2_2056_5728.tif",
+      "checksum": "12205208F6E29AAFDC532B4BC840A00BA92D081D361EE7BF98DAE1D35EB5D6E7D888",
+      "filename": "swissalti3d_2025_2630-1173_2_2056_5728.tif",
+      "bytes": 1255464,
+      "sha256": "5208f6e29aafdc532b4bc840a00ba92d081d361ee7bf98dae1d35eb5d6e7d888"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2630-1174",
+      "cell": "2630-1174",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2630-1174/swissalti3d_2025_2630-1174_2_2056_5728.tif",
+      "checksum": "12200237E58B5A9B2DF5B66F9BEC5959AEC37523FD5C79ABEE82BCCC61A1BEE24FCA",
+      "filename": "swissalti3d_2025_2630-1174_2_2056_5728.tif",
+      "bytes": 1174197,
+      "sha256": "0237e58b5a9b2df5b66f9bec5959aec37523fd5c79abee82bccc61a1bee24fca"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2630-1175",
+      "cell": "2630-1175",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2630-1175/swissalti3d_2025_2630-1175_2_2056_5728.tif",
+      "checksum": "122087AA366BA9AE96D8877F9337FD42582E858D073B5752BCDD22A22D58FE8D1ADF",
+      "filename": "swissalti3d_2025_2630-1175_2_2056_5728.tif",
+      "bytes": 1178146,
+      "sha256": "87aa366ba9ae96d8877f9337fd42582e858d073b5752bcdd22a22d58fe8d1adf"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2630-1176",
+      "cell": "2630-1176",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2630-1176/swissalti3d_2025_2630-1176_2_2056_5728.tif",
+      "checksum": "12204910866F95EC50738FF0AEFAD3AAEAC60C28B1918AA3F04F1C7089356227CE7C",
+      "filename": "swissalti3d_2025_2630-1176_2_2056_5728.tif",
+      "bytes": 1150358,
+      "sha256": "4910866f95ec50738ff0aefad3aaeac60c28b1918aa3f04f1c7089356227ce7c"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2630-1177",
+      "cell": "2630-1177",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2630-1177/swissalti3d_2025_2630-1177_2_2056_5728.tif",
+      "checksum": "1220765F38E24227F0ED431EFE0CBBC4C8925F59B8AAC9F623C3C58D15A2013B06F6",
+      "filename": "swissalti3d_2025_2630-1177_2_2056_5728.tif",
+      "bytes": 1179582,
+      "sha256": "765f38e24227f0ed431efe0cbbc4c8925f59b8aac9f623c3c58d15a2013b06f6"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2630-1178",
+      "cell": "2630-1178",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2630-1178/swissalti3d_2025_2630-1178_2_2056_5728.tif",
+      "checksum": "12208A2D0FAC9473A872616B9F08A5CBE5CAD7C0BB1E38CEE1F4DE0AAEB3D1C800F4",
+      "filename": "swissalti3d_2025_2630-1178_2_2056_5728.tif",
+      "bytes": 1145408,
+      "sha256": "8a2d0fac9473a872616b9f08a5cbe5cad7c0bb1e38cee1f4de0aaeb3d1c800f4"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2631-1167",
+      "cell": "2631-1167",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2631-1167/swissalti3d_2025_2631-1167_2_2056_5728.tif",
+      "checksum": "12205D60E439CDCDCF6791B4260E710DF85C27C7B903AA942B77DFAACBB5877662B1",
+      "filename": "swissalti3d_2025_2631-1167_2_2056_5728.tif",
+      "bytes": 1271853,
+      "sha256": "5d60e439cdcdcf6791b4260e710df85c27c7b903aa942b77dfaacbb5877662b1"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2631-1168",
+      "cell": "2631-1168",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2631-1168/swissalti3d_2025_2631-1168_2_2056_5728.tif",
+      "checksum": "12200AB5C489928BCA0AC321EA192C0D2A5D45154B728304C5A4BA28B0BA61FCF4B1",
+      "filename": "swissalti3d_2025_2631-1168_2_2056_5728.tif",
+      "bytes": 1247875,
+      "sha256": "0ab5c489928bca0ac321ea192c0d2a5d45154b728304c5a4ba28b0ba61fcf4b1"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2631-1169",
+      "cell": "2631-1169",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2631-1169/swissalti3d_2025_2631-1169_2_2056_5728.tif",
+      "checksum": "1220728C45E5FE000250ED8E7A70B03DFA442BFB707FDB4E4BD5A4BE7EFC4F59701B",
+      "filename": "swissalti3d_2025_2631-1169_2_2056_5728.tif",
+      "bytes": 1084529,
+      "sha256": "728c45e5fe000250ed8e7a70b03dfa442bfb707fdb4e4bd5a4be7efc4f59701b"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2631-1170",
+      "cell": "2631-1170",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2631-1170/swissalti3d_2025_2631-1170_2_2056_5728.tif",
+      "checksum": "1220C7088083FD1604C0A1D7532959FDACD8B311296A71F1CC4963A02D975F9B0A36",
+      "filename": "swissalti3d_2025_2631-1170_2_2056_5728.tif",
+      "bytes": 982640,
+      "sha256": "c7088083fd1604c0a1d7532959fdacd8b311296a71f1cc4963a02d975f9b0a36"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2631-1171",
+      "cell": "2631-1171",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2631-1171/swissalti3d_2025_2631-1171_2_2056_5728.tif",
+      "checksum": "1220FDF542DC75F44AA5C843EC511C729F47E6AB060FE4B4BC38FE28B7EA13AC2EA4",
+      "filename": "swissalti3d_2025_2631-1171_2_2056_5728.tif",
+      "bytes": 1251359,
+      "sha256": "fdf542dc75f44aa5c843ec511c729f47e6ab060fe4b4bc38fe28b7ea13ac2ea4"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2631-1172",
+      "cell": "2631-1172",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2631-1172/swissalti3d_2025_2631-1172_2_2056_5728.tif",
+      "checksum": "1220884404022CBDFB80E96B3A60AC90557A07416A4D7F6275F16FCCC8325262C5C2",
+      "filename": "swissalti3d_2025_2631-1172_2_2056_5728.tif",
+      "bytes": 1277183,
+      "sha256": "884404022cbdfb80e96b3a60ac90557a07416a4d7f6275f16fccc8325262c5c2"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2631-1173",
+      "cell": "2631-1173",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2631-1173/swissalti3d_2025_2631-1173_2_2056_5728.tif",
+      "checksum": "12208FF53BCAC0EB301656BFF4D5BBB546A409B0315276692A963A249F4FBF9C7368",
+      "filename": "swissalti3d_2025_2631-1173_2_2056_5728.tif",
+      "bytes": 1262811,
+      "sha256": "8ff53bcac0eb301656bff4d5bbb546a409b0315276692a963a249f4fbf9c7368"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2631-1174",
+      "cell": "2631-1174",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2631-1174/swissalti3d_2025_2631-1174_2_2056_5728.tif",
+      "checksum": "1220F678CD018540A2ECD4C8E6CFC576A00150BD8761F469E9D594BA8583B55829A1",
+      "filename": "swissalti3d_2025_2631-1174_2_2056_5728.tif",
+      "bytes": 1197549,
+      "sha256": "f678cd018540a2ecd4c8e6cfc576a00150bd8761f469e9d594ba8583b55829a1"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2631-1175",
+      "cell": "2631-1175",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2631-1175/swissalti3d_2025_2631-1175_2_2056_5728.tif",
+      "checksum": "122094AD5EBA6751E742534FBB30D38EDC5E639765FAE75088D0EF53349E1D128D84",
+      "filename": "swissalti3d_2025_2631-1175_2_2056_5728.tif",
+      "bytes": 1178251,
+      "sha256": "94ad5eba6751e742534fbb30d38edc5e639765fae75088d0ef53349e1d128d84"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2631-1176",
+      "cell": "2631-1176",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2631-1176/swissalti3d_2025_2631-1176_2_2056_5728.tif",
+      "checksum": "12204DB456553EB0C67E5B36D9583981CC0229346BCAECD8FC99FA9DC2A27D9CF282",
+      "filename": "swissalti3d_2025_2631-1176_2_2056_5728.tif",
+      "bytes": 1186844,
+      "sha256": "4db456553eb0c67e5b36d9583981cc0229346bcaecd8fc99fa9dc2a27d9cf282"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2631-1177",
+      "cell": "2631-1177",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2631-1177/swissalti3d_2025_2631-1177_2_2056_5728.tif",
+      "checksum": "12200FF6C8674CC8F584146F2DB5C258DB14511DE28C1006E57410EB25E4EFDDA82C",
+      "filename": "swissalti3d_2025_2631-1177_2_2056_5728.tif",
+      "bytes": 1145964,
+      "sha256": "0ff6c8674cc8f584146f2db5c258db14511de28c1006e57410eb25e4efdda82c"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2631-1178",
+      "cell": "2631-1178",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2631-1178/swissalti3d_2025_2631-1178_2_2056_5728.tif",
+      "checksum": "1220E813F6C8033C26362ACC2E7EB8FABD70E750DC5BA5A7F623C4D020B944194668",
+      "filename": "swissalti3d_2025_2631-1178_2_2056_5728.tif",
+      "bytes": 1138219,
+      "sha256": "e813f6c8033c26362acc2e7eb8fabd70e750dc5ba5a7f623c4d020b944194668"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2632-1167",
+      "cell": "2632-1167",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2632-1167/swissalti3d_2025_2632-1167_2_2056_5728.tif",
+      "checksum": "1220405A11BFCFC95ACD7452E8851937B819C30718AA4E42E6AB8871B8EA057B8373",
+      "filename": "swissalti3d_2025_2632-1167_2_2056_5728.tif",
+      "bytes": 1119154,
+      "sha256": "405a11bfcfc95acd7452e8851937b819c30718aa4e42e6ab8871b8ea057b8373"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2632-1168",
+      "cell": "2632-1168",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2632-1168/swissalti3d_2025_2632-1168_2_2056_5728.tif",
+      "checksum": "12200A0A5B663623B0B004A56CFFA35EE7F3152B90377BA320ED416A8DF6A002ACAF",
+      "filename": "swissalti3d_2025_2632-1168_2_2056_5728.tif",
+      "bytes": 965037,
+      "sha256": "0a0a5b663623b0b004a56cffa35ee7f3152b90377ba320ed416a8df6a002acaf"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2632-1169",
+      "cell": "2632-1169",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2632-1169/swissalti3d_2025_2632-1169_2_2056_5728.tif",
+      "checksum": "12209D452A71A20B2C0565A531C25C489824F1C6BCBF513A3B8A935B932B3BA33F00",
+      "filename": "swissalti3d_2025_2632-1169_2_2056_5728.tif",
+      "bytes": 1025790,
+      "sha256": "9d452a71a20b2c0565a531c25c489824f1c6bcbf513a3b8a935b932b3ba33f00"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2632-1170",
+      "cell": "2632-1170",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2632-1170/swissalti3d_2025_2632-1170_2_2056_5728.tif",
+      "checksum": "12204AB4110E760C04C60E4E9A7203E8D9CB5399A34FC8A7130893E4C7A0FF6BE8E8",
+      "filename": "swissalti3d_2025_2632-1170_2_2056_5728.tif",
+      "bytes": 923386,
+      "sha256": "4ab4110e760c04c60e4e9a7203e8d9cb5399a34fc8a7130893e4c7a0ff6be8e8"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2632-1171",
+      "cell": "2632-1171",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2632-1171/swissalti3d_2025_2632-1171_2_2056_5728.tif",
+      "checksum": "1220FB22E19AD516287A807A0C389AFB05EC2C2012970C79792E27C447E8EA5BC38F",
+      "filename": "swissalti3d_2025_2632-1171_2_2056_5728.tif",
+      "bytes": 1180761,
+      "sha256": "fb22e19ad516287a807a0c389afb05ec2c2012970c79792e27c447e8ea5bc38f"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2632-1172",
+      "cell": "2632-1172",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2632-1172/swissalti3d_2025_2632-1172_2_2056_5728.tif",
+      "checksum": "1220318627E35A2C3D22FDD96F72A8C6101B848D702CA0A4A15BB043AD7049795D2D",
+      "filename": "swissalti3d_2025_2632-1172_2_2056_5728.tif",
+      "bytes": 1242458,
+      "sha256": "318627e35a2c3d22fdd96f72a8c6101b848d702ca0a4a15bb043ad7049795d2d"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2632-1173",
+      "cell": "2632-1173",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2632-1173/swissalti3d_2025_2632-1173_2_2056_5728.tif",
+      "checksum": "1220936F34305FA4B63078005884B7FA118B4EA6195829C103E6CFEF473CED815B13",
+      "filename": "swissalti3d_2025_2632-1173_2_2056_5728.tif",
+      "bytes": 1246495,
+      "sha256": "936f34305fa4b63078005884b7fa118b4ea6195829c103e6cfef473ced815b13"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2632-1174",
+      "cell": "2632-1174",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2632-1174/swissalti3d_2025_2632-1174_2_2056_5728.tif",
+      "checksum": "1220EFC8DEBCAE4695D0BD45A1D54BCC9B7C02E3EB049522456565AA2D2BC77A6082",
+      "filename": "swissalti3d_2025_2632-1174_2_2056_5728.tif",
+      "bytes": 1220049,
+      "sha256": "efc8debcae4695d0bd45a1d54bcc9b7c02e3eb049522456565aa2d2bc77a6082"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2632-1175",
+      "cell": "2632-1175",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2632-1175/swissalti3d_2025_2632-1175_2_2056_5728.tif",
+      "checksum": "122005D62C847BA21F0B5C6F263741B12D6DB9E30971D269477103DCDDC8163BC24D",
+      "filename": "swissalti3d_2025_2632-1175_2_2056_5728.tif",
+      "bytes": 1192849,
+      "sha256": "05d62c847ba21f0b5c6f263741b12d6db9e30971d269477103dcddc8163bc24d"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2632-1176",
+      "cell": "2632-1176",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2632-1176/swissalti3d_2025_2632-1176_2_2056_5728.tif",
+      "checksum": "1220ECFB5F12A76B3767A4B8492F9B74239F19A9C11757654B7FC9BD0FEC89AEE0F3",
+      "filename": "swissalti3d_2025_2632-1176_2_2056_5728.tif",
+      "bytes": 1183217,
+      "sha256": "ecfb5f12a76b3767a4b8492f9b74239f19a9c11757654b7fc9bd0fec89aee0f3"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2632-1177",
+      "cell": "2632-1177",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2632-1177/swissalti3d_2025_2632-1177_2_2056_5728.tif",
+      "checksum": "12204D021A3CBDA875D4C3C2AA90BBA3D452FB45A0AF69C9DCBC7CD1DCEBFF94C8E7",
+      "filename": "swissalti3d_2025_2632-1177_2_2056_5728.tif",
+      "bytes": 1200963,
+      "sha256": "4d021a3cbda875d4c3c2aa90bba3d452fb45a0af69c9dcbc7cd1dcebff94c8e7"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2632-1178",
+      "cell": "2632-1178",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2632-1178/swissalti3d_2025_2632-1178_2_2056_5728.tif",
+      "checksum": "12204998E55ED20E0779821ADAD22C1C6A401D97C30AC2D90F9F68D42177F39700E8",
+      "filename": "swissalti3d_2025_2632-1178_2_2056_5728.tif",
+      "bytes": 1172662,
+      "sha256": "4998e55ed20e0779821adad22c1c6a401d97c30ac2d90f9f68d42177f39700e8"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2633-1167",
+      "cell": "2633-1167",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2633-1167/swissalti3d_2025_2633-1167_2_2056_5728.tif",
+      "checksum": "1220442ECE78D3909C20CC6F20143750719286E4A1234ECE5568ECCA655C4211A64C",
+      "filename": "swissalti3d_2025_2633-1167_2_2056_5728.tif",
+      "bytes": 1258743,
+      "sha256": "442ece78d3909c20cc6f20143750719286e4a1234ece5568ecca655c4211a64c"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2633-1168",
+      "cell": "2633-1168",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2633-1168/swissalti3d_2025_2633-1168_2_2056_5728.tif",
+      "checksum": "1220A358D86D034F842097EC667441BA7035619F1EEBE962BD677B181EC0236F1A47",
+      "filename": "swissalti3d_2025_2633-1168_2_2056_5728.tif",
+      "bytes": 1135585,
+      "sha256": "a358d86d034f842097ec667441ba7035619f1eebe962bd677b181ec0236f1a47"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2633-1169",
+      "cell": "2633-1169",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2633-1169/swissalti3d_2025_2633-1169_2_2056_5728.tif",
+      "checksum": "1220AA54324F940215C847605EBD7E54FE78AE60CFC914D7017EBF1108BC58FCF74D",
+      "filename": "swissalti3d_2025_2633-1169_2_2056_5728.tif",
+      "bytes": 900636,
+      "sha256": "aa54324f940215c847605ebd7e54fe78ae60cfc914d7017ebf1108bc58fcf74d"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2633-1170",
+      "cell": "2633-1170",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2633-1170/swissalti3d_2025_2633-1170_2_2056_5728.tif",
+      "checksum": "12200E61483CDAB7A18AE1B42F89CEAA48F09BAF9CC006EC86DE40AB061E322E9A17",
+      "filename": "swissalti3d_2025_2633-1170_2_2056_5728.tif",
+      "bytes": 917888,
+      "sha256": "0e61483cdab7a18ae1b42f89ceaa48f09baf9cc006ec86de40ab061e322e9a17"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2633-1171",
+      "cell": "2633-1171",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2633-1171/swissalti3d_2025_2633-1171_2_2056_5728.tif",
+      "checksum": "12200C3C48A717CF6462045EDD6906A11E1702328BD71EBC61489EECD04C32B4BD59",
+      "filename": "swissalti3d_2025_2633-1171_2_2056_5728.tif",
+      "bytes": 1026771,
+      "sha256": "0c3c48a717cf6462045edd6906a11e1702328bd71ebc61489eecd04c32b4bd59"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2633-1172",
+      "cell": "2633-1172",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2633-1172/swissalti3d_2025_2633-1172_2_2056_5728.tif",
+      "checksum": "1220724FF71A9E4E4942B7D95D2D1E2DB68F075CE4FF543831990FEF4C77A631B1C3",
+      "filename": "swissalti3d_2025_2633-1172_2_2056_5728.tif",
+      "bytes": 1252644,
+      "sha256": "724ff71a9e4e4942b7d95d2d1e2db68f075ce4ff543831990fef4c77a631b1c3"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2633-1173",
+      "cell": "2633-1173",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2633-1173/swissalti3d_2025_2633-1173_2_2056_5728.tif",
+      "checksum": "12201E1B23183418B6AB20FBE288CE616B2B0CBB5699DEDBB6D8401EBABA027BE64C",
+      "filename": "swissalti3d_2025_2633-1173_2_2056_5728.tif",
+      "bytes": 1248503,
+      "sha256": "1e1b23183418b6ab20fbe288ce616b2b0cbb5699dedbb6d8401ebaba027be64c"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2633-1174",
+      "cell": "2633-1174",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2633-1174/swissalti3d_2025_2633-1174_2_2056_5728.tif",
+      "checksum": "1220763F51AC6B6F1E518C0377C3CF4F12815B0C8AD97C935BAB8D41CD2D9DD06457",
+      "filename": "swissalti3d_2025_2633-1174_2_2056_5728.tif",
+      "bytes": 1220731,
+      "sha256": "763f51ac6b6f1e518c0377c3cf4f12815b0c8ad97c935bab8d41cd2d9dd06457"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2633-1175",
+      "cell": "2633-1175",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2633-1175/swissalti3d_2025_2633-1175_2_2056_5728.tif",
+      "checksum": "1220065685867F7BA45CB1CA71571D4150F3D65F4C8CA1AA16BB4A68BB218FA8D698",
+      "filename": "swissalti3d_2025_2633-1175_2_2056_5728.tif",
+      "bytes": 1149647,
+      "sha256": "065685867f7ba45cb1ca71571d4150f3d65f4c8ca1aa16bb4a68bb218fa8d698"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2633-1176",
+      "cell": "2633-1176",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2633-1176/swissalti3d_2025_2633-1176_2_2056_5728.tif",
+      "checksum": "122040114B11472B960314219E96CF23B30C9173A160B6F7F4506C21CD8742EB16F9",
+      "filename": "swissalti3d_2025_2633-1176_2_2056_5728.tif",
+      "bytes": 1128187,
+      "sha256": "40114b11472b960314219e96cf23b30c9173a160b6f7f4506c21cd8742eb16f9"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2633-1177",
+      "cell": "2633-1177",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2633-1177/swissalti3d_2025_2633-1177_2_2056_5728.tif",
+      "checksum": "12209F3307FD417CD92D039618852EC5E15494003B2B4B54C573895B1122F05DF8EC",
+      "filename": "swissalti3d_2025_2633-1177_2_2056_5728.tif",
+      "bytes": 1179335,
+      "sha256": "9f3307fd417cd92d039618852ec5e15494003b2b4b54c573895b1122f05df8ec"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2633-1178",
+      "cell": "2633-1178",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2633-1178/swissalti3d_2025_2633-1178_2_2056_5728.tif",
+      "checksum": "1220862D6537457D5EC275AFD84185A4768FD062306B18BDF30FC41CE2BC2C7BC936",
+      "filename": "swissalti3d_2025_2633-1178_2_2056_5728.tif",
+      "bytes": 1211871,
+      "sha256": "862d6537457d5ec275afd84185a4768fd062306b18bdf30fc41ce2bc2c7bc936"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2634-1167",
+      "cell": "2634-1167",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2634-1167/swissalti3d_2025_2634-1167_2_2056_5728.tif",
+      "checksum": "12205803EC564AC0A3168D337E9CCCCEFED9E02170D4B25467C24BE786FCD07C09BD",
+      "filename": "swissalti3d_2025_2634-1167_2_2056_5728.tif",
+      "bytes": 1239803,
+      "sha256": "5803ec564ac0a3168d337e9ccccefed9e02170d4b25467c24be786fcd07c09bd"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2634-1168",
+      "cell": "2634-1168",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2634-1168/swissalti3d_2025_2634-1168_2_2056_5728.tif",
+      "checksum": "12208815EEC210E9F25949B89DE2FA7243359A99DFDFCCD60BF8145311C3F8426104",
+      "filename": "swissalti3d_2025_2634-1168_2_2056_5728.tif",
+      "bytes": 1256978,
+      "sha256": "8815eec210e9f25949b89de2fa7243359a99dfdfccd60bf8145311c3f8426104"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2634-1169",
+      "cell": "2634-1169",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2634-1169/swissalti3d_2025_2634-1169_2_2056_5728.tif",
+      "checksum": "1220C204A5ACC6260E96FA32EA19452967A4E65CEDC0829C70EF51AEF71BABEF7475",
+      "filename": "swissalti3d_2025_2634-1169_2_2056_5728.tif",
+      "bytes": 1090846,
+      "sha256": "c204a5acc6260e96fa32ea19452967a4e65cedc0829c70ef51aef71babef7475"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2634-1170",
+      "cell": "2634-1170",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2634-1170/swissalti3d_2025_2634-1170_2_2056_5728.tif",
+      "checksum": "122044F51637CD885ADF02E23E55BBB1F40C3776CC5490E7304EAEFBAB2C45041D10",
+      "filename": "swissalti3d_2025_2634-1170_2_2056_5728.tif",
+      "bytes": 957175,
+      "sha256": "44f51637cd885adf02e23e55bbb1f40c3776cc5490e7304eaefbab2c45041d10"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2634-1171",
+      "cell": "2634-1171",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2634-1171/swissalti3d_2025_2634-1171_2_2056_5728.tif",
+      "checksum": "12202B701A0DA2AAFC63DD7C697AFB2F840C197AD737008C103F564E7145A7830315",
+      "filename": "swissalti3d_2025_2634-1171_2_2056_5728.tif",
+      "bytes": 564060,
+      "sha256": "2b701a0da2aafc63dd7c697afb2f840c197ad737008c103f564e7145a7830315"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2634-1172",
+      "cell": "2634-1172",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2634-1172/swissalti3d_2025_2634-1172_2_2056_5728.tif",
+      "checksum": "12208C52967EADF5A6F27460E887464E160339428E6CC49926B358078AF87DC65BDD",
+      "filename": "swissalti3d_2025_2634-1172_2_2056_5728.tif",
+      "bytes": 1140634,
+      "sha256": "8c52967eadf5a6f27460e887464e160339428e6cc49926b358078af87dc65bdd"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2634-1173",
+      "cell": "2634-1173",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2634-1173/swissalti3d_2025_2634-1173_2_2056_5728.tif",
+      "checksum": "122067D22919477262214CCD95BA86BB180B257E384A0F231772C4F1E4A83489C546",
+      "filename": "swissalti3d_2025_2634-1173_2_2056_5728.tif",
+      "bytes": 1242920,
+      "sha256": "67d22919477262214ccd95ba86bb180b257e384a0f231772c4f1e4a83489c546"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2634-1174",
+      "cell": "2634-1174",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2634-1174/swissalti3d_2025_2634-1174_2_2056_5728.tif",
+      "checksum": "122037572F32BBFA8861859DBAE28C10426B6C22FA5E381D0D47D1ED6A4AD9C01B9A",
+      "filename": "swissalti3d_2025_2634-1174_2_2056_5728.tif",
+      "bytes": 1208778,
+      "sha256": "37572f32bbfa8861859dbae28c10426b6c22fa5e381d0d47d1ed6a4ad9c01b9a"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2634-1175",
+      "cell": "2634-1175",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2634-1175/swissalti3d_2025_2634-1175_2_2056_5728.tif",
+      "checksum": "1220051D0D046CC7253B5943F61D63E424629BC1DBF399F463BAF7268EC30FA5B9B6",
+      "filename": "swissalti3d_2025_2634-1175_2_2056_5728.tif",
+      "bytes": 1146083,
+      "sha256": "051d0d046cc7253b5943f61d63e424629bc1dbf399f463baf7268ec30fa5b9b6"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2634-1176",
+      "cell": "2634-1176",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2634-1176/swissalti3d_2025_2634-1176_2_2056_5728.tif",
+      "checksum": "122099C12E9017DF7397D9AD00484EE561D24293121590BA6CC51D74398D37CDE0CA",
+      "filename": "swissalti3d_2025_2634-1176_2_2056_5728.tif",
+      "bytes": 1119860,
+      "sha256": "99c12e9017df7397d9ad00484ee561d24293121590ba6cc51d74398d37cde0ca"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2634-1177",
+      "cell": "2634-1177",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2634-1177/swissalti3d_2025_2634-1177_2_2056_5728.tif",
+      "checksum": "1220F4A595EA98A1B9F8EC9304F0A3ED24FF2B92EFA86F8408D3096C2E3C1DC011BA",
+      "filename": "swissalti3d_2025_2634-1177_2_2056_5728.tif",
+      "bytes": 1126443,
+      "sha256": "f4a595ea98a1b9f8ec9304f0a3ed24ff2b92efa86f8408d3096c2e3c1dc011ba"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2634-1178",
+      "cell": "2634-1178",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2634-1178/swissalti3d_2025_2634-1178_2_2056_5728.tif",
+      "checksum": "1220B2722E1BFEAA19A3485058531ABCFFEE4E1D05613C4993C637959463380A2FDF",
+      "filename": "swissalti3d_2025_2634-1178_2_2056_5728.tif",
+      "bytes": 1114502,
+      "sha256": "b2722e1bfeaa19a3485058531abcffee4e1d05613c4993c637959463380a2fdf"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2635-1167",
+      "cell": "2635-1167",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2635-1167/swissalti3d_2025_2635-1167_2_2056_5728.tif",
+      "checksum": "1220D4D072FA6BC5270127F88F041CB00028095F5BD409D2CD97DE47FC70AFAA231A",
+      "filename": "swissalti3d_2025_2635-1167_2_2056_5728.tif",
+      "bytes": 1219457,
+      "sha256": "d4d072fa6bc5270127f88f041cb00028095f5bd409d2cd97de47fc70afaa231a"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2635-1168",
+      "cell": "2635-1168",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2635-1168/swissalti3d_2025_2635-1168_2_2056_5728.tif",
+      "checksum": "1220294568A925439EE3FC612E127A69160C2E1454BD5B7293FB21570415BD6BE600",
+      "filename": "swissalti3d_2025_2635-1168_2_2056_5728.tif",
+      "bytes": 1227745,
+      "sha256": "294568a925439ee3fc612e127a69160c2e1454bd5b7293fb21570415bd6be600"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2635-1169",
+      "cell": "2635-1169",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2635-1169/swissalti3d_2025_2635-1169_2_2056_5728.tif",
+      "checksum": "12202E272AC8EEB95DADF10E36F77A9B815145FDEB38CE96A59AA0C47AE6FEA12AA4",
+      "filename": "swissalti3d_2025_2635-1169_2_2056_5728.tif",
+      "bytes": 1240382,
+      "sha256": "2e272ac8eeb95dadf10e36f77a9b815145fdeb38ce96a59aa0c47ae6fea12aa4"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2635-1170",
+      "cell": "2635-1170",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2635-1170/swissalti3d_2025_2635-1170_2_2056_5728.tif",
+      "checksum": "1220C278053A93CC2FCF4EA35947F689EA298AB932195C0FCD898CBB5635E933F986",
+      "filename": "swissalti3d_2025_2635-1170_2_2056_5728.tif",
+      "bytes": 1029967,
+      "sha256": "c278053a93cc2fcf4ea35947f689ea298ab932195c0fcd898cbb5635e933f986"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2635-1171",
+      "cell": "2635-1171",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2635-1171/swissalti3d_2025_2635-1171_2_2056_5728.tif",
+      "checksum": "122009EBA6247447E6718C46DAC8E069837211AE261A2977B98C977EC0E54FFD3CF4",
+      "filename": "swissalti3d_2025_2635-1171_2_2056_5728.tif",
+      "bytes": 150754,
+      "sha256": "09eba6247447e6718c46dac8e069837211ae261a2977b98c977ec0e54ffd3cf4"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2635-1172",
+      "cell": "2635-1172",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2635-1172/swissalti3d_2025_2635-1172_2_2056_5728.tif",
+      "checksum": "122056E97B0884FD948FE367D99A46AE322A4EE49C198559B2327BBEF7BC8BDA4C13",
+      "filename": "swissalti3d_2025_2635-1172_2_2056_5728.tif",
+      "bytes": 561175,
+      "sha256": "56e97b0884fd948fe367d99a46ae322a4ee49c198559b2327bbef7bc8bda4c13"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2635-1173",
+      "cell": "2635-1173",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2635-1173/swissalti3d_2025_2635-1173_2_2056_5728.tif",
+      "checksum": "1220A1F077A6BA499C9E29A3160F032F7092D6F264A5C34CEB01A4ED689E0652D84A",
+      "filename": "swissalti3d_2025_2635-1173_2_2056_5728.tif",
+      "bytes": 1207187,
+      "sha256": "a1f077a6ba499c9e29a3160f032f7092d6f264a5c34ceb01a4ed689e0652d84a"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2635-1174",
+      "cell": "2635-1174",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2635-1174/swissalti3d_2025_2635-1174_2_2056_5728.tif",
+      "checksum": "12203FB3EB14F0E0EF85942A17E3CC897FAE783FDA04EDE3DA84EA8D1640B07721B7",
+      "filename": "swissalti3d_2025_2635-1174_2_2056_5728.tif",
+      "bytes": 1212668,
+      "sha256": "3fb3eb14f0e0ef85942a17e3cc897fae783fda04ede3da84ea8d1640b07721b7"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2635-1175",
+      "cell": "2635-1175",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2635-1175/swissalti3d_2025_2635-1175_2_2056_5728.tif",
+      "checksum": "122060FF1236F617FD5429F022A2443F5DECF2EA5AD9A63C5D2FC0ACC35B7A9CAAC3",
+      "filename": "swissalti3d_2025_2635-1175_2_2056_5728.tif",
+      "bytes": 1201284,
+      "sha256": "60ff1236f617fd5429f022a2443f5decf2ea5ad9a63c5d2fc0acc35b7a9caac3"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2635-1176",
+      "cell": "2635-1176",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2635-1176/swissalti3d_2025_2635-1176_2_2056_5728.tif",
+      "checksum": "12207FA3E2DF8DC7175A077EFD3F2B13F175178D732ADCD170B948F726C5B6D11E66",
+      "filename": "swissalti3d_2025_2635-1176_2_2056_5728.tif",
+      "bytes": 1130325,
+      "sha256": "7fa3e2df8dc7175a077efd3f2b13f175178d732adcd170b948f726c5b6d11e66"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2635-1177",
+      "cell": "2635-1177",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2635-1177/swissalti3d_2025_2635-1177_2_2056_5728.tif",
+      "checksum": "1220E42040155C976E708F2C04D6BE3F2C5BE692D64D684E64AC4CE861F3392F736E",
+      "filename": "swissalti3d_2025_2635-1177_2_2056_5728.tif",
+      "bytes": 1128055,
+      "sha256": "e42040155c976e708f2c04d6be3f2c5be692d64d684e64ac4ce861f3392f736e"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2635-1178",
+      "cell": "2635-1178",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2635-1178/swissalti3d_2025_2635-1178_2_2056_5728.tif",
+      "checksum": "1220767E8F50E47594C42D241BE3396785CF6E6E42F4F191F5CAF38A4849EB38A542",
+      "filename": "swissalti3d_2025_2635-1178_2_2056_5728.tif",
+      "bytes": 1084286,
+      "sha256": "767e8f50e47594c42d241be3396785cf6e6e42f4f191f5caf38a4849eb38a542"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2636-1167",
+      "cell": "2636-1167",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2636-1167/swissalti3d_2025_2636-1167_2_2056_5728.tif",
+      "checksum": "1220818BAFA7F6033E3C1D27B788D7A112AEF518614585ABA6F0BBDB566C23DBC10E",
+      "filename": "swissalti3d_2025_2636-1167_2_2056_5728.tif",
+      "bytes": 1182050,
+      "sha256": "818bafa7f6033e3c1d27b788d7a112aef518614585aba6f0bbdb566c23dbc10e"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2636-1168",
+      "cell": "2636-1168",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2636-1168/swissalti3d_2025_2636-1168_2_2056_5728.tif",
+      "checksum": "1220159A21DD6CB87CF8FE8446928BE92BB3E17A2523FAAAC1C121AF83FC78428B95",
+      "filename": "swissalti3d_2025_2636-1168_2_2056_5728.tif",
+      "bytes": 1252794,
+      "sha256": "159a21dd6cb87cf8fe8446928be92bb3e17a2523faaac1c121af83fc78428b95"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2636-1169",
+      "cell": "2636-1169",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2636-1169/swissalti3d_2025_2636-1169_2_2056_5728.tif",
+      "checksum": "122010EDC4532B55FB3CBA98361A54DF5AC64BBA2531234A1B9CAEB52472C1203B3F",
+      "filename": "swissalti3d_2025_2636-1169_2_2056_5728.tif",
+      "bytes": 1260373,
+      "sha256": "10edc4532b55fb3cba98361a54df5ac64bba2531234a1b9caeb52472c1203b3f"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2636-1170",
+      "cell": "2636-1170",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2636-1170/swissalti3d_2025_2636-1170_2_2056_5728.tif",
+      "checksum": "122019C2BFBCFF44B090E2969B4D060D997721B307F49BDF39456E3DA3C5E3BCD7C9",
+      "filename": "swissalti3d_2025_2636-1170_2_2056_5728.tif",
+      "bytes": 1131566,
+      "sha256": "19c2bfbcff44b090e2969b4d060d997721b307f49bdf39456e3da3c5e3bcd7c9"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2636-1171",
+      "cell": "2636-1171",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2636-1171/swissalti3d_2025_2636-1171_2_2056_5728.tif",
+      "checksum": "12202FCB0465A27D6931C08889D6ED2804B3D53E9BFED0E1264DEA41339C44888778",
+      "filename": "swissalti3d_2025_2636-1171_2_2056_5728.tif",
+      "bytes": 118545,
+      "sha256": "2fcb0465a27d6931c08889d6ed2804b3d53e9bfed0e1264dea41339c44888778"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2636-1172",
+      "cell": "2636-1172",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2636-1172/swissalti3d_2025_2636-1172_2_2056_5728.tif",
+      "checksum": "1220623F88082BF97D1A4B5BFC95736A7A4F89106F883104EEBE2DCEFC33B0446A12",
+      "filename": "swissalti3d_2025_2636-1172_2_2056_5728.tif",
+      "bytes": 196127,
+      "sha256": "623f88082bf97d1a4b5bfc95736a7a4f89106f883104eebe2dcefc33b0446a12"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2636-1173",
+      "cell": "2636-1173",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2636-1173/swissalti3d_2025_2636-1173_2_2056_5728.tif",
+      "checksum": "12209F73A5EF9D903DB02FE1A7DFD9C8AE4A5ECEF7B775EDA3D7E6D970EA3AB4A647",
+      "filename": "swissalti3d_2025_2636-1173_2_2056_5728.tif",
+      "bytes": 980857,
+      "sha256": "9f73a5ef9d903db02fe1a7dfd9c8ae4a5ecef7b775eda3d7e6d970ea3ab4a647"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2636-1174",
+      "cell": "2636-1174",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2636-1174/swissalti3d_2025_2636-1174_2_2056_5728.tif",
+      "checksum": "1220DAFBCC87C36F8FB06FA1D793BF0BF1779B54AD0A376A1E87BA74996C72A8349D",
+      "filename": "swissalti3d_2025_2636-1174_2_2056_5728.tif",
+      "bytes": 1253018,
+      "sha256": "dafbcc87c36f8fb06fa1d793bf0bf1779b54ad0a376a1e87ba74996c72a8349d"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2636-1175",
+      "cell": "2636-1175",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2636-1175/swissalti3d_2025_2636-1175_2_2056_5728.tif",
+      "checksum": "12204556F36AE6BCC19586BD1874C76236BA6DCD72428A2BCC0BC98F688F06CE33EE",
+      "filename": "swissalti3d_2025_2636-1175_2_2056_5728.tif",
+      "bytes": 1242315,
+      "sha256": "4556f36ae6bcc19586bd1874c76236ba6dcd72428a2bcc0bc98f688f06ce33ee"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2636-1176",
+      "cell": "2636-1176",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2636-1176/swissalti3d_2025_2636-1176_2_2056_5728.tif",
+      "checksum": "12205C9BFC8C72577D3ACEE08E4924C3EB1AD83E4DA048824F011450FDDA2015698E",
+      "filename": "swissalti3d_2025_2636-1176_2_2056_5728.tif",
+      "bytes": 1218164,
+      "sha256": "5c9bfc8c72577d3acee08e4924c3eb1ad83e4da048824f011450fdda2015698e"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2636-1177",
+      "cell": "2636-1177",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2636-1177/swissalti3d_2025_2636-1177_2_2056_5728.tif",
+      "checksum": "1220B53C5F8CFB521E3FEFBA705748515DB0B2A2C6157E5E9A45C7BEE42A24779571",
+      "filename": "swissalti3d_2025_2636-1177_2_2056_5728.tif",
+      "bytes": 1143975,
+      "sha256": "b53c5f8cfb521e3fefba705748515db0b2a2c6157e5e9a45c7bee42a24779571"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2636-1178",
+      "cell": "2636-1178",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2636-1178/swissalti3d_2025_2636-1178_2_2056_5728.tif",
+      "checksum": "12202486B4C384C6589A487E446A9AE93B4C80E09BE8BAAC3FB91090AEB360202338",
+      "filename": "swissalti3d_2025_2636-1178_2_2056_5728.tif",
+      "bytes": 1128923,
+      "sha256": "2486b4c384c6589a487e446a9ae93b4c80e09be8baac3fb91090aeb360202338"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2637-1167",
+      "cell": "2637-1167",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2637-1167/swissalti3d_2025_2637-1167_2_2056_5728.tif",
+      "checksum": "122025D1AF4E60C578FF6C668FCB3F552B5A6380B344F27D5DB9D1F740C04FB27052",
+      "filename": "swissalti3d_2025_2637-1167_2_2056_5728.tif",
+      "bytes": 1162650,
+      "sha256": "25d1af4e60c578ff6c668fcb3f552b5a6380b344f27d5db9d1f740c04fb27052"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2637-1168",
+      "cell": "2637-1168",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2637-1168/swissalti3d_2025_2637-1168_2_2056_5728.tif",
+      "checksum": "1220A0CFA28E198D0614510248AEE5A3E316F314848EB3C5116E80C10D70648DF6DE",
+      "filename": "swissalti3d_2025_2637-1168_2_2056_5728.tif",
+      "bytes": 1217062,
+      "sha256": "a0cfa28e198d0614510248aee5a3e316f314848eb3c5116e80c10d70648df6de"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2637-1169",
+      "cell": "2637-1169",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2637-1169/swissalti3d_2025_2637-1169_2_2056_5728.tif",
+      "checksum": "12201A6EA35D5FB88DB8844D901E77F4E5E475E3ED25B739B701194A1F752FF346AB",
+      "filename": "swissalti3d_2025_2637-1169_2_2056_5728.tif",
+      "bytes": 1231855,
+      "sha256": "1a6ea35d5fb88db8844d901e77f4e5e475e3ed25b739b701194a1f752ff346ab"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2637-1170",
+      "cell": "2637-1170",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2637-1170/swissalti3d_2025_2637-1170_2_2056_5728.tif",
+      "checksum": "122058B17F21B3D6AB39C6B663E4940F846AED804215442AF6D038D27DADAA86AA8C",
+      "filename": "swissalti3d_2025_2637-1170_2_2056_5728.tif",
+      "bytes": 1250550,
+      "sha256": "58b17f21b3d6ab39c6b663e4940f846aed804215442af6d038d27dadaa86aa8c"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2637-1171",
+      "cell": "2637-1171",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2637-1171/swissalti3d_2025_2637-1171_2_2056_5728.tif",
+      "checksum": "12208A99986C0C0EA129D790E81D00C29845E7A84403B8D63315857B31768D0A3E96",
+      "filename": "swissalti3d_2025_2637-1171_2_2056_5728.tif",
+      "bytes": 604245,
+      "sha256": "8a99986c0c0ea129d790e81d00c29845e7a84403b8d63315857b31768d0a3e96"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2637-1172",
+      "cell": "2637-1172",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2637-1172/swissalti3d_2025_2637-1172_2_2056_5728.tif",
+      "checksum": "1220853514C012F7B381898F5C1B461C7F593DE4914349BB3114B0F2E0B985205D90",
+      "filename": "swissalti3d_2025_2637-1172_2_2056_5728.tif",
+      "bytes": 90927,
+      "sha256": "853514c012f7b381898f5c1b461c7f593de4914349bb3114b0f2e0b985205d90"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2637-1173",
+      "cell": "2637-1173",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2637-1173/swissalti3d_2025_2637-1173_2_2056_5728.tif",
+      "checksum": "1220A0C225E9E2F2086658992A187D56721A8F8EBAF19DE017521D2A026098D0991B",
+      "filename": "swissalti3d_2025_2637-1173_2_2056_5728.tif",
+      "bytes": 293035,
+      "sha256": "a0c225e9e2f2086658992a187d56721a8f8ebaf19de017521d2a026098d0991b"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2637-1174",
+      "cell": "2637-1174",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2637-1174/swissalti3d_2025_2637-1174_2_2056_5728.tif",
+      "checksum": "12207DAD212940AF12BB1FBB672F6B0FF1A026DE8E163A4EF69A5F305C76332D6EF3",
+      "filename": "swissalti3d_2025_2637-1174_2_2056_5728.tif",
+      "bytes": 1154048,
+      "sha256": "7dad212940af12bb1fbb672f6b0ff1a026de8e163a4ef69a5f305c76332d6ef3"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2637-1175",
+      "cell": "2637-1175",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2637-1175/swissalti3d_2025_2637-1175_2_2056_5728.tif",
+      "checksum": "1220110B81B3132CC4875FD2BE45B938C1B853C879AC8DD458C4DF24F535D70DD54F",
+      "filename": "swissalti3d_2025_2637-1175_2_2056_5728.tif",
+      "bytes": 1269827,
+      "sha256": "110b81b3132cc4875fd2be45b938c1b853c879ac8dd458c4df24f535d70dd54f"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2637-1176",
+      "cell": "2637-1176",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2637-1176/swissalti3d_2025_2637-1176_2_2056_5728.tif",
+      "checksum": "1220226805740C0F6DC9BCA0DC0004833D88188670C57484B74E1D3B91B67659E9CE",
+      "filename": "swissalti3d_2025_2637-1176_2_2056_5728.tif",
+      "bytes": 1257157,
+      "sha256": "226805740c0f6dc9bca0dc0004833d88188670c57484b74e1d3b91b67659e9ce"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2637-1177",
+      "cell": "2637-1177",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2637-1177/swissalti3d_2025_2637-1177_2_2056_5728.tif",
+      "checksum": "12209BDBE965C591109BBEA2E29206F0FCB68103F5C8C841EA0C0080139D2F9A0B98",
+      "filename": "swissalti3d_2025_2637-1177_2_2056_5728.tif",
+      "bytes": 1222919,
+      "sha256": "9bdbe965c591109bbea2e29206f0fcb68103f5c8c841ea0c0080139d2f9a0b98"
+    },
+    {
+      "collection": "ch.swisstopo.swissalti3d",
+      "item": "swissalti3d_2025_2637-1178",
+      "cell": "2637-1178",
+      "date": "2025-01-01T00:00:00Z",
+      "url": "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2637-1178/swissalti3d_2025_2637-1178_2_2056_5728.tif",
+      "checksum": "1220A9069FAD9600D2BFC0C717748189CCC082E742393BFA98220B7A6C072E795D42",
+      "filename": "swissalti3d_2025_2637-1178_2_2056_5728.tif",
+      "bytes": 1171249,
+      "sha256": "a9069fad9600d2bfc0c717748189ccc082e742393bfa98220b7a6c072e795d42"
+    }
+  ],
+  "transform": {
+    "grid": "ch_swisstopo_CHENyx06a.tif",
+    "sha256": "986d81da9445bdd4cbc3b5e36d8ccdad757d7e09246da68040dd21e53bdfbe40",
+    "pipeline": "+proj=pipeline +step +inv +proj=somerc +lat_0=46.9524055555556 +lon_0=7.43958333333333 +k_0=1 +x_0=2600000 +y_0=1200000 +ellps=bessel +step +inv +proj=hgridshift +grids=<project>/models/swisstopo/cache/proj/ch_swisstopo_CHENyx06a.tif +step +proj=somerc +lat_0=46.9524055555556 +lon_0=7.43958333333333 +k_0=1 +x_0=600000 +y_0=200000 +ellps=bessel"
+  },
+  "coverage": {
+    "imageryFraction": 0.99999996,
+    "terrainFraction": 1.0
+  },
+  "heightChecks": [
+    {
+      "east": 632000,
+      "north": 173000,
+      "meters": 1130.1
+    },
+    {
+      "east": 630000,
+      "north": 170000,
+      "meters": 567.2
+    },
+    {
+      "east": 635000,
+      "north": 175000,
+      "meters": 1518.6
+    }
+  ],
+  "storage": {
+    "source": 176773868,
+    "imagery": 26829077,
+    "terrain": 2173471
+  },
+  "software": {
+    "rasterio": "1.5.2",
+    "gdal": "3.12.2",
+    "pyproj": "3.8.0",
+    "numpy": "2.4.6",
+    "pillow": "12.2.0"
+  }
+}

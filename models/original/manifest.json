@@ -1,0 +1,110 @@
+{
+  "id": "original",
+  "name": "Original Flytastic model",
+  "status": "copied-and-verified",
+  "source": "C:\\Program Files (x86)\\Flytastic\\GEODAT",
+  "dataDirectory": "GEODAT",
+  "files": [
+    {
+      "name": "ascii.bmp",
+      "bytes": 196664,
+      "sha256": "134998b25296d8de9fc599359f805bf645c79894800de70a7fe5af13527187f7"
+    },
+    {
+      "name": "birdinfo.dat",
+      "bytes": 637,
+      "sha256": "47e277f7b62ace4b3f5788fb79e8c0d8d208bef4e3bfbf4b939da1b47d61e05d"
+    },
+    {
+      "name": "clouds.bmp",
+      "bytes": 786488,
+      "sha256": "ac43c7d580017e1ad3c9dc5db168a851e6d36ba8551958b773653f7cd842c8c2"
+    },
+    {
+      "name": "elev100.dat",
+      "bytes": 15774080,
+      "sha256": "a08939a569c4bc1c358b09c64a34c8622676a77fc1123bd6ace21a79b91f38af"
+    },
+    {
+      "name": "elevtree.dat",
+      "bytes": 7887040,
+      "sha256": "97b2891f757a222d6ec06ae711bf7030253264beba8982a48f872287837a85e8"
+    },
+    {
+      "name": "IMGPACKC.dat",
+      "bytes": 368943341,
+      "sha256": "d2befd72ac0652490fd01b4c03815d45e64402a45e2a388ec735066b5ae3d380"
+    },
+    {
+      "name": "IMGPACKC.dir",
+      "bytes": 157712,
+      "sha256": "544eb41982615af955fe333e2ff34228204a9ea548896c4dfe23ecbe0126ef5e"
+    },
+    {
+      "name": "IMGPACKD.dat",
+      "bytes": 140731811,
+      "sha256": "4f68bfb1eba7a3546a996592659ba32fd38dccbd2779d1dda2407cc16e15e8c1"
+    },
+    {
+      "name": "IMGPACKD.dir",
+      "bytes": 44424,
+      "sha256": "13df4469d8d093811e767253309297792c3fd0298ab9dd156fd7f308d2a67da5"
+    },
+    {
+      "name": "IMGPACKE.dat",
+      "bytes": 37857633,
+      "sha256": "5b222546a9dec93602cf04278ae4a5a2c34bf0b6c5769bc7768e803035ad0f0c"
+    },
+    {
+      "name": "IMGPACKE.dir",
+      "bytes": 11424,
+      "sha256": "5a2b2cc315cdb7505ede54dbb8782163eb18033c1e2a55e94f447a0fa9a70978"
+    },
+    {
+      "name": "IMGPACKF.dat",
+      "bytes": 16425354,
+      "sha256": "a3eb4ebbfa91e7525f86e801f1d4194b7df3e43ce15ce371c803f85f2d990869"
+    },
+    {
+      "name": "IMGPACKF.dir",
+      "bytes": 2704,
+      "sha256": "5aef0fab3fdd0ad0c73f0e54e8e2d27848385f5204e9850b54c746423e032df4"
+    },
+    {
+      "name": "IMGPACKG.dat",
+      "bytes": 4055908,
+      "sha256": "7b8c3989e6ecf680c14ca09c2eb3e201163c16e6b9b30fc9fbe1b6f18874fcf8"
+    },
+    {
+      "name": "IMGPACKG.dir",
+      "bytes": 880,
+      "sha256": "05f95048f85f72d4ce216cb2b61e29d2ca75c0189391937ec4109c303445cc05"
+    },
+    {
+      "name": "IMGPACKH.dat",
+      "bytes": 1080955,
+      "sha256": "36f1c9802fea3a5bd951090e0679d8bb8130aa9c32f7eb405893e1c44f24fa60"
+    },
+    {
+      "name": "IMGPACKH.dir",
+      "bytes": 296,
+      "sha256": "af5aae49b79cda87569b6640399fa09d0d58cf22a545ea11e34036ee784288dc"
+    },
+    {
+      "name": "IMGPACKI.dat",
+      "bytes": 299624,
+      "sha256": "e4c6f953d7af0a53fc698da8adb60625f40b8249349c1b809fd7b0b42de73ad3"
+    },
+    {
+      "name": "IMGPACKI.dir",
+      "bytes": 112,
+      "sha256": "f86f46e70e827dc37c9047e7e79128a9f8d32807dcb613d55c0f9a7c479ecc47"
+    },
+    {
+      "name": "poi.lst",
+      "bytes": 4728080,
+      "sha256": "d9707e3b66be3c22bfe33b4e9a9ecca3e4fdd1d9c4df6a7e8f349b1a29b58a93"
+    }
+  ],
+  "totalBytes": 598985167
+}

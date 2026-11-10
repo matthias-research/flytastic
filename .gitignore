@@ -1,0 +1,11 @@
+# Dependencies, local Python environment, browser profiles, and verification output.
+node_modules/
+.local/
+*.log
+# Keep dataset binaries local; version the manifests and preparation scripts.
+models/original/GEODAT/
+models/swisstopo/source/
+models/swisstopo/imagery/
+models/swisstopo/terrain/
+models/swisstopo/cache/
+__pycache__/

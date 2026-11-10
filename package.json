@@ -1,0 +1,7 @@
+{
+  "name": "flytastic-web",
+  "private": true,
+  "type": "module",
+  "scripts": { "start": "node server.mjs", "test": "node --test", "prepare:swisstopo": "node scripts/prepare-swisstopo.mjs", "build:swisstopo": "node scripts/prepare-swisstopo.mjs --build-only", "check:swisstopo": "node scripts/prepare-swisstopo.mjs --check" },
+  "engines": { "node": ">=22" }
+}
