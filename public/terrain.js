@@ -1,11 +1,7 @@
 // Source baseline: dataTree.cpp renderQuadrant/renderMesh and ImageGrid.cpp
 // cornerOfCell. Units are kilometers; GPU coordinates are (east, height, -north).
 export const WIDTH = 3521, HEIGHT = 2240;
-export function geometryDetail(distance, sourceSpacing = 100, treeDepth = 24) {
-  if(sourceSpacing < 100) {
-    const level=distance<1?0:distance<3?1:distance<8?2:distance<16?3:4;
-    return {depth:Math.max(0,treeDepth-2*level),error:[0,1,3,6,8][level],spacing:sourceSpacing*2**level};
-  }
+export function geometryDetail(distance) {
   if (distance < 4) return { depth: 24, error: 0, spacing: 100 };
   if (distance < 12) return { depth: 22, error: 3, spacing: 200 };
   if (distance < 24) return { depth: 20, error: 6, spacing: 400 };
@@ -61,7 +57,7 @@ export class Terrain {
       if (maxX<west || minX>east || maxY<south || minY>north || depth>=this.depth) return;
       const mx=(lx+rx)>>1, my=(ly+ry)>>1;
       const x=mx*this.step+this.origin[0], y=my*this.step+this.origin[1];
-      const detail=geometryDetail(Math.hypot(eye[0]-x,eye[2]+y,eye[1]-this.height(mx,my)),this.spacing,this.depth);
+      const detail=geometryDetail(Math.hypot(eye[0]-x,eye[2]+y,eye[1]-this.height(mx,my)));
       const value=mx<this.width && my<this.heightCount ? this.tree[mx*this.heightCount+my] & 15 : 15;
       if (depth>=detail.depth || value<=detail.error) return;
       force(mx,my);

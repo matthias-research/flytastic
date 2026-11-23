@@ -8,4 +8,4 @@
 
 This is the default data source for the existing viewer. The installation remains unchanged. `manifest.json` records source paths, sizes, and SHA-256 checksums. Large data files are excluded from Git; the manifest and documentation can be versioned.
 
-This folder contains the geographic model. The JavaScript renderer remains shared at the repository root.
+This folder contains the geographic model. Its renderer is `public/renderers/flytastic.js`; the Swisstopo version uses a separate Cesium renderer.

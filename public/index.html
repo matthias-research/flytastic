@@ -6,15 +6,19 @@
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <canvas id="scene" aria-label="Flytastic 3D terrain. Drag to look; use W A S D to move." tabindex="0"></canvas>
+  <div id="viewport" tabindex="0" aria-label="3D terrain. Drag to look; use W A S D to move."><canvas id="scene"></canvas><div id="cesium-scene" hidden></div></div>
   <header><a class="brand" href="/">flytastic<span>WEB / 01</span></a><div class="edition"><i></i> SWISS TERRAIN EXPLORER</div><button id="reset">Reset view ↗</button></header>
   <aside>
     <p class="eyebrow">TAKE A DIFFERENT PERSPECTIVE</p>
     <h1>The Alps.<br>From above.</h1>
     <p class="intro" id="model-description">Explore the Flytastic landscape,<br>one mountain at a time.</p>
-    <label for="model">LANDSCAPE</label>
-    <select id="model"><option value="original">Original Flytastic</option><option value="swisstopo">Swisstopo · Interlaken pilot</option></select>
+    <label for="model">VERSION</label>
+    <select id="model"><option value="original">Original Flytastic</option><option value="swisstopo">Swisstopo · Cesium</option></select>
     <p id="model-credit" class="model-credit"></p>
+    <div id="swisstopo-settings" hidden>
+      <label class="checkbox-label"><input id="flattened" type="checkbox" checked disabled> Flattened</label>
+      <p class="model-credit">Uncheck to include roof and tree-canopy heights.</p>
+    </div>
     <label for="destination">DEPARTURE</label>
     <select id="destination"><option value="interlaken">Bernese Oberland</option><option value="zermatt">Zermatt & the Matterhorn</option><option value="lucerne">Lake Lucerne</option></select>
     <button id="fly" class="primary" disabled>Loading terrain…</button>
@@ -23,8 +27,11 @@
     <div class="controls"><p><kbd>Space</kbd><span>Cruise on / off</span></p><p><kbd>Esc</kbd><span>Pause · drag landscape to look</span></p></div>
   </aside>
   <section class="flight-controls" aria-label="Flight controls">
-    <div class="flight-panel-heading"><span>FLIGHT CONTROL</span><span id="flight-speed">0 km/h</span></div>
+    <div class="flight-panel-heading"><span>FLIGHT CONTROL</span><span id="flight-pitch-value">−2° pitch</span><span id="flight-speed">0 km/h</span></div>
     <div class="flight-joysticks">
+      <div id="flight-pitch-pad" tabindex="0" role="slider" aria-label="Camera pitch" aria-orientation="vertical" aria-valuemin="-60" aria-valuemax="60" aria-valuenow="-2" aria-disabled="true">
+        <span class="height-limit height-max">+60°</span><span class="height-track"></span><span class="pitch-zero"></span><span id="flight-pitch-stick"></span><span class="height-limit height-min">−60°</span>
+      </div>
       <div id="flight-pad" tabindex="0" role="group" aria-label="Flight joystick: drag up to accelerate, left or right to turn" aria-disabled="true">
         <span class="flight-axis horizontal"></span><span class="flight-axis vertical"></span><span id="flight-stick"></span>
       </div>
@@ -34,7 +41,8 @@
     </div>
     <div class="flight-panel-footer"><span id="flight-status">Paused · drag disk to fly</span><span id="flight-clearance">650 m target</span></div>
   </section>
-  <div id="message" role="status">Opening the local landscape…</div>
+  <div id="message" role="status">Opening the landscape…</div>
+  <div id="renderer-credits"></div>
   <footer><div><span class="caption">POSITION · SWISS GRID</span><strong id="position">—</strong></div><div><span class="caption">ALTITUDE / SEA LEVEL</span><strong id="altitude">—</strong></div><div><span class="caption">HEADING</span><strong id="heading">—</strong></div><div class="render-info"><span class="caption" id="terrain-caption">ORIGINAL TERRAIN · WEBGL 2</span><strong id="stats">Initializing</strong></div></footer>
   <script type="module" src="/app.js"></script>
 </body>

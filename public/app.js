@@ -1,313 +1,127 @@
-import { Terrain } from './terrain.js';
-import { perspective, view } from './math.js';
-import { LEVELS, START_CLEARANCE, selectTiles, coverageIndex } from './lod.js';
 import { readCamera, cameraHash, cameraInBounds } from './camera-state.js';
-import { FlightController, clamp } from './flight.js';
+import { FlightController, clamp, MIN_PITCH, MAX_PITCH } from './flight.js';
 import { configureFlightControls } from './flight-controls.js';
+import { FrameMetrics } from './frame-metrics.js';
 
-const $=id=>document.getElementById(id), canvas=$('scene'), message=$('message');
-const gl=canvas.getContext('webgl2', { antialias:true, alpha:false });
-const modelId=new URLSearchParams(location.search).get('model')||'original';
-let model;
-const api=path=>`${path}?model=${encodeURIComponent(modelId)}${model?.version?`&v=${model.version}`:''}`;
-$('model').value=modelId;
-$('model').disabled=true;
-$('model').onchange=async()=>{
-  const target=$('model').value;
-  pauseFlight();
-  const camera={eye:[...state.eye],yaw:state.yaw,pitch:state.pitch,roll:state.roll,speed:+$('speed').value,destination:$('destination').value};
-  $('model').disabled=true;
-  try {
-    const targetModel=await fetchOK(`/api/model?model=${encodeURIComponent(target)}`).then(r=>r.json());
-    if(!cameraInBounds(camera,targetModel.bounds)) {
-      comparisonNotice='This view is outside the selected map’s coverage. Return to Interlaken to compare the pilot.';
-      noticeUntil=performance.now()+7000;$('model').value=modelId;return;
-    }
-    const url=new URL(location.href);url.searchParams.set('model',target);url.hash=cameraHash(camera);location.href=url.href;
-  } catch(error) {comparisonNotice=`Could not switch map: ${error.message}`;noticeUntil=performance.now()+7000;$('model').value=modelId;}
-  finally {$('model').disabled=false;}
+const $=id=>document.getElementById(id),surface=$('viewport'),params=new URLSearchParams(location.search);
+const modelId=params.get('model')==='swisstopo'?'swisstopo':params.get('model')==='original'?'original':$('model').value;
+let flattened=params.get('flattened')!=='0';
+const rendererId=modelId==='original'?'flytastic':'cesium';
+const state={eye:[632,1,-173],yaw:Math.PI,pitch:-.03,roll:0};
+const destinations={interlaken:[632,173,Math.PI,-.03],zermatt:[625,100,Math.PI,-.03],lucerne:[668,213,Math.PI,-.03]};
+const keys=new Set(),metrics=new FrameMetrics();
+let models,model,renderer,flight=null,resetting=true,resetId=0,failure='',notice='',noticeUntil=0;
+const camera=()=>({eye:[...state.eye],yaw:state.yaw,pitch:state.pitch,roll:state.roll,speed:+$('speed').value,destination:$('destination').value});
+const ground=()=>renderer.ground(state.eye[0],-state.eye[2])??((flight?.lastGround??(state.eye[1]*1000-650))/1000);
+function notify(text){$('message').textContent=text;$('message').hidden=!text;}
+function pauseFlight(){flight=null;keys.clear();controls.reset();$('fly').textContent='Start cruise →';}
+function switchView(target,flat=flattened) {
+  const pose=camera();pauseFlight();
+  if(!cameraInBounds(pose,models.find(m=>m.id===target).bounds)) {
+    notice='This position is outside the selected map. Choose a departure first.';noticeUntil=performance.now()+7000;
+    $('model').value=modelId;$('flattened').checked=flattened;return;
+  }
+  const url=new URL(location.href);url.search=new URLSearchParams({model:target,flattened:flat?'1':'0'});url.hash=cameraHash(pose);location.href=url.href;
+}
+$('model').value=modelId;$('flattened').checked=flattened;
+$('swisstopo-settings').hidden=modelId!=='swisstopo';
+$('model').disabled=$('flattened').disabled=$('reset').disabled=true;
+$('model').onchange=()=>switchView($('model').value);
+$('flattened').onchange=()=>{
+  pauseFlight();flattened=$('flattened').checked;renderer.setFlattened(flattened);
+  const url=new URL(location.href);url.searchParams.set('flattened',flattened?'1':'0');url.hash=cameraHash(camera());history.replaceState(null,'',url);
 };
-const destinations={interlaken:[632,173,Math.PI,-0.03],zermatt:[625,100,Math.PI,-0.03],lucerne:[668,213,Math.PI,-0.03]};
-const state={eye:[632,1,-173],yaw:Math.PI,pitch:-0.03,roll:0,flying:false};
-let comparisonNotice='', noticeUntil=0, flight=null;
-const flightControls=configureFlightControls({activate:()=>startFlight(false),brake:()=>{if(flight)flight.cruise=false;},setHeight:value=>{
+const controls=configureFlightControls({activate:()=>startFlight(false),brake:()=>{if(flight)flight.cruise=false;},setHeight:value=>{
   if(startFlight(false))flight.clearance=clamp(Math.round(value),100,2000);
+},setPitch:value=>{
+  if(!renderer||resetting)return;
+  state.pitch=clamp(value,MIN_PITCH,MAX_PITCH);
+  if(flight){flight.viewPitch=state.pitch;flight.state.pitch=state.pitch;}
 }});
-const keys=new Set(), tiles=new Map();
-let terrain, packs, queue=[], active=0, generation=0, lastCell='', triangles=0, failure='';
-const coverage = new Map();
-let geometryWorker, geometryBusy=null, geometryJobs=[], geometrySignature='', geometryAnchor='';
-let geometryId=0, splitVertices=0, geometrySpacing=0, geometryBroken=false;
-const meshCache=new Map();
-const anchor=()=>{
-  const horizontal=terrain?.spacing<100?4:1, vertical=terrain?.spacing<100?10:2;
-  return [Math.floor(state.eye[0]*horizontal),Math.floor(state.eye[1]*vertical),Math.floor(-state.eye[2]*horizontal)].join('/');
-};
-function notify(text) { message.textContent=text; message.hidden=!text; }
-function shader(type,source) {
-  const s=gl.createShader(type); gl.shaderSource(s,source); gl.compileShader(s);
-  if(!gl.getShaderParameter(s,gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s)); return s;
-}
-function program() {
-  const p=gl.createProgram();
-  gl.attachShader(p,shader(gl.VERTEX_SHADER,`#version 300 es
-    precision highp float;
-    layout(location=0) in vec3 position; layout(location=1) in vec2 uv;
-    uniform mat4 projection, camera; out vec2 texcoord, terrainPosition; out float distanceKm;
-    void main(){vec4 v=camera*vec4(position,1.);gl_Position=projection*v;texcoord=uv;terrainPosition=vec2(position.x,-position.z);distanceKm=length(v.xyz);}`));
-  gl.attachShader(p,shader(gl.FRAGMENT_SHADER,`#version 300 es
-    precision highp float; precision highp int;
-    in vec2 texcoord, terrainPosition; in float distanceKm;
-    uniform sampler2D imagery;
-    uniform highp usampler2D coverageD, coverageC;
-    uniform vec3 gridD, gridC;
-    uniform int imageryLevel;
-    out vec4 color;
-    bool covered(highp usampler2D mask, vec3 grid) {
-      ivec2 cell=ivec2(floor((terrainPosition-grid.xy)/grid.z));
-      if(any(lessThan(cell,ivec2(0))) || any(greaterThanEqual(cell,textureSize(mask,0)))) return false;
-      return texelFetch(mask,cell,0).r!=0u;
-    }
-    void main(){
-      // A coarse fragment yields only to a finer tile already uploaded to the GPU.
-      // Missing, sparse or pending finer imagery therefore keeps its fallback.
-      if(imageryLevel<2 && covered(coverageC,gridC)) discard;
-      if(imageryLevel<1 && covered(coverageD,gridD)) discard;
-      vec4 sampleColor=texture(imagery,texcoord);if(sampleColor.a<.5)discard;vec3 c=sampleColor.rgb;float fog=smoothstep(12.,39.,distanceKm);
-      color=vec4(mix(c,vec3(.56,.68,.73),fog*.88),1.);
-    }`));
-  gl.linkProgram(p); if(!gl.getProgramParameter(p,gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(p)); return p;
-}
-let prog, projectionLocation, cameraLocation, levelLocation;
-async function fetchOK(url) { const response=await fetch(url); if(!response.ok) throw new Error(`${url}: HTTP ${response.status}`); return response; }
-function setCoverage(pack, x, y, ready) {
-  const mask=coverage.get(pack.id); if(!mask) return;
-  mask.data[coverageIndex(pack,x,y)]=ready?1:0; mask.dirty=true;
-}
-function dispose(tile) {
-  setCoverage(tile.pack,tile.x,tile.y,false);
-  gl.deleteTexture(tile.texture); gl.deleteBuffer(tile.buffer); gl.deleteVertexArray(tile.vao);
-}
-function installMesh(tile, mesh) {
-  tile.count=mesh.length/5;
-  if(mesh.length) {
-    if(!tile.vao) {
-      tile.vao=gl.createVertexArray(); tile.buffer=gl.createBuffer();
-      gl.bindVertexArray(tile.vao); gl.bindBuffer(gl.ARRAY_BUFFER,tile.buffer);
-      gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0,3,gl.FLOAT,false,20,0);
-      gl.enableVertexAttribArray(1); gl.vertexAttribPointer(1,2,gl.FLOAT,false,20,12);
-    }
-    gl.bindBuffer(gl.ARRAY_BUFFER,tile.buffer); gl.bufferData(gl.ARRAY_BUFFER,mesh,gl.STATIC_DRAW);
-  }
-  setCoverage(tile.pack,tile.x,tile.y,mesh.length>0);
-}
-function updateGeometry() {
-  if(geometryBroken || geometryBusy || !geometryJobs.length) return;
-  const signature=geometryJobs.map(j=>j.key).sort().join(','), currentAnchor=anchor();
-  if(signature===geometrySignature && currentAnchor===geometryAnchor) return;
-  geometryBusy={id:++geometryId,generation,signature,anchor:currentAnchor};
-  geometryWorker.postMessage({type:'build',id:geometryId,generation,eye:[...state.eye],tiles:geometryJobs.map(({key,pack,x,y})=>({key,x,y,pack:{...pack,available:undefined,tiles:undefined}}))});
-}
-function receiveGeometry({data}) {
-  const request=geometryBusy; geometryBusy=null;
-  if(!request || data.id!==request.id || data.generation!==generation) return;
-  if(data.error) { failure=`Terrain refinement failed: ${data.error}`; geometryBroken=true; return; }
-  const signature=geometryJobs.map(j=>j.key).sort().join(',');
-  if(signature!==request.signature) return; // Tile selection changed while building.
-  // All scales swap together in one event, using one shared, conforming mesh.
-  // This keeps imagery boundaries from exposing different-height surfaces.
-  meshCache.clear();
-  for(const {key,vertices} of data.meshes) {
-    meshCache.set(key,vertices);
-    const tile=tiles.get(key); if(tile) installMesh(tile,vertices);
-  }
-  geometrySignature=request.signature; geometryAnchor=request.anchor;
-  splitVertices=data.splitVertices; geometrySpacing=data.spacing;
-}
-function createCoverage(pack, unit) {
-  const width=pack.maxX-pack.minX+1, height=pack.maxY-pack.minY+1;
-  const size=pack.divisor/pack.factor*pack.width/1000;
-  const texture=gl.createTexture(), data=new Uint8Array(width*height);
-  gl.activeTexture(gl.TEXTURE0+unit); gl.bindTexture(gl.TEXTURE_2D,texture);
-  gl.pixelStorei(gl.UNPACK_ALIGNMENT,1);
-  gl.texImage2D(gl.TEXTURE_2D,0,gl.R8UI,width,height,0,gl.RED_INTEGER,gl.UNSIGNED_BYTE,data);
-  gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.NEAREST); gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.NEAREST);
-  gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
-  gl.uniform1i(gl.getUniformLocation(prog,`coverage${pack.id}`),unit);
-  gl.uniform3f(gl.getUniformLocation(prog,`grid${pack.id}`),pack.minX*size+pack.xstart/1000,pack.minY*size+pack.ystart/1000,size);
-  coverage.set(pack.id,{texture,data,width,height,unit,dirty:false});
-  gl.activeTexture(gl.TEXTURE0);
-}
-async function loadTile(job) {
-  let texture;
-  const {pack}=job;
-  try {
-    const response=await fetchOK(api(`/api/tile/${pack.id}/${job.x}/${job.y}`));
-    // Explicit top-to-bottom flip: original bufferImage reverses JPEG rows.
-    const bitmap=await createImageBitmap(await response.blob(), { imageOrientation:'flipY', colorSpaceConversion:'none' });
-    if(job.generation!==generation || !desired.has(job.key)) { bitmap.close(); return; }
-    texture=gl.createTexture(); gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D,texture);
-    gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,bitmap); bitmap.close();
-    gl.generateMipmap(gl.TEXTURE_2D); gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR_MIPMAP_LINEAR);
-    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
-    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
-    const tile={texture,buffer:null,vao:null,count:0,pack,level:job.level,x:job.x,y:job.y};
-    const mesh=meshCache.get(job.key); if(mesh) installMesh(tile,mesh);
-    tiles.set(job.key,tile);
-  } catch(error) {
-    if(texture) gl.deleteTexture(texture);
-    if(job.generation===generation) { failure='Some terrain tiles could not load. Reset view to retry.'; console.error(error); }
-  }
-}
-const desired=new Set();
-const pending=new Set();
-function refreshTiles() {
-  // Re-evaluate on horizontal movement AND altitude changes (250 m buckets).
-  const cell=state.eye.map(v=>Math.floor(v*4)).join('/');
-  if(cell===lastCell) return; lastCell=cell;
-  desired.clear(); queue=[];
-  geometryJobs=selectTiles(packs,state.eye,terrain);
-  for(const job of geometryJobs) {
-    desired.add(job.key);
-    if(!tiles.has(job.key)&&!pending.has(`${generation}:${job.key}`)) queue.push({...job,generation});
-  }
-  for(const [key,tile] of tiles) if(!desired.has(key)) { dispose(tile); tiles.delete(key); }
-}
-function pump() {
-  while(active<4 && queue.length) {
-    const job=queue.shift(), token=`${job.generation}:${job.key}`; pending.add(token); active++;
-    loadTile(job).finally(()=>{active--;pending.delete(token);pump();});
-  }
-}
-function reset(camera=null) {
-  pauseFlight();
-  comparisonNotice='';noticeUntil=0;
-  const [x,y,yaw,pitch]=destinations[$('destination').value];
-  state.eye=camera?.eye?[...camera.eye]:[x,terrain.ground(x,y)+START_CLEARANCE,-y]; state.yaw=camera?.yaw??yaw; state.pitch=camera?.pitch??pitch;state.roll=camera?.roll??0; state.flying=false;
-  if(!camera?.eye){const url=new URL(location.href);url.hash='';history.replaceState(null,'',url);}
-  stopInput();
-  generation++; failure=''; lastCell='';
-  meshCache.clear(); geometrySignature=''; geometryAnchor=''; splitVertices=0; geometrySpacing=0;
-  for(const tile of tiles.values()) dispose(tile); tiles.clear(); refreshTiles(); pump();
-}
-function stopInput() { keys.clear(); }
-function pauseFlight() {
-  flight=null;state.flying=false;stopInput();flightControls.reset();$('fly').textContent='Start cruise →';
-}
-function sampleFlightGround(east,north) {
-  const [west,south,right,top]=model.bounds;
-  if(east/1000<west||east/1000>right||north/1000<south||north/1000>top)return undefined;
-  const value=terrain.ground(east/1000,north/1000)*1000;
-  return value>0?value:undefined;
+function sampleGround(east,north) {
+  const [w,s,e,n]=model.bounds;
+  if(east/1000<w||east/1000>e||north/1000<s||north/1000>n)return undefined;
+  const value=renderer.ground(east/1000,north/1000);return Number.isFinite(value)&&value>0?value*1000:undefined;
 }
 function startFlight(cruise=false) {
-  if(!terrain||!model)return false;
+  if(!renderer||resetting)return false;
   if(!flight) {
-    const ground=sampleFlightGround(state.eye[0]*1000,-state.eye[2]*1000);
-    if(!Number.isFinite(ground))return false;
-    const [west,south,east,north]=model.bounds;
-    flight=new FlightController({east:state.eye[0]*1000,north:-state.eye[2]*1000,height:state.eye[1]*1000,heading:state.yaw,pitch:state.pitch,roll:state.roll},sampleFlightGround,[west*1000+50,south*1000+50,east*1000-50,north*1000-50]);
-    flight.lastGround=ground;flight.clearance=Math.max(100,state.eye[1]*1000-ground);
+    const height=sampleGround(state.eye[0]*1000,-state.eye[2]*1000);if(!Number.isFinite(height))return false;
+    flight=new FlightController({east:state.eye[0]*1000,north:-state.eye[2]*1000,height:state.eye[1]*1000,heading:state.yaw,pitch:state.pitch,roll:state.roll},sampleGround,model.bounds.map((v,i)=>v*1000+(i<2?50:-50)));
+    flight.lastGround=height;flight.clearance=Math.max(100,state.eye[1]*1000-height);
   }
-  if(cruise)flight.cruise=true;
-  state.flying=true;$('fly').textContent='Pause flight Ⅱ';return true;
+  if(cruise)flight.cruise=true;$('fly').textContent='Pause flight Ⅱ';return true;
 }
+async function reset(pose=null) {
+  const id=++resetId;pauseFlight();notice='';noticeUntil=0;resetting=true;$('fly').disabled=$('reset').disabled=true;
+  const [x,y,yaw,pitch]=destinations[$('destination').value];
+  try {
+    const height=await renderer.prepare(pose?.eye?.[0]??x,-(pose?.eye?.[2]??-y));if(id!==resetId)return;
+    state.eye=pose?.eye?[...pose.eye]:[x,height+.65,-y];state.yaw=pose?.yaw??yaw;state.pitch=clamp(pose?.pitch??pitch,MIN_PITCH,MAX_PITCH);state.roll=pose?.roll??0;
+    if(!pose?.eye){const url=new URL(location.href);url.hash='';history.replaceState(null,'',url);}
+    renderer.reset(state);failure='';
+  } catch(error){if(id===resetId)failure=`Terrain unavailable: ${error.message}. Reset view to retry.`;}
+  finally{if(id===resetId){resetting=false;$('reset').disabled=false;$('fly').disabled=Boolean(failure);}}
+}
+window.flytasticMetrics={reset:()=>metrics.reset(),snapshot:()=>metrics.snapshot()};
+if(globalThis.PerformanceObserver&&PerformanceObserver.supportedEntryTypes.includes('longtask'))new PerformanceObserver(list=>{
+  if(!document.hidden)for(const entry of list.getEntries())metrics.longTask(entry.duration);
+}).observe({type:'longtask'});
 window.addEventListener('blur',pauseFlight);
-document.addEventListener('visibilitychange',()=>{if(document.hidden)pauseFlight();});
+document.addEventListener('visibilitychange',()=>{metrics.previous=undefined;if(document.hidden)pauseFlight();});
 window.addEventListener('keydown',e=>{
   if(e.ctrlKey||e.metaKey||e.altKey)return;
   if(e.code==='Escape'){e.preventDefault();pauseFlight();return;}
   if(e.target.closest('input,select,button,textarea,[contenteditable],[role="slider"]'))return;
-  if(e.code==='Space'){
-    e.preventDefault();if(!e.repeat){if(flight)flight.cruise=!flight.cruise;else startFlight(true);}return;
-  }
+  if(e.code==='Space'){e.preventDefault();if(!e.repeat){if(flight)flight.cruise=!flight.cruise;else startFlight(true);}return;}
   if(['KeyW','KeyA','KeyS','KeyD','KeyQ','KeyE','ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.code)) {
-    e.preventDefault();if(!startFlight(false))return;keys.add(e.code);
-    if(e.code==='KeyS'||e.code==='ArrowDown')flight.cruise=false;
+    e.preventDefault();if(!startFlight(false))return;keys.add(e.code);if(e.code==='KeyS'||e.code==='ArrowDown')flight.cruise=false;
   }
 });
 window.addEventListener('keyup',e=>keys.delete(e.code));
 let drag=false;
-canvas.addEventListener('pointerdown',e=>{pauseFlight();drag=true;canvas.setPointerCapture(e.pointerId);canvas.focus();});
-canvas.addEventListener('pointerup',()=>drag=false); canvas.addEventListener('pointercancel',()=>drag=false); canvas.addEventListener('lostpointercapture',()=>drag=false);
-canvas.addEventListener('pointermove',e=>{if(drag){state.roll=0;state.yaw+=e.movementX*.004;state.pitch=Math.max(-1.3,Math.min(1.1,state.pitch-e.movementY*.004));}});
-$('speed').addEventListener('input',()=>{$('speed-value').textContent=`${$('speed').value} km/h`;});
-$('reset').disabled=true;
+surface.addEventListener('pointerdown',e=>{pauseFlight();drag=true;surface.setPointerCapture(e.pointerId);surface.focus();});
+for(const event of ['pointerup','pointercancel','lostpointercapture'])surface.addEventListener(event,()=>drag=false);
+surface.addEventListener('pointermove',e=>{if(drag){state.roll=0;state.yaw+=e.movementX*.004;state.pitch=clamp(state.pitch-e.movementY*.004,MIN_PITCH,MAX_PITCH);}});
+$('speed').oninput=()=>{$('speed-value').textContent=`${$('speed').value} km/h`;};
 function frame(now) {
-  const dt=Math.min((now-frame.previous)/1000,.2)||0; frame.previous=now;
-  const dpr=Math.min(devicePixelRatio,2), w=Math.round(canvas.clientWidth*dpr), h=Math.round(canvas.clientHeight*dpr);
-  if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;gl.viewport(0,0,w,h);}
-  const input=flightControls.input(dt);
-  if(flight) {
+  if(!document.hidden)metrics.frame(now);else metrics.previous=undefined;
+  const dt=Math.min((now-frame.previous)/1000,.2)||0;frame.previous=now;
+  const input=controls.input(dt);
+  if(flight&&!resetting) {
     flight.speedLimit=+$('speed').value;
     flight.x=keys.has('KeyD')||keys.has('ArrowRight')?1:keys.has('KeyA')||keys.has('ArrowLeft')?-1:input.x;
     flight.y=keys.has('KeyS')||keys.has('ArrowDown')?0:keys.has('KeyW')||keys.has('ArrowUp')?1:input.y;
-    const vertical=Number(keys.has('KeyE'))-Number(keys.has('KeyQ'));
-    if(vertical)flight.clearance=clamp(flight.clearance+vertical*300*dt,100,2000);
-    flight.step(dt);
-    const s=flight.state;
-    state.eye=[s.east/1000,s.height/1000,-s.north/1000];state.yaw=s.heading;state.pitch=s.pitch;state.roll=s.roll;
-    if(flight.boundaryReached){pauseFlight();comparisonNotice='Reached the edge of this map. Choose a departure or another landscape.';noticeUntil=now+7000;}
+    flight.clearance=clamp(flight.clearance+(Number(keys.has('KeyE'))-Number(keys.has('KeyQ')))*300*dt,100,2000);
+    flight.step(dt);const s=flight.state;state.eye=[s.east/1000,s.height/1000,-s.north/1000];state.yaw=s.heading;state.pitch=s.pitch;state.roll=s.roll;
+    if(flight.boundaryReached){pauseFlight();notice='Reached the edge of this map. Choose another departure.';noticeUntil=now+7000;}
   }
-  flightControls.render({active:Boolean(flight),cruise:flight?.cruise??false,x:flight?.x??0,y:flight?.y??0,speed:flight?flight.state.velocity*flight.speed:0,clearance:flight?.clearance??Math.max(1,(state.eye[1]-terrain.ground(state.eye[0],-state.eye[2]))*1000)});
-  refreshTiles();pump();updateGeometry();
-  gl.clearColor(.56,.68,.73,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.useProgram(prog);
-  gl.uniformMatrix4fv(projectionLocation,false,perspective(Math.PI/3,w/h,.03,100));gl.uniformMatrix4fv(cameraLocation,false,view(state.eye,state.yaw,state.pitch,state.roll));
-  for(const mask of coverage.values()) {
-    gl.activeTexture(gl.TEXTURE0+mask.unit); gl.bindTexture(gl.TEXTURE_2D,mask.texture);
-    if(mask.dirty) { gl.texSubImage2D(gl.TEXTURE_2D,0,0,0,mask.width,mask.height,gl.RED_INTEGER,gl.UNSIGNED_BYTE,mask.data); mask.dirty=false; }
-  }
-  gl.activeTexture(gl.TEXTURE0);
-  triangles=0;
-  const levels={E:0,D:0,C:0};
-  for(const tile of tiles.values()){
-    if(!tile.count) continue;
-    gl.uniform1i(levelLocation,tile.level); gl.bindVertexArray(tile.vao);gl.bindTexture(gl.TEXTURE_2D,tile.texture);gl.drawArrays(gl.TRIANGLES,0,tile.count);
-    triangles+=tile.count/3; levels[tile.pack.id]++;
-  }
+  const clearance=state.eye[1]-ground();
+  controls.render({active:Boolean(flight),cruise:flight?.cruise??false,x:flight?.x??0,y:flight?.y??0,speed:flight?flight.state.velocity*flight.speed:0,clearance:flight?.clearance??Math.max(1,clearance*1000),pitch:state.pitch});
+  const status=renderer.frame(state,now),error=failure||status.error;
   $('position').textContent=`${state.eye[0].toFixed(2)} E / ${(-state.eye[2]).toFixed(2)} N`;
   $('altitude').textContent=`${Math.round(state.eye[1]*1000).toLocaleString()} m`;
   $('heading').textContent=`${((state.yaw*180/Math.PI%360+360)%360).toFixed(0).padStart(3,'0')}°`;
-  $('stats').textContent=`E ${levels.E} · D ${levels.D} · C ${levels.C} tiles · ${Math.round(triangles/1000)}k triangles · ${geometrySpacing||'—'} m`;
-  const loading=active+queue.length+Number(Boolean(geometryBusy));
-  notify(failure || (performance.now()<noticeUntil?comparisonNotice:'') || (loading ? `Loading landscape · ${levels.E+levels.D+levels.C} tiles ready` : !tiles.size ? 'No imagery at this location. Choose a departure to return.' : ''));
-  window.flytastic={ready:true,model:modelId,tiles:tiles.size,levels,triangles,loading,geometrySpacing,splitVertices,eye:[...state.eye],yaw:state.yaw,pitch:state.pitch,roll:state.roll,flightActive:Boolean(flight),cruise:flight?.cruise??false,flightSpeed:flight?flight.state.velocity*flight.speed:0,targetClearance:flight?.clearance,clearance:state.eye[1]-terrain.ground(state.eye[0],-state.eye[2]),error:failure,glError:gl.getError()};
+  $('stats').textContent=status.description;notify(error||(resetting?'Loading departure…':'')||(now<noticeUntil?notice:'')||(status.loading?'Loading landscape…':''));
+  window.flytastic={...status,ready:!resetting,model:modelId,rendererId,flattened:modelId==='swisstopo'?flattened:undefined,eye:[...state.eye],yaw:state.yaw,pitch:state.pitch,roll:state.roll,flightActive:Boolean(flight),clearance,error};
   requestAnimationFrame(frame);
 }
+window.flytasticSession={camera,sampleHeight:(east,north)=>renderer.ground(east,north)*1000,diagnostics:()=>renderer.diagnostics()};
 async function boot() {
-  if(!gl) throw new Error('WebGL 2 is unavailable. Enable graphics acceleration or try another browser.');
-  prog=program();projectionLocation=gl.getUniformLocation(prog,'projection');cameraLocation=gl.getUniformLocation(prog,'camera');gl.enable(gl.DEPTH_TEST);
-  levelLocation=gl.getUniformLocation(prog,'imageryLevel');gl.useProgram(prog);gl.uniform1i(gl.getUniformLocation(prog,'imagery'),0);
-  const [models,metadata]=await Promise.all([fetchOK('/api/models').then(r=>r.json()),fetchOK(api('/api/model')).then(r=>r.json())]);
-  model=metadata;
+  const response=await fetch('/api/models');if(!response.ok)throw Error('Could not load the model list');models=await response.json();
+  model=models.find(m=>m.id===modelId);if(!model?.available)throw Error('Original Flytastic data is unavailable. Restore GEODAT or select Swisstopo.');
   for(const option of $('model').options)option.disabled=!models.find(m=>m.id===option.value)?.available;
   $('model-credit').textContent=model.attribution;
-  $('terrain-caption').textContent=model.pilot?'SWISSTOPO TERRAIN · WEBGL 2':'ORIGINAL TERRAIN · WEBGL 2';
-  $('model-description').textContent=model.pilot?'Interlaken · 10 × 10 km pilot. 2 m aerial imagery and 10 m terrain.':'Explore the original Flytastic landscape, one mountain at a time.';
-  if(model.pilot)for(const option of $('destination').options)option.disabled=option.value!=='interlaken';
-  const [catalog,elevation,tree]=await Promise.all([fetchOK(api('/api/catalog')).then(r=>r.json()),fetchOK(api('/api/elevation')).then(r=>r.arrayBuffer()),fetchOK(api('/api/tree')).then(r=>r.arrayBuffer())]);
-  terrain=new Terrain(elevation,tree,model.terrain);
-  geometryWorker=new Worker('/geometry-worker.js',{type:'module'});
-  geometryWorker.onmessage=receiveGeometry;
-  geometryWorker.onerror=event=>{geometryBusy=null;geometryBroken=true;failure=`Terrain worker failed: ${event.message}`;};
-  geometryWorker.postMessage({type:'init',elevation,tree,metadata:model.terrain});
-  packs=LEVELS.map(({id})=>{
-    const pack=catalog.find(p=>p.id===id);if(!pack)throw new Error(`Original imagery pack ${id} is missing.`);
-    return {...pack,available:new Set(pack.tiles.map(([x,y])=>`${x}/${y}`))};
-  });
-  createCoverage(packs.find(p=>p.id==='D'),1); createCoverage(packs.find(p=>p.id==='C'),2);
-  const savedCamera=readCamera(location.hash);
-  const camera=savedCamera&&cameraInBounds(savedCamera,model.bounds)?savedCamera:null;
-  if(camera){
-    const option=[...$('destination').options].find(o=>o.value===camera.destination&&!o.disabled);
-    if(option)$('destination').value=option.value;
-    $('speed').value=camera.speed;$('speed-value').textContent=`${camera.speed} km/h`;
-  }
-  reset(camera);
-  $('model').disabled=false;
-  flightControls.enable();
-  $('fly').disabled=false;$('reset').disabled=false;
-  $('fly').onclick=()=>{if(flight)pauseFlight();else startFlight(true);document.getElementById('flight-pad').focus();};
-  $('reset').onclick=reset;$('destination').onchange=reset;requestAnimationFrame(frame);
+  $('model-description').textContent=modelId==='original'?'The original Flytastic landscape and renderer.':'Live swisstopo imagery and terrain across Switzerland.';
+  $('terrain-caption').textContent=modelId==='original'?'ORIGINAL FLYTASTIC':'SWISSTOPO · CESIUM';
+  const module=modelId==='original'?await import('./renderers/flytastic.js'):await import('./renderers/cesium.js');
+  renderer=module.createRenderer({canvas:$('scene'),host:$('cesium-scene'),credits:$('renderer-credits')});await renderer.init({model,flattened});
+  const saved=readCamera(location.hash),pose=saved&&cameraInBounds(saved,model.bounds)?saved:null;
+  if(pose){if(Object.hasOwn(destinations,pose.destination))$('destination').value=pose.destination;$('speed').value=pose.speed;$('speed').oninput();}
+  await reset(pose);$('model').disabled=$('flattened').disabled=false;controls.enable();
+  $('fly').onclick=()=>{if(flight)pauseFlight();else startFlight(true);$('flight-pad').focus();};
+  $('reset').onclick=()=>reset();$('destination').onchange=()=>reset();requestAnimationFrame(frame);
 }
-boot().catch(error=>{console.error(error);notify(error.message);$('stats').textContent='Unable to start';window.flytastic={ready:false,error:error.message};});
+window.addEventListener('pagehide',()=>renderer?.dispose());
+window.addEventListener('pageshow',event=>{if(event.persisted)location.reload();});
+boot().catch(error=>{console.error(error);notify(error.message);$('stats').textContent='Unable to start';$('model').disabled=false;window.flytastic={ready:false,error:error.message};});

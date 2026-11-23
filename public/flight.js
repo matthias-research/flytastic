@@ -6,14 +6,18 @@ const approach=(value,target,amount)=>value+clamp(target-value,-amount,amount);
 const ease=(value,target,dt,tau)=>value+(target-value)*-Math.expm1(-dt/tau);
 const signedAngle=angle=>Math.atan2(Math.sin(angle),Math.cos(angle));
 export const maximumFlightSpeed=clearance=>1000+clamp((clearance-100)/900,0,1)*4000;
+export const MIN_PITCH=radians(-60),MAX_PITCH=radians(60);
 
 export class FlightController {
   constructor(position,sampleGround=()=>0,bounds=null) {
-    this.state={...position,pitch:Math.max(position.pitch,radians(-20)),roll:signedAngle(position.roll??0),velocity:0,turn:0};
+    // Automatic pitch entry previously used pitch:Math.max(position.pitch,radians(-20)).
+    this.state={...position,pitch:clamp(position.pitch??0,MIN_PITCH,MAX_PITCH),roll:signedAngle(position.roll??0),velocity:0,turn:0};
     this.sampleGround=sampleGround;this.bounds=bounds;
     this.clearance=null;this.lastGround=undefined;this.cruise=false;
-    this.x=0;this.y=0;this.speedLimit=5000;this.viewPitch=radians(-20);
-    this.pitchHistorySeconds=0;this.boundaryReached=false;
+    this.x=0;this.y=0;this.speedLimit=5000;this.viewPitch=this.state.pitch;
+    // Automatic pitch state, retained for reference:
+    // this.viewPitch=radians(-20);this.pitchHistorySeconds=0;
+    this.boundaryReached=false;
   }
   get speed(){return Math.min(this.speedLimit,maximumFlightSpeed(this.state.height-(this.lastGround??this.state.height)));}
   followTerrain(dt) {
@@ -43,7 +47,7 @@ export class FlightController {
     let remaining=clamp(elapsed,0,.2);
     while(remaining>1e-8) {
       const dt=Math.min(remaining,1/60),s=this.state;
-      const previousEast=s.east,previousNorth=s.north,previousHeight=s.height;
+      // Automatic pitch: const previousEast=s.east,previousNorth=s.north,previousHeight=s.height;
       const throttle=clamp(this.y,0,1),motion=throttle>.02?throttle:Number(this.cruise);
       s.velocity=approach(s.velocity,motion,dt/.35);
       s.turn=approach(s.turn,clamp(this.x,-1,1),dt);
@@ -61,12 +65,15 @@ export class FlightController {
       const targetRoll=s.turn*radians(10)*Math.sign(s.velocity);
       s.roll=signedAngle(s.roll+signedAngle(targetRoll-s.roll)*-Math.expm1(-dt/.2));
       this.followTerrain(dt);
+      /* Automatic pitch disabled: the pitch selector now controls viewPitch.
       const horizontalDistance=Math.hypot(s.east-previousEast,s.north-previousNorth);
       const pathAngle=Math.atan2(s.height-previousHeight,Math.max(horizontalDistance,dt));
       const warmup=clamp(this.pitchHistorySeconds,0,1);
       const pitchOffset=s.velocity===0?0:clamp(pathAngle,0,radians(65))*warmup*warmup*(3-2*warmup);
       this.pitchHistorySeconds+=dt;
       s.pitch=Math.max(this.viewPitch,ease(s.pitch,this.viewPitch+pitchOffset,dt,.6));
+      */
+      s.pitch=clamp(this.viewPitch,MIN_PITCH,MAX_PITCH);
       remaining-=dt;
       if(this.boundaryReached)break;
     }

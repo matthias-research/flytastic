@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { FlightController, maximumFlightSpeed } from '../public/flight.js';
+import { FlightController, maximumFlightSpeed, MIN_PITCH, MAX_PITCH } from '../public/flight.js';
 import { view } from '../public/math.js';
 
 const make=(sample=()=>0,position={})=>new FlightController({east:632000,north:173000,height:650,heading:0,pitch:-.4,roll:0,...position},sample);
@@ -43,17 +43,15 @@ test('terrain lookahead climbs before reaching a slope and protects ground clear
   for(let i=0;i<600;i++){c.step(1/60);assert.ok(c.state.height>=terrain(c.state.east,c.state.north)+50);}
 });
 
-test('pitch warms up gently, reacts to climbs and returns to baseline without diving',()=>{
-  const baseline=-20*Math.PI/180;
+test('manual pitch stays selected through terrain climbs, descents, stops and flight entry',()=>{
   let ground=0;
-  const c=make(()=>ground,{pitch:baseline,height:200});c.y=.1;run(c,2);
-  ground=100;c.step(1/60);assert.ok(c.state.pitch>baseline&&c.state.pitch-baseline<.25);
-  run(c,.7);assert.ok(c.state.pitch>baseline+.02&&c.state.pitch<=Math.PI/4);
-  c.y=0;run(c,10);assert.ok(Math.abs(c.state.pitch-baseline)<1e-5);
-  ground=0;run(c,3);assert.ok(c.state.pitch>=baseline);
-  const startup=make((east,north)=>Math.hypot(east-632000,north-173000)<.01?0:1000,{height:1000,pitch:baseline});
-  startup.y=.03;startup.step(1/60);assert.equal(startup.state.pitch,baseline);
-  run(startup,.1);assert.ok(startup.state.pitch-baseline<.01);
+  const c=make(()=>ground,{pitch:MIN_PITCH,height:200});c.y=.1;run(c,2);
+  assert.equal(c.state.pitch,MIN_PITCH,'Flight entry retains a pitch below the old automatic baseline');
+  ground=100;run(c,2);assert.equal(c.state.pitch,MIN_PITCH);assert.ok(c.state.height>200);
+  c.viewPitch=.4;run(c,1);assert.equal(c.state.pitch,.4);
+  ground=0;c.y=0;run(c,10);assert.equal(c.state.pitch,.4);
+  c.viewPitch=10;c.step(1/60);assert.equal(c.state.pitch,MAX_PITCH);
+  c.viewPitch=-10;c.step(1/60);assert.equal(c.state.pitch,MIN_PITCH);
 });
 
 test('higher clearances smooth terrain more and respond more slowly',()=>{
