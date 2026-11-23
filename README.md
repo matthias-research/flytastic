@@ -49,6 +49,13 @@ caches. Returning to an already viewed surface avoids rebuilding its heightmaps.
 
 ## Controls
 
+Use **Where in Switzerland?** to search for towns, summits and street addresses
+through geo.admin.ch, using the search interface from Swiss Explorer. Select a
+result with the mouse or arrow keys and Enter. Flight pauses and the camera
+opens a terrain-aware view of the place in either version; the view is saved in
+the URL. Search requires internet access, including in the original version.
+Escape dismisses results, and the clear button resets the search.
+
 Enable **Winter** for shader-based snow cover in either version. **Snow line**
 sets its elevation in metres above sea level, with a gradual, irregular edge
 and less accumulation on steep faces. Interpolated vertex normals keep snow
@@ -105,6 +112,7 @@ across frames. Local geographic assets are never modified by the viewer.
 ```powershell
 npm test
 npm run test:browser
+npm run test:search
 ```
 
 The browser check uses an installed Microsoft Edge through Playwright and live

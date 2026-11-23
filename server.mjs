@@ -14,6 +14,7 @@ for(const name of ['app.js','models.js','terrain.js','geometry-worker.js','lod.j
 const mime={html:'text/html; charset=utf-8',js:'text/javascript; charset=utf-8',css:'text/css; charset=utf-8',json:'application/json',wasm:'application/wasm',png:'image/png',jpg:'image/jpeg',jpeg:'image/jpeg',svg:'image/svg+xml'};
 files.set('/snow.js','snow.js');
 files.set('/terrain-normals.js','terrain-normals.js');
+files.set('/place-search.js','place-search.js');
 const server=http.createServer(async(req,res)=>{
   try {
     if(!['GET','HEAD'].includes(req.method)){res.writeHead(405).end();return;}

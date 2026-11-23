@@ -8,6 +8,19 @@
 <body>
   <div id="viewport" tabindex="0" aria-label="3D terrain. Drag to look; use W A S D to move."><canvas id="scene"></canvas><div id="cesium-scene" hidden></div></div>
   <header><a class="brand" href="/">flytastic<span>WEB / 01</span></a><div class="edition"><i></i> SWISS TERRAIN EXPLORER</div><button id="reset">Reset view ↗</button></header>
+  <section class="place-search" aria-label="Find a place">
+    <div class="search-field">
+      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+      <input id="place-search" type="text" role="combobox" aria-label="Search Switzerland" aria-autocomplete="list" aria-expanded="false" aria-controls="place-results" placeholder="Where in Switzerland?" autocomplete="off" spellcheck="false" maxlength="160" disabled>
+      <button id="search-clear" type="button" aria-label="Clear search" hidden>&times;</button>
+    </div>
+    <div id="search-panel" class="search-panel" hidden>
+      <p id="search-message" role="status" aria-live="polite"></p>
+      <ul id="place-results" role="listbox" aria-label="Places"></ul>
+      <div class="search-caption">Places, summits &amp; addresses <span>geo.admin.ch</span></div>
+    </div>
+    <span id="search-announcement" class="sr-only" role="status" aria-live="polite"></span>
+  </section>
   <aside>
     <p class="eyebrow">TAKE A DIFFERENT PERSPECTIVE</p>
     <h1>The Alps.<br>From above.</h1>

@@ -2,6 +2,8 @@ import { readCamera, cameraHash, cameraInBounds } from './camera-state.js';
 import { FlightController, clamp, MIN_PITCH, MAX_PITCH } from './flight.js';
 import { configureFlightControls } from './flight-controls.js';
 import { FrameMetrics } from './frame-metrics.js';
+import { configurePlaceSearch } from './place-search.js';
+import { wgsToSwiss } from './swiss-coordinates.js';
 
 const $=id=>document.getElementById(id),surface=$('viewport'),params=new URLSearchParams(location.search);
 const modelId=params.get('model')==='swisstopo'?'swisstopo':params.get('model')==='original'?'original':$('model').value;
@@ -14,11 +16,13 @@ const state={eye:[632,1,-173],yaw:Math.PI,pitch:-.03,roll:0};
 const destinations={interlaken:[632,173,Math.PI,-.03],zermatt:[625,100,Math.PI,-.03],lucerne:[668,213,Math.PI,-.03]};
 const keys=new Set(),metrics=new FrameMetrics();
 let models,model,renderer,flight=null,resetting=true,resetId=0,failure='',notice='',noticeUntil=0;
+let placeSearch;
 const camera=()=>({eye:[...state.eye],yaw:state.yaw,pitch:state.pitch,roll:state.roll,speed:+$('speed').value,destination:$('destination').value});
 const ground=()=>renderer.ground(state.eye[0],-state.eye[2])??((flight?.lastGround??(state.eye[1]*1000-650))/1000);
 function notify(text){$('message').textContent=text;$('message').hidden=!text;}
 function pauseFlight(){flight=null;keys.clear();controls.reset();$('fly').textContent='Start cruise →';}
 function switchView(target,flat=flattened) {
+  placeSearch?.cancelNavigation();
   const pose=camera();pauseFlight();
   if(!cameraInBounds(pose,models.find(m=>m.id===target).bounds)) {
     notice='This position is outside the selected map. Choose a departure first.';noticeUntil=performance.now()+7000;
@@ -67,16 +71,33 @@ function startFlight(cruise=false) {
   }
   if(cruise)flight.cruise=true;$('fly').textContent='Pause flight Ⅱ';return true;
 }
-async function reset(pose=null) {
+async function reset(pose=null,place=null,isCurrent=()=>true) {
+  if(!place)placeSearch?.cancelNavigation();
   const id=++resetId;pauseFlight();notice='';noticeUntil=0;resetting=true;$('fly').disabled=$('reset').disabled=true;
-  const [x,y,yaw,pitch]=destinations[$('destination').value];
+  let [x,y,yaw,pitch]=destinations[$('destination').value];
+  if(place){x=place.east;y=place.north+place.offset;yaw=Math.PI;}
   try {
-    const height=await renderer.prepare(pose?.eye?.[0]??x,-(pose?.eye?.[2]??-y));if(id!==resetId)return;
-    state.eye=pose?.eye?[...pose.eye]:[x,height+.65,-y];state.yaw=pose?.yaw??yaw;state.pitch=clamp(pose?.pitch??pitch,MIN_PITCH,MAX_PITCH);state.roll=pose?.roll??0;
-    if(!pose?.eye){const url=new URL(location.href);url.hash='';history.replaceState(null,'',url);}
+    const [height,targetHeight]=await Promise.all([
+      renderer.prepare(pose?.eye?.[0]??x,-(pose?.eye?.[2]??-y)),
+      place?renderer.prepare(place.east,place.north):Promise.resolve(null),
+    ]);
+    if(id!==resetId||!isCurrent())return false;
+    if(place&&(!Number.isFinite(height)||!Number.isFinite(targetHeight)||targetHeight<=0))throw Error('No terrain is available for this place in the selected version.');
+    const altitude=place?Math.max(height+.65,targetHeight+place.offset*Math.tan(50*Math.PI/180)):height+.65;
+    if(place)pitch=-Math.atan2(altitude-targetHeight,place.offset);
+    state.eye=pose?.eye?[...pose.eye]:[x,altitude,-y];state.yaw=pose?.yaw??yaw;state.pitch=clamp(pose?.pitch??pitch,MIN_PITCH,MAX_PITCH);state.roll=pose?.roll??0;
     renderer.reset(state);failure='';
-  } catch(error){if(id===resetId)failure=`Terrain unavailable: ${error.message}. Reset view to retry.`;}
+    if(!pose?.eye){const url=new URL(location.href);url.hash=place?cameraHash(camera()):'';history.replaceState(null,'',url);}
+    document.title=place?`Flytastic · ${place.name}`:'Flytastic — Swiss terrain explorer';
+    return true;
+  } catch(error){if(id===resetId&&isCurrent()){if(place)throw error;failure=`Terrain unavailable: ${error.message}. Reset view to retry.`;}return false;}
   finally{if(id===resetId){resetting=false;$('reset').disabled=false;$('fly').disabled=Boolean(failure);}}
+}
+async function navigatePlace(place,isCurrent) {
+  const [east,north]=wgsToSwiss(place.longitude,place.latitude);
+  const target={...place,east:east/1000,north:north/1000,offset:(place.origin==='address'||place.origin==='parcel') ? 0.5 : 1.1};
+  if(!cameraInBounds({eye:[target.east,1,-target.north]},model.bounds)||!cameraInBounds({eye:[target.east,1,-(target.north+target.offset)]},model.bounds))throw Error(`This place is outside the selected map. ${modelId==='original'?'Try the Swisstopo version.':'Choose another place in Switzerland.'}`);
+  return reset(null,target,isCurrent);
 }
 window.flytasticMetrics={reset:()=>metrics.reset(),snapshot:()=>metrics.snapshot()};
 if(globalThis.PerformanceObserver&&PerformanceObserver.supportedEntryTypes.includes('longtask'))new PerformanceObserver(list=>{
@@ -136,6 +157,7 @@ async function boot() {
   const saved=readCamera(location.hash),pose=saved&&cameraInBounds(saved,model.bounds)?saved:null;
   if(pose){if(Object.hasOwn(destinations,pose.destination))$('destination').value=pose.destination;$('speed').value=pose.speed;$('speed').oninput();}
   await reset(pose);$('model').disabled=$('flattened').disabled=false;controls.enable();
+  placeSearch=configurePlaceSearch(navigatePlace);$('place-search').disabled=false;
   $('fly').onclick=()=>{if(flight)pauseFlight();else startFlight(true);$('flight-pad').focus();};
   $('reset').onclick=()=>reset();$('destination').onchange=()=>reset();requestAnimationFrame(frame);
 }

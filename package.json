@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node server.mjs",
     "test": "node --test",
-    "test:browser": "node scripts/check-viewer.mjs"
+    "test:browser": "node scripts/check-viewer.mjs",
+    "test:search": "node scripts/check-search.mjs"
   },
   "engines": {
     "node": ">=22"
