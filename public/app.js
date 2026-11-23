@@ -6,6 +6,9 @@ import { FrameMetrics } from './frame-metrics.js';
 const $=id=>document.getElementById(id),surface=$('viewport'),params=new URLSearchParams(location.search);
 const modelId=params.get('model')==='swisstopo'?'swisstopo':params.get('model')==='original'?'original':$('model').value;
 let flattened=params.get('flattened')!=='0';
+let winter=params.get('winter')==='1';
+const savedSnowLine=params.get('snowLine');
+let snowLine=savedSnowLine!==null&&Number.isFinite(+savedSnowLine)?Math.round(clamp(+savedSnowLine,0,3500)/50)*50:1600;
 const rendererId=modelId==='original'?'flytastic':'cesium';
 const state={eye:[632,1,-173],yaw:Math.PI,pitch:-.03,roll:0};
 const destinations={interlaken:[632,173,Math.PI,-.03],zermatt:[625,100,Math.PI,-.03],lucerne:[668,213,Math.PI,-.03]};
@@ -21,10 +24,22 @@ function switchView(target,flat=flattened) {
     notice='This position is outside the selected map. Choose a departure first.';noticeUntil=performance.now()+7000;
     $('model').value=modelId;$('flattened').checked=flattened;return;
   }
-  const url=new URL(location.href);url.search=new URLSearchParams({model:target,flattened:flat?'1':'0'});url.hash=cameraHash(pose);location.href=url.href;
+  const url=new URL(location.href);url.searchParams.set('model',target);url.searchParams.set('flattened',flat?'1':'0');url.hash=cameraHash(pose);location.href=url.href;
 }
 $('model').value=modelId;$('flattened').checked=flattened;
 $('swisstopo-settings').hidden=modelId!=='swisstopo';
+$('winter').checked=winter;$('snow-line').value=snowLine;
+function updateWinter(save=false) {
+  $('snow-settings').hidden=!winter;$('snow-line-value').textContent=`${snowLine} m`;
+  renderer?.setWinter(winter,snowLine);
+  if(save) {
+    const url=new URL(location.href);url.searchParams.set('winter',winter?'1':'0');url.searchParams.set('snowLine',snowLine);
+    history.replaceState(null,'',url);
+  }
+}
+updateWinter();
+$('winter').onchange=()=>{winter=$('winter').checked;updateWinter(true);};
+$('snow-line').oninput=()=>{snowLine=+$('snow-line').value;updateWinter(true);};
 $('model').disabled=$('flattened').disabled=$('reset').disabled=true;
 $('model').onchange=()=>switchView($('model').value);
 $('flattened').onchange=()=>{
@@ -103,7 +118,7 @@ function frame(now) {
   $('altitude').textContent=`${Math.round(state.eye[1]*1000).toLocaleString()} m`;
   $('heading').textContent=`${((state.yaw*180/Math.PI%360+360)%360).toFixed(0).padStart(3,'0')}°`;
   $('stats').textContent=status.description;notify(error||(resetting?'Loading departure…':'')||(now<noticeUntil?notice:'')||(status.loading?'Loading landscape…':''));
-  window.flytastic={...status,ready:!resetting,model:modelId,rendererId,flattened:modelId==='swisstopo'?flattened:undefined,eye:[...state.eye],yaw:state.yaw,pitch:state.pitch,roll:state.roll,flightActive:Boolean(flight),clearance,error};
+  window.flytastic={...status,ready:!resetting,model:modelId,rendererId,winter,snowLine,flattened:modelId==='swisstopo'?flattened:undefined,eye:[...state.eye],yaw:state.yaw,pitch:state.pitch,roll:state.roll,flightActive:Boolean(flight),clearance,error};
   requestAnimationFrame(frame);
 }
 window.flytasticSession={camera,sampleHeight:(east,north)=>renderer.ground(east,north)*1000,diagnostics:()=>renderer.diagnostics()};
@@ -116,6 +131,8 @@ async function boot() {
   $('terrain-caption').textContent=modelId==='original'?'ORIGINAL FLYTASTIC':'SWISSTOPO · CESIUM';
   const module=modelId==='original'?await import('./renderers/flytastic.js'):await import('./renderers/cesium.js');
   renderer=module.createRenderer({canvas:$('scene'),host:$('cesium-scene'),credits:$('renderer-credits')});await renderer.init({model,flattened});
+  updateWinter();
+  $('winter').disabled=$('snow-line').disabled=false;
   const saved=readCamera(location.hash),pose=saved&&cameraInBounds(saved,model.bounds)?saved:null;
   if(pose){if(Object.hasOwn(destinations,pose.destination))$('destination').value=pose.destination;$('speed').value=pose.speed;$('speed').oninput();}
   await reset(pose);$('model').disabled=$('flattened').disabled=false;controls.enable();

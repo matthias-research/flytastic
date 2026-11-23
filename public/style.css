@@ -27,3 +27,4 @@ aside{max-height:calc(100dvh - 270px);overflow-y:auto;scrollbar-width:thin}
 @media(min-width:701px) and (max-height:1100px){aside{top:100px;padding:18px;max-height:calc(100dvh - 220px)}aside h1{font-size:26px}aside .intro{display:none}aside .eyebrow{margin-bottom:12px}aside .model-credit{margin:6px 0 10px}aside input{margin:10px 0 14px}aside .primary{margin-bottom:14px}}
 
 .pitch-zero{position:absolute;left:20%;right:20%;top:50%;height:1px;background:#abc6be88;pointer-events:none}
+#snow-settings{margin-top:14px}#snow-settings[hidden]{display:none}

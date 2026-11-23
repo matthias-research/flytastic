@@ -32,6 +32,15 @@ export class Terrain {
     return (this.height(ix, iy) * (1-u) + this.height(ix+1, iy) * u) * (1-v)
       + (this.height(ix, iy+1) * (1-u) + this.height(ix+1, iy+1) * u) * v;
   }
+  normal(east,north) {
+    // Fixed source-grid spacing keeps normals consistent across LOD and imagery
+    // tile boundaries. GPU axes are east/up/negative-north.
+    const d=this.step;
+    const x=(this.ground(east-d,north)-this.ground(east+d,north))/(2*d);
+    const z=(this.ground(east,north+d)-this.ground(east,north-d))/(2*d);
+    const length=Math.hypot(x,1,z);
+    return [x/length,1/length,z/length];
+  }
   refinement(eye, bounds) {
     const splits = new Set();
     const force = (x, y) => {
@@ -68,10 +77,11 @@ export class Terrain {
     visit(0,this.size,this.size,this.size,this.size,0,0);
     return splits;
   }
-  mesh(bounds, depth = 22, error = 4, refinement = null) {
+  mesh(bounds, depth = 22, error = 4, refinement = null, withNormals = false) {
     const [west, south, east, north] = bounds;
     const gridBounds = [(west-this.origin[0])/this.step, (south-this.origin[1])/this.step, (east-this.origin[0])/this.step, (north-this.origin[1])/this.step];
     const vertices = [];
+    const normals=new Map();
     const code = (x,y) => (x < gridBounds[0] ? 2 : x > gridBounds[2] ? 1 : 0) | (y < gridBounds[1] ? 4 : y > gridBounds[3] ? 8 : 0);
     const emit = (points) => {
       // Sutherland-Hodgman clipping replaces the original clipTriangle's case table.
@@ -88,7 +98,15 @@ export class Terrain {
       for (let i=1;i<points.length-1;i++) {
         const tri=[points[0],points[i],points[i+1]];
         if (tri.some(v=>v[2]<=0)) continue; // Original renderTriangle no-data rule.
-        for (const [x,y,z] of tri) vertices.push(x,z,-y,(x-west)/(east-west),(y-south)/(north-south));
+        for (const [x,y,z] of tri) {
+          vertices.push(x,z,-y,(x-west)/(east-west),(y-south)/(north-south));
+          if(withNormals) {
+            const key=`${x.toFixed(6)}/${y.toFixed(6)}`;
+            let normal=normals.get(key);
+            if(!normal){normal=this.normal(x,y);normals.set(key,normal);}
+            vertices.push(...normal);
+          }
+        }
       }
     };
     const visit = (lx,ly,tx,ty,rx,ry,level) => {

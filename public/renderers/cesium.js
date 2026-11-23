@@ -2,6 +2,8 @@ import { swissToWgs } from '../swiss-coordinates.js';
 import { TERRAIN_URL } from '../models.js';
 import { createSurfaceProvider } from '../surface-provider.js';
 import { createFlightTerrain } from '../flight-terrain.js';
+import { snowGLSL } from '../snow.js';
+import { withTerrainNormals } from '../terrain-normals.js';
 
 let cesiumReady;
 function loadCesium() {
@@ -18,7 +20,20 @@ function loadCesium() {
 export function createRenderer({canvas,host,credits}) {
   let C,viewer,loading=0,lastGlCheck=0,glError=0,renderError='',providerErrors=0;
   let groundSampler,surfaceProvider,base,flattened;
+  let snowMaterial;
   const errors=new Map();
+  function connectSnowImagery() {
+    if(viewer.scene.globe.material!==snowMaterial)return;
+    // Cesium 1.146's globe Material input omits imagery color. Pass the color
+    // already sampled by GlobeFS into our material, before its normal blending.
+    // Reapply after material/provider changes, which rebuild these sources.
+    const sources=viewer.scene.globe._surfaceShaderSet.baseFragmentShaderSource.sources;
+    const call='czm_material material = czm_getMaterial(materialInput);';
+    const bridge='flytasticSnowPhoto = color.rgb;';
+    const index=sources.findIndex(source=>source.includes(call));
+    if(index<0)throw Error('Cesium globe shader changed: snow imagery integration needs updating.');
+    if(!sources[index].includes(bridge))sources[index]=sources[index].replace(call,`${bridge}\n    ${call}`);
+  }
   function report(layer,error) {
     providerErrors++;
     if(error.timesRetried<2)error.retry=true;
@@ -44,6 +59,22 @@ export function createRenderer({canvas,host,credits}) {
       viewer.scene.globe.depthTestAgainstTerrain=true;
       viewer.scene.globe.maximumScreenSpaceError=2;
       viewer.scene.globe.tileCacheSize=256;
+      // Cesium interpolates the terrain's vertex normals across each triangle.
+      snowMaterial=new C.Material({fabric:{type:'FlytasticSnow',uniforms:{snowLine:1600},source:`
+        ${snowGLSL}
+        vec3 flytasticSnowPhoto;
+        czm_material czm_getMaterial(czm_materialInput inputData) {
+          czm_material result=czm_getDefaultMaterial(inputData);
+          vec3 eyePosition=-inputData.positionToEyeEC;
+          vec3 worldPosition=(czm_inverseView*vec4(eyePosition,1.0)).xyz;
+          vec3 up=czm_viewRotation*normalize(worldPosition);
+          float upFacing=clamp(dot(normalize(inputData.normalEC),up),0.0,1.0);
+          vec4 snow=snowAppearance(flytasticSnowPhoto,snowCoverage(inputData.height,upFacing,worldPosition,snowLine,flytasticSnowPhoto));
+          result.diffuse=snow.rgb;
+          result.alpha=snow.a;
+          return result;
+        }
+      `}});
       viewer.scene.globe.cartographicLimitRectangle=C.Rectangle.fromDegrees(5.5,45.4,11.1,48.1);
       viewer.scene.globe.tileLoadProgressEvent.addEventListener(count=>{loading=count;if(count===0)errors.clear();});
       viewer.scene.renderError.addEventListener((scene,error)=>{renderError=error.message;});
@@ -54,17 +85,23 @@ export function createRenderer({canvas,host,credits}) {
       });
       imagery.errorEvent.addEventListener(error=>report('Imagery',error));
       viewer.imageryLayers.addImageryProvider(imagery);
-      base=await C.CesiumTerrainProvider.fromUrl(TERRAIN_URL,{credit:'© swisstopo'});
-      surfaceProvider=flattened?null:createSurfaceProvider(C,base);
+      base=withTerrainNormals(C,await C.CesiumTerrainProvider.fromUrl(TERRAIN_URL,{credit:'© swisstopo',requestVertexNormals:true}));
+      surfaceProvider=flattened?null:withTerrainNormals(C,createSurfaceProvider(C,base));
       viewer.terrainProvider=surfaceProvider??base;
       viewer.terrainProvider.errorEvent.addEventListener(error=>report('Terrain',error));
       groundSampler=createFlightTerrain(C,viewer,base);
     },
+    setWinter(enabled,line) {
+      snowMaterial.uniforms.snowLine=line;
+      const material=enabled?snowMaterial:undefined;
+      if(viewer.scene.globe.material!==material){viewer.scene.globe.material=material;connectSnowImagery();}
+    },
     setFlattened(flat) {
       if(flat===flattened)return;
       flattened=flat;
-      if(!flat&&!surfaceProvider)surfaceProvider=createSurfaceProvider(C,base);
+      if(!flat&&!surfaceProvider)surfaceProvider=withTerrainNormals(C,createSurfaceProvider(C,base));
       groundSampler.clear();viewer.terrainProvider=flat?base:surfaceProvider;
+      connectSnowImagery();
     },
     prepare:(east,north)=>groundSampler.prepare(east,north),
     ground:(east,north)=>groundSampler.ground(east,north),

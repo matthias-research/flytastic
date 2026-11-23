@@ -49,6 +49,21 @@ caches. Returning to an already viewed surface avoids rebuilding its heightmaps.
 
 ## Controls
 
+Enable **Winter** for shader-based snow cover in either version. **Snow line**
+sets its elevation in metres above sea level, with a gradual, irregular edge
+and less accumulation on steep faces. Interpolated vertex normals keep snow
+coverage smooth across triangles. Photo brightness and green tones vary snow
+coverage and tint, retaining fine texture and the photograph's existing shadows.
+These are visual cues, not reliable tree/rock classification.
+Lighting and terrain geometry stay unchanged; there are no
+falling particles. Swisstopo uses supplied terrain normals when available;
+meshes without normals get them once when built. Aerial imagery has no semantic
+mask, so low snow lines can also whiten water, roads and vegetation.
+Winter and snow-line settings persist in the URL (`winter=1&snowLine=1600`).
+The Cesium integration passes its already sampled imagery color into the snow
+material through a guarded globe-shader source hook for pinned Cesium 1.146;
+check this hook when upgrading Cesium. No extra imagery samples are needed.
+
 Drag the landscape to look. Use **Start cruise**, Space, or the flight joystick
 to fly; Escape pauses. W/A/S/D and arrow keys control movement, Q/E adjust target
 clearance. The left vertical control sets camera pitch (−60° to +60°), and the

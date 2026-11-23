@@ -12,6 +12,8 @@ const publicRoot=new URL('./public/',import.meta.url),cesiumRoot=fileURLToPath(n
 const files=new Map([['/','index.html']]);
 for(const name of ['app.js','models.js','terrain.js','geometry-worker.js','lod.js','math.js','camera-state.js','flight.js','flight-controls.js','frame-metrics.js','flight-terrain.js','swiss-coordinates.js','quantized-mesh.js','surface-heights.js','surface-stream.js','surface-tile.js','surface-worker.js','surface-provider.js','renderers/flytastic.js','renderers/cesium.js','style.css'])files.set(`/${name}`,name);
 const mime={html:'text/html; charset=utf-8',js:'text/javascript; charset=utf-8',css:'text/css; charset=utf-8',json:'application/json',wasm:'application/wasm',png:'image/png',jpg:'image/jpeg',jpeg:'image/jpeg',svg:'image/svg+xml'};
+files.set('/snow.js','snow.js');
+files.set('/terrain-normals.js','terrain-normals.js');
 const server=http.createServer(async(req,res)=>{
   try {
     if(!['GET','HEAD'].includes(req.method)){res.writeHead(405).end();return;}

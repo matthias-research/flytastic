@@ -1,6 +1,7 @@
 import { Terrain } from '../terrain.js';
 import { perspective, view } from '../math.js';
 import { LEVELS, selectTiles, coverageIndex } from '../lod.js';
+import { snowGLSL } from '../snow.js';
 
 // Original Flytastic data and rendering only.
 export function createRenderer({canvas}) {
@@ -12,6 +13,7 @@ let geometryId=0,splitVertices=0,geometrySpacing=0,geometryBroken=false;
 let geometryUpload=null,textureRevision=0;
 const textureUploads=[],tileRequests=new Map(),tileRetries=new Map();
 let nextTileRetry=Infinity,lastGlCheck=0,glError=0,disposed=false;
+let winter=false,snowLine=1600,snowEnabledLocation,snowLineLocation;
 const anchor=()=>{
   return [Math.floor(state.eye[0]),Math.floor(state.eye[1]*2),Math.floor(-state.eye[2])].join('/');
 };
@@ -24,8 +26,9 @@ function program() {
   gl.attachShader(p,shader(gl.VERTEX_SHADER,`#version 300 es
     precision highp float;
     layout(location=0) in vec3 position; layout(location=1) in vec2 uv;
-    uniform mat4 projection, camera; out vec2 texcoord, terrainPosition; out float distanceKm;
-    void main(){vec4 v=camera*vec4(position,1.);gl_Position=projection*v;texcoord=uv;terrainPosition=vec2(position.x,-position.z);distanceKm=length(v.xyz);}`));
+    layout(location=2) in vec3 vertexNormal;
+    uniform mat4 projection, camera; out vec2 texcoord, terrainPosition; out float distanceKm; out vec3 snowPosition,snowNormal;
+    void main(){vec4 v=camera*vec4(position,1.);gl_Position=projection*v;texcoord=uv;terrainPosition=vec2(position.x,-position.z);distanceKm=length(v.xyz);snowPosition=position;snowNormal=vertexNormal;}`));
   gl.attachShader(p,shader(gl.FRAGMENT_SHADER,`#version 300 es
     precision highp float; precision highp int;
     in vec2 texcoord, terrainPosition; in float distanceKm;
@@ -33,6 +36,10 @@ function program() {
     uniform highp usampler2D coverageD, coverageC;
     uniform vec3 gridD, gridC;
     uniform int imageryLevel;
+    in vec3 snowPosition,snowNormal;
+    uniform bool snowEnabled;
+    uniform float snowLine;
+    ${snowGLSL}
     out vec4 color;
     bool covered(highp usampler2D mask, vec3 grid) {
       ivec2 cell=ivec2(floor((terrainPosition-grid.xy)/grid.z));
@@ -45,6 +52,11 @@ function program() {
       if(imageryLevel<2 && covered(coverageC,gridC)) discard;
       if(imageryLevel<1 && covered(coverageD,gridD)) discard;
       vec4 sampleColor=texture(imagery,texcoord);if(sampleColor.a<.5)discard;vec3 c=sampleColor.rgb;float fog=smoothstep(12.,39.,distanceKm);
+      if(snowEnabled) {
+        float upFacing=clamp(normalize(snowNormal).y,0.,1.);
+        vec4 snow=snowAppearance(c,snowCoverage(snowPosition.y*1000.,upFacing,snowPosition*1000.,snowLine,c));
+        c=mix(c,snow.rgb,snow.a);
+      }
       color=vec4(mix(c,vec3(.56,.68,.73),fog*.88),1.);
     }`));
   gl.linkProgram(p); if(!gl.getProgramParameter(p,gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(p)); return p;
@@ -60,13 +72,14 @@ function dispose(tile) {
   gl.deleteTexture(tile.texture); gl.deleteBuffer(tile.buffer); gl.deleteVertexArray(tile.vao);
 }
 function installMesh(tile, mesh, markCoverage=true) {
-  tile.count=mesh.length/5;
+  tile.count=mesh.length/8;
   if(mesh.length) {
     if(!tile.vao) {
       tile.vao=gl.createVertexArray(); tile.buffer=gl.createBuffer();
       gl.bindVertexArray(tile.vao); gl.bindBuffer(gl.ARRAY_BUFFER,tile.buffer);
-      gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0,3,gl.FLOAT,false,20,0);
-      gl.enableVertexAttribArray(1); gl.vertexAttribPointer(1,2,gl.FLOAT,false,20,12);
+      gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0,3,gl.FLOAT,false,32,0);
+      gl.enableVertexAttribArray(1); gl.vertexAttribPointer(1,2,gl.FLOAT,false,32,12);
+      gl.enableVertexAttribArray(2); gl.vertexAttribPointer(2,3,gl.FLOAT,false,32,20);
     }
     gl.bindBuffer(gl.ARRAY_BUFFER,tile.buffer); gl.bufferData(gl.ARRAY_BUFFER,mesh,gl.STATIC_DRAW);
   }
@@ -199,6 +212,7 @@ return {
     if(!gl)throw Error('WebGL 2 is unavailable. Enable graphics acceleration or try another browser.');
     prog=program();projectionLocation=gl.getUniformLocation(prog,'projection');cameraLocation=gl.getUniformLocation(prog,'camera');gl.enable(gl.DEPTH_TEST);
     levelLocation=gl.getUniformLocation(prog,'imageryLevel');gl.useProgram(prog);gl.uniform1i(gl.getUniformLocation(prog,'imagery'),0);
+    snowEnabledLocation=gl.getUniformLocation(prog,'snowEnabled');snowLineLocation=gl.getUniformLocation(prog,'snowLine');
     geometryWorker=new Worker('/geometry-worker.js',{type:'module'});
     geometryWorker.onmessage=receiveGeometry;
     geometryWorker.onerror=event=>{geometryBusy=null;geometryBroken=true;failure=`Terrain worker failed: ${event.message}`;};
@@ -209,6 +223,7 @@ return {
     geometryWorker.postMessage({type:'init',elevation,tree,metadata:model.terrain});
     createCoverage(packs.find(p=>p.id==='D'),1);createCoverage(packs.find(p=>p.id==='C'),2);
   },
+  setWinter(enabled,line){winter=enabled;snowLine=line;},
   prepare:async(east,north)=>terrain.ground(east,north),
   ground:(east,north)=>terrain.ground(east,north),
   reset(pose) {
@@ -222,6 +237,7 @@ return {
     if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;gl.viewport(0,0,w,h);}
   refreshTiles();pump();uploadTexture();uploadGeometry();updateGeometry();
   gl.clearColor(.56,.68,.73,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.useProgram(prog);
+  gl.uniform1i(snowEnabledLocation,winter?1:0);gl.uniform1f(snowLineLocation,snowLine);
   gl.uniformMatrix4fv(projectionLocation,false,perspective(Math.PI/3,w/h,.03,100));gl.uniformMatrix4fv(cameraLocation,false,view(state.eye,state.yaw,state.pitch,state.roll));
   for(const mask of coverage.values()) {
     gl.activeTexture(gl.TEXTURE0+mask.unit); gl.bindTexture(gl.TEXTURE_2D,mask.texture);

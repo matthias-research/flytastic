@@ -19,6 +19,11 @@
       <label class="checkbox-label"><input id="flattened" type="checkbox" checked disabled> Flattened</label>
       <p class="model-credit">Uncheck to include roof and tree-canopy heights.</p>
     </div>
+    <label class="checkbox-label"><input id="winter" type="checkbox" disabled> Winter</label>
+    <div id="snow-settings" hidden>
+      <div class="speed-label"><label for="snow-line">SNOW LINE</label><span id="snow-line-value">1600 m</span></div>
+      <input id="snow-line" type="range" min="0" max="3500" step="50" value="1600" aria-label="Snow line in metres above sea level" disabled>
+    </div>
     <label for="destination">DEPARTURE</label>
     <select id="destination"><option value="interlaken">Bernese Oberland</option><option value="zermatt">Zermatt & the Matterhorn</option><option value="lucerne">Lake Lucerne</option></select>
     <button id="fly" class="primary" disabled>Loading terrain…</button>
