@@ -105,6 +105,20 @@ export function createRenderer({canvas,host,credits}) {
     },
     prepare:(east,north)=>groundSampler.prepare(east,north),
     ground:(east,north)=>groundSampler.ground(east,north),
+    labelGround:p=>viewer.scene.globe.getHeight(C.Cartographic.fromDegrees(p.longitude,p.latitude))/1000,
+    projectLabel(p,height) {
+      const position=C.Cartesian3.fromDegrees(p.longitude,p.latitude,height*1000);
+      const delta=C.Cartesian3.subtract(position,viewer.camera.positionWC,new C.Cartesian3());
+      if(C.Cartesian3.dot(delta,viewer.camera.directionWC)<=30)return;
+      return C.SceneTransforms.worldToWindowCoordinates(viewer.scene,position);
+    },
+    labelVisible(p,height) {
+      const position=C.Cartesian3.fromDegrees(p.longitude,p.latitude,height*1000),origin=viewer.camera.positionWC;
+      const delta=C.Cartesian3.subtract(position,origin,new C.Cartesian3()),distance=C.Cartesian3.magnitude(delta);
+      const ray=new C.Ray(origin,C.Cartesian3.normalize(delta,delta));
+      const hit=viewer.scene.globe.pick(ray,viewer.scene);
+      return !hit||C.Cartesian3.distance(origin,hit)>=distance-25;
+    },
     reset(){},
     pickTerrain(x,y) {
       const ray=viewer.camera.getPickRay(new C.Cartesian2(x,y));

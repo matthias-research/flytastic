@@ -1,0 +1,24 @@
+Swiss settlement names, peak names and coordinates
+
+© OpenStreetMap contributors
+https://www.openstreetmap.org/copyright
+
+The accompanying villages.json and peaks.json is a filtered and reformatted extract of the
+OpenStreetMap database, made available under the Open Data Commons Open Database
+License (ODbL) 1.0:
+https://opendatacommons.org/licenses/odbl/1-0/
+
+Individual contents are available under the Database Contents License:
+https://opendatacommons.org/licenses/dbcl/1-0/
+
+Source: OpenStreetMap via Overpass API. The exact query, source timestamp,
+endpoint, and response SHA-256 are retained in switzerland.json.
+
+Selection: named settlement points within the OSM Swiss country boundary tagged
+place=city, place=town, or place=village. Local names are preserved. Population
+is included only when an integer can be parsed without guessing. No elevations,
+terrain queries, geocoding queries, or rendered labels are included in this file.
+
+When displaying these data on a map, include visible OpenStreetMap attribution
+linked to https://www.openstreetmap.org/copyright.
+

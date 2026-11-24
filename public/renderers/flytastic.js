@@ -2,6 +2,7 @@ import { Terrain } from '../terrain.js';
 import { perspective, view } from '../math.js';
 import { LEVELS, selectTiles, coverageIndex } from '../lod.js';
 import { snowGLSL } from '../snow.js';
+import { projectLabel } from '../overlay-layout.js';
 
 // Original Flytastic data and rendering only.
 export function createRenderer({canvas}) {
@@ -226,6 +227,18 @@ return {
   setWinter(enabled,line){winter=enabled;snowLine=line;},
   prepare:async(east,north)=>terrain.ground(east,north),
   ground:(east,north)=>terrain.ground(east,north),
+  labelGround:p=>terrain.ground(p.east,p.north),
+  projectLabel:(p,height,pose)=>projectLabel(pose,[p.east,height,-p.north],canvas.clientWidth,canvas.clientHeight),
+  labelVisible(p,height,pose) {
+    const target=[p.east,height,-p.north],distance=Math.hypot(...target.map((v,i)=>v-pose.eye[i]));
+    const steps=Math.min(96,Math.max(8,Math.ceil(distance/.3)));
+    for(let i=1;i<steps;i++) {
+      const t=i/steps,east=pose.eye[0]+(target[0]-pose.eye[0])*t,north=-pose.eye[2]+(p.north+pose.eye[2])*t;
+      const ground=terrain.ground(east,north);
+      if(!Number.isFinite(ground)||ground>pose.eye[1]+(height-pose.eye[1])*t+.015)return false;
+    }
+    return true;
+  },
   reset(pose) {
     state=pose;generation++;failure='';lastCell='';tileRetries.clear();nextTileRetry=Infinity;
     geometrySignature='';geometryAnchor='';splitVertices=0;geometrySpacing=0;cancelGeometryUpload();

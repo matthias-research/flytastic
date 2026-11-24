@@ -5,6 +5,7 @@ import { FrameMetrics } from './frame-metrics.js';
 import { configurePlaceSearch } from './place-search.js';
 import { wgsToSwiss } from './swiss-coordinates.js';
 import { configureMapNavigation } from './map-navigation.js';
+import { createGeographicLabels } from './geographic-labels.js';
 
 const $=id=>document.getElementById(id),surface=$('viewport'),params=new URLSearchParams(location.search);
 const modelId=params.get('model')==='swisstopo'?'swisstopo':params.get('model')==='original'?'original':$('model').value;
@@ -17,7 +18,7 @@ const state={eye:[632,1,-173],yaw:Math.PI,pitch:-.03,roll:0};
 const destinations={interlaken:[632,173,Math.PI,-.03],zermatt:[625,100,Math.PI,-.03],lucerne:[668,213,Math.PI,-.03]};
 const keys=new Set(),metrics=new FrameMetrics();
 let models,model,renderer,flight=null,resetting=true,resetId=0,failure='',notice='',noticeUntil=0;
-let placeSearch,mapNavigation,navigationMode='map',cameraSaveTimer;
+let placeSearch,mapNavigation,geographicLabels,navigationMode='map',cameraSaveTimer;
 const camera=()=>({eye:[...state.eye],yaw:state.yaw,pitch:state.pitch,roll:state.roll,speed:+$('speed').value,destination:$('destination').value});
 const ground=()=>renderer.ground(state.eye[0],-state.eye[2])??((flight?.lastGround??(state.eye[1]*1000-650))/1000);
 function notify(text){$('message').textContent=text;$('message').hidden=!text;}
@@ -142,11 +143,12 @@ function frame(now) {
   const clearance=state.eye[1]-ground();
   controls.render({active:Boolean(flight),navigationMode,cruise:flight?.cruise??false,x:flight?.x??0,y:flight?.y??0,speed:flight?flight.state.velocity*flight.speed:0,clearance:flight?.clearance??Math.max(1,clearance*1000),pitch:state.pitch});
   const status=renderer.frame(state,now),error=failure||status.error;
+  try{geographicLabels?.frame(state,now);}catch(error){console.warn('Geographic labels disabled:',error);geographicLabels?.dispose();geographicLabels=null;$('overlay-status').textContent='Geographic labels unavailable.';$('village-names').disabled=$('mountain-peaks').disabled=true;$('overlay-credits').hidden=true;}
   $('position').textContent=`${state.eye[0].toFixed(2)} E / ${(-state.eye[2]).toFixed(2)} N`;
   $('altitude').textContent=`${Math.round(state.eye[1]*1000).toLocaleString()} m`;
   $('heading').textContent=`${((state.yaw*180/Math.PI%360+360)%360).toFixed(0).padStart(3,'0')}°`;
   $('stats').textContent=status.description;notify(error||(resetting?'Loading departure…':'')||(now<noticeUntil?notice:'')||(status.loading?'Loading landscape…':''));
-  window.flytastic={...status,ready:!resetting,model:modelId,rendererId,navigationMode,winter,snowLine,flattened:modelId==='swisstopo'?flattened:undefined,eye:[...state.eye],yaw:state.yaw,pitch:state.pitch,roll:state.roll,flightActive:Boolean(flight),clearance,error};
+  window.flytastic={...status,ready:!resetting,model:modelId,rendererId,navigationMode,winter,snowLine,labels:geographicLabels?.status,flattened:modelId==='swisstopo'?flattened:undefined,eye:[...state.eye],yaw:state.yaw,pitch:state.pitch,roll:state.roll,flightActive:Boolean(flight),clearance,error};
   requestAnimationFrame(frame);
 }
 window.flytasticSession={camera,sampleHeight:(east,north)=>renderer.ground(east,north)*1000,diagnostics:()=>renderer.diagnostics()};
@@ -164,6 +166,7 @@ async function boot() {
   const saved=readCamera(location.hash),pose=saved&&cameraInBounds(saved,model.bounds)?saved:null;
   if(pose){if(Object.hasOwn(destinations,pose.destination))$('destination').value=pose.destination;$('speed').value=pose.speed;$('speed').oninput();}
   await reset(pose);$('model').disabled=$('flattened').disabled=false;controls.enable();
+  geographicLabels=createGeographicLabels(renderer);
   placeSearch=configurePlaceSearch(navigatePlace);$('place-search').disabled=false;
   mapNavigation=configureMapNavigation({element:surface,state,
     ground:(east,north)=>renderer.ground(east,north),bounds:()=>model.bounds,
@@ -173,6 +176,6 @@ async function boot() {
   $('fly').onclick=()=>{if(flight)pauseFlight();else startFlight(true);$('flight-pad').focus();};
   $('reset').onclick=()=>reset();$('destination').onchange=()=>reset();requestAnimationFrame(frame);
 }
-window.addEventListener('pagehide',()=>renderer?.dispose());
+window.addEventListener('pagehide',()=>{geographicLabels?.dispose();renderer?.dispose();});
 window.addEventListener('pageshow',event=>{if(event.persisted)location.reload();});
 boot().catch(error=>{console.error(error);notify(error.message);$('stats').textContent='Unable to start';$('model').disabled=false;window.flytastic={ready:false,error:error.message};});

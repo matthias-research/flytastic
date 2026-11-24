@@ -32,6 +32,9 @@
       <label class="checkbox-label"><input id="flattened" type="checkbox" checked disabled> Flattened</label>
       <p class="model-credit">Uncheck to include roof and tree-canopy heights.</p>
     </div>
+    <label class="checkbox-label"><input id="village-names" type="checkbox" checked disabled> Village names</label>
+    <label class="checkbox-label"><input id="mountain-peaks" type="checkbox" checked disabled> Mountain peaks</label>
+    <p id="overlay-status" class="model-credit" role="status"></p>
     <label class="checkbox-label"><input id="winter" type="checkbox" disabled> Winter</label>
     <div id="snow-settings" hidden>
       <div class="speed-label"><label for="snow-line">SNOW LINE</label><span id="snow-line-value">1600 m</span></div>
@@ -61,6 +64,8 @@
   </section>
   <div id="message" role="status">Opening the landscape…</div>
   <div id="renderer-credits"></div>
+  <canvas id="geographic-labels" aria-hidden="true"></canvas>
+  <div id="overlay-credits" hidden><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">© OpenStreetMap contributors · ODbL</a> · <a href="/overlays/credits.html" target="_blank" rel="noopener noreferrer">Flag credits · © swisstopo</a></div>
   <footer><div><span class="caption">POSITION · SWISS GRID</span><strong id="position">—</strong></div><div><span class="caption">ALTITUDE / SEA LEVEL</span><strong id="altitude">—</strong></div><div><span class="caption">HEADING</span><strong id="heading">—</strong></div><div class="render-info"><span class="caption" id="terrain-caption">ORIGINAL TERRAIN · WEBGL 2</span><strong id="stats">Initializing</strong></div></footer>
   <script type="module" src="/app.js"></script>
 </body>

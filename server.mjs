@@ -16,6 +16,8 @@ files.set('/snow.js','snow.js');
 files.set('/terrain-normals.js','terrain-normals.js');
 files.set('/place-search.js','place-search.js');
 files.set('/map-navigation.js','map-navigation.js');
+mime.txt='text/plain; charset=utf-8';
+for(const name of ['geographic-labels.js','overlay-layout.js','overlay-flags.js','overlays/villages.json','overlays/peaks.json','overlays/flags.json','overlays/flags-979a1e2220220fc2.png','overlays/credits.html','overlays/flag-credits.json','overlays/LICENSE.txt'])files.set(`/${name}`,name);
 const server=http.createServer(async(req,res)=>{
   try {
     if(!['GET','HEAD'].includes(req.method)){res.writeHead(405).end();return;}

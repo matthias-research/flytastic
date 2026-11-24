@@ -50,6 +50,33 @@ caches. Returning to an already viewed surface avoids rebuilding its heightmaps.
 
 ## Controls
 
+**Village names** shows settlements with municipality flags/coats of arms where
+available. **Mountain peaks** shows named summits with published OpenStreetMap
+elevations in metres above sea level. The two
+checkboxes work independently in both versions and persist in the URL
+(`villages=0` / `peaks=0` hide a layer). Both start enabled.
+
+The local settlement and flag snapshots are reused from SwissExplorer. Peaks
+cover Switzerland and neighbouring mountains within 5.9–10.5° E, 45.8–47.85° N;
+they are a rectangular extract, not an official summit register. Only named OSM
+peak nodes with usable metre elevations are included. Sources, snapshot dates
+and licences are retained in `public/overlays/`; the viewer links OSM attribution
+and individual flag credits. Missing images leave text labels available.
+
+At most 48 labels share a canvas overlay. Candidate selection and terrain
+visibility checks run four times per second; screen projection follows every
+frame. Labels avoid each other and controls, use bounded terrain occlusion
+checks, and read only local/loaded terrain without requesting additional tiles.
+Unknown terrain heights hide labels until scenery becomes available. These
+elevations and approximate visibility checks are for orientation, not surveying.
+Optional layer failures leave navigation and scenery running.
+
+To regenerate peaks, save the Overpass response from the exact query recorded
+in `public/overlays/peaks.json`, then run
+`node scripts/prepare-peaks.mjs <response.json> <endpoint>`. Preparation validates
+coverage before replacing the public snapshot; it never runs on viewer startup.
+Use `node scripts/check-labels.mjs` for browser checks and `.local` screenshots.
+
 Use **Where in Switzerland?** to search for towns, summits and street addresses
 through geo.admin.ch, using the search interface from Swiss Explorer. Select a
 result with the mouse or arrow keys and Enter. Flight pauses and the camera
