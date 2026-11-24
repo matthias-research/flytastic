@@ -71,6 +71,47 @@ Unknown terrain heights hide labels until scenery becomes available. These
 elevations and approximate visibility checks are for orientation, not surveying.
 Optional layer failures leave navigation and scenery running.
 
+Village images prefer the settlement's own SVG flag, then its own coat of arms,
+with the existing municipality image as fallback. Exact OSM node/Wikidata links
+come from the original settlement snapshot (`data/place-identities.json`).
+Reviewed exceptions, including Ürikon/Uerikon, live in
+`data/village-flag-overrides.json`; names alone never establish a match.
+Additional imagery is a separate local PNG sheet, so a failed village-image
+download does not remove existing municipality flags. Credits are linked from
+the main flag credits page.
+
+To prepare additional village images:
+
+```powershell
+# Optional identity refresh from the matching original Overpass snapshot:
+node scripts/import-place-identities.mjs <original-osm-snapshot.json>
+# Inspect discovery without downloading images:
+node scripts/download-village-flags.mjs --plan-only
+# Download only missing source images; rerun to resume:
+node scripts/download-village-flags.mjs
+# Offline SVG-to-PNG conversion and publication:
+node scripts/prepare-village-flags.mjs
+```
+
+The downloader reuses SwissExplorer's sequential requester, SVG selection and
+retry logic, batches Commons licence metadata, and caches source images under
+`.local/village-flags/`. Server cooldowns are persisted across restarts. Existing
+municipality images are reused without another download. `--refresh` refreshes
+the Wikidata catalogue; downloaded images remain cached. Keep a backup of
+the cache if you want to regenerate the image sheet without downloading again.
+Original image requests are paced at least 125 seconds apart, with at least a
+10.5-minute pause after media-host throttling; longer server cooldowns win.
+If original SVG access remains restricted, `--png` requests Wikimedia's official
+PNG previews through imageinfo instead. These use ordinary sequential pacing
+and still respect server cooldowns. PNG source URLs, hashes, original SVG
+identity and licences are retained; the same offline preparation command
+accepts either format and produces the same 48 × 48 browser image sheet.
+Ambiguous or unlinked places retain their municipality images. Preparation
+checks source hashes and current point coordinates and publishes its manifest
+only after every selected original has been processed successfully.
+Use `node scripts/check-village-flags.mjs` to verify Ürikon and Esslingen's
+artwork in both renderers and municipality fallback when the new sheet fails.
+
 To regenerate peaks, save the Overpass response from the exact query recorded
 in `public/overlays/peaks.json`, then run
 `node scripts/prepare-peaks.mjs <response.json> <endpoint>`. Preparation validates

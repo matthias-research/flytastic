@@ -1,0 +1,17 @@
+{
+  "format": "reviewed-village-images-v1",
+  "places": {
+    "30757706": {
+      "name": "Ürikon",
+      "longitude": 8.7573767,
+      "latitude": 47.2350588,
+      "wikidata": "Q7877470",
+      "filename": "CHE Uerikon COA.svg",
+      "kind": "coat-of-arms",
+      "evidence": [
+        "https://www.ortsverein-uerikon.ch/",
+        "https://commons.wikimedia.org/wiki/File:CHE_Uerikon_COA.svg"
+      ]
+    }
+  }
+}

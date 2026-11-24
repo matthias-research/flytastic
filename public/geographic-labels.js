@@ -1,6 +1,6 @@
 import { wgsToSwiss } from './swiss-coordinates.js';
 import { overlaps, labelBox } from './overlay-layout.js';
-import { validatePlaceFlags, fetchFlagBytes } from './overlay-flags.js';
+import { validatePlaceFlags, validateVillageFlags, resolvePlaceFlag, fetchFlagBytes } from './overlay-flags.js';
 
 // One bounded canvas overlay shared by both renderers. Terrain reads use only
 // existing local/loaded data; optional labels never trigger scenery requests.
@@ -8,12 +8,12 @@ export function createGeographicLabels(renderer) {
   const canvas=document.getElementById('geographic-labels'),ctx=canvas.getContext('2d');
   const credits=document.getElementById('overlay-credits'),message=document.getElementById('overlay-status');
   const controller=new AbortController(),signal=controller.signal;
-  const groups={villages:[],peaks:[]},enabled={},status={villages:'loading',peaks:'loading',flags:'loading',shown:0};
-  let selected=[],next=0,flags,image,destroyed=false;
+  const groups={villages:[],peaks:[]},enabled={},status={villages:'loading',peaks:'loading',flags:'loading',villageFlags:'loading',villageImages:0,shown:0};
+  let selected=[],next=0,flags,image,villageFlags,villageImage,destroyed=false;
   const controls={villages:document.getElementById('village-names'),peaks:document.getElementById('mountain-peaks')};
   const params=new URLSearchParams(location.search);
   function report() {
-    message.textContent=Object.entries(status).filter(([key,value])=>key!=='shown'&&value==='error').map(([key])=>`${key==='flags'?'Flags':key==='peaks'?'Mountain peaks':'Village names'} unavailable.`).join(' ');
+    message.textContent=Object.entries(status).filter(([,value])=>value==='error').map(([key])=>`${key==='villageFlags'?'Village-specific flags':key==='flags'?'Flags':key==='peaks'?'Mountain peaks':'Village names'} unavailable.`).join(' ');
     credits.hidden=!Object.keys(groups).some(key=>enabled[key]&&status[key]==='ready');
   }
   for(const [key,control] of Object.entries(controls)) {
@@ -56,8 +56,24 @@ export function createGeographicLabels(renderer) {
       if(bytes.length<24||header.getUint32(0)!==0x89504e47||header.getUint32(16)!==flags.sheet.width||header.getUint32(20)!==flags.sheet.height)throw Error('Invalid flag image');
       url=URL.createObjectURL(new Blob([bytes],{type:'image/png'}));
       const decoded=new Image();decoded.src=url;await decoded.decode();
-      if(!destroyed){image=decoded;status.flags='ready';next=0;}
+      if(!destroyed){image=decoded;status.flags='ready';next=0;loadVillageFlags();}
     } catch(error){if(!destroyed){status.flags='error';flags=undefined;console.warn(`Optional flags: ${error.message}`);}}
+    finally{if(url)URL.revokeObjectURL(url);report();}
+  }
+  async function loadVillageFlags() {
+    let url;
+    try {
+      const assets=validateVillageFlags(await json('village-flags.json'),groups.villages,flags);
+      if(assets.sheet) {
+        const bytes=await fetchFlagBytes(`/overlays/${assets.sheet.file}`,AbortSignal.any([signal,AbortSignal.timeout(15000)]),8*1024*1024);
+        const h=new DataView(bytes.buffer,bytes.byteOffset,bytes.byteLength);
+        if(bytes.length<24||h.getUint32(0)!==0x89504e47||h.getUint32(16)!==assets.sheet.width||h.getUint32(20)!==assets.sheet.height)throw Error('Invalid village image');
+        url=URL.createObjectURL(new Blob([bytes],{type:'image/png'}));
+        const decoded=new Image();decoded.src=url;await decoded.decode();
+        if(destroyed)return;villageImage=decoded;
+      }
+      if(!destroyed){villageFlags=assets;status.villageFlags='ready';status.villageImages=assets.mapping.size;next=0;}
+    } catch(error){if(!destroyed){status.villageFlags='error';console.warn(`Optional village images: ${error.message}`);}}
     finally{if(url)URL.revokeObjectURL(url);report();}
   }
   load('villages','villages.json');load('peaks','peaks.json');
@@ -99,12 +115,12 @@ export function createGeographicLabels(renderer) {
       for(const {p,altitude,text} of selected) {
         if(!enabled[p.group])continue;
         const pixel=renderer.projectLabel(p,altitude,state);if(!pixel)continue;
-        const rect=image&&flags?.regions.get(flags.mapping.get(p.id)),hasFlag=p.group==='villages'&&Boolean(rect);
+        const flag=p.group==='villages'&&image&&resolvePlaceFlag(p.id,flags,villageFlags),hasFlag=Boolean(flag);
         const box=labelBox(pixel,ctx.measureText(text).width,hasFlag);
         if(box.left<0||box.right>width||box.top<0||box.bottom>height||blocked.some(b=>overlaps(box,b)))continue;
         blocked.push(box);ctx.strokeStyle='#172b31';ctx.fillStyle=p.group==='peaks'?'#fff0bf':'#ffffff';
         ctx.strokeText(text,pixel.x,pixel.y);ctx.fillText(text,pixel.x,pixel.y);
-        if(hasFlag)ctx.drawImage(image,...rect,pixel.x-14,pixel.y-47,28,28);
+        if(hasFlag)ctx.drawImage(flag.sheet==='village'?villageImage:image,...flag.rect,pixel.x-14,pixel.y-47,28,28);
         if(++status.shown>=48)break;
       }
     },

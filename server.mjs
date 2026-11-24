@@ -18,6 +18,9 @@ files.set('/place-search.js','place-search.js');
 files.set('/map-navigation.js','map-navigation.js');
 mime.txt='text/plain; charset=utf-8';
 for(const name of ['geographic-labels.js','overlay-layout.js','overlay-flags.js','overlays/villages.json','overlays/peaks.json','overlays/flags.json','overlays/flags-979a1e2220220fc2.png','overlays/credits.html','overlays/flag-credits.json','overlays/LICENSE.txt'])files.set(`/${name}`,name);
+files.set('/overlays/village-flags.json','overlays/village-flags.json');
+files.set('/overlays/village-flag-credits.json','overlays/village-flag-credits.json');
+files.set('/overlays/village-flag-credits.html','overlays/village-flag-credits.html');
 const server=http.createServer(async(req,res)=>{
   try {
     if(!['GET','HEAD'].includes(req.method)){res.writeHead(405).end();return;}
@@ -37,6 +40,8 @@ const server=http.createServer(async(req,res)=>{
       const relative=decodeURIComponent(pathname.slice('/vendor/cesium/'.length)),file=path.resolve(cesiumRoot,relative),inside=path.relative(cesiumRoot,file);
       if(inside.startsWith('..')||path.isAbsolute(inside)){res.writeHead(403).end('Forbidden');return;}
       body=await readFile(file);type=mime[path.extname(file).slice(1)]||'application/octet-stream';
+    }else if(/^\/overlays\/village-flags-[a-f0-9]{16}\.png$/.test(pathname)){
+      body=await readFile(new URL(pathname.slice(1),publicRoot));type=mime.png;
     }else if(files.has(pathname)){
       const name=files.get(pathname);body=await readFile(new URL(name,publicRoot));type=mime[path.extname(name).slice(1)];
       if(pathname==='/'&&!packs.length)body=body.toString().replace('<option value="original">','<option value="original" disabled>').replace('<option value="swisstopo">','<option value="swisstopo" selected>');
