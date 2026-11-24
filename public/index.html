@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <div id="viewport" tabindex="0" aria-label="3D terrain. Drag to look; use W A S D to move."><canvas id="scene"></canvas><div id="cesium-scene" hidden></div></div>
+  <div id="viewport" tabindex="0" aria-label="3D terrain. Drag to pan, scroll to zoom, right drag or Control drag to orbit. Use W A S D to fly."><canvas id="scene"></canvas><div id="cesium-scene" hidden></div></div>
   <header><a class="brand" href="/">flytastic<span>WEB / 01</span></a><div class="edition"><i></i> SWISS TERRAIN EXPLORER</div><button id="reset">Reset view ↗</button></header>
   <section class="place-search" aria-label="Find a place">
     <div class="search-field">
@@ -42,7 +42,7 @@
     <button id="fly" class="primary" disabled>Loading terrain…</button>
     <div class="speed-label"><label for="speed">SPEED LIMIT</label><span id="speed-value">5000 km/h</span></div>
     <input id="speed" type="range" min="60" max="5000" step="10" value="5000">
-    <div class="controls"><p><kbd>Space</kbd><span>Cruise on / off</span></p><p><kbd>Esc</kbd><span>Pause · drag landscape to look</span></p></div>
+    <div class="controls"><p><kbd>Space</kbd><span>Cruise on / off</span></p><p><kbd>Drag</kbd><span>Pan · scroll to zoom</span></p><p><kbd>Ctrl + drag</kbd><span>Orbit · Esc pauses flight</span></p></div>
   </aside>
   <section class="flight-controls" aria-label="Flight controls">
     <div class="flight-panel-heading"><span>FLIGHT CONTROL</span><span id="flight-pitch-value">−2° pitch</span><span id="flight-speed">0 km/h</span></div>

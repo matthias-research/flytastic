@@ -15,6 +15,7 @@ const mime={html:'text/html; charset=utf-8',js:'text/javascript; charset=utf-8',
 files.set('/snow.js','snow.js');
 files.set('/terrain-normals.js','terrain-normals.js');
 files.set('/place-search.js','place-search.js');
+files.set('/map-navigation.js','map-navigation.js');
 const server=http.createServer(async(req,res)=>{
   try {
     if(!['GET','HEAD'].includes(req.method)){res.writeHead(405).end();return;}

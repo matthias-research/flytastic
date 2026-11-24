@@ -13,6 +13,51 @@ async function ready(){
   assert.equal(await page.evaluate(()=>window.flytastic.error),'');
 }
 async function settled(){await page.waitForTimeout(500);await page.waitForFunction(()=>window.flytastic?.ready&&window.flytastic.loading===0,null,{timeout:180000});}
+async function checkMapNavigation(label) {
+  const snapshot=()=>page.evaluate(()=>({pose:window.flytasticSession.camera(),mode:window.flytastic.navigationMode,active:window.flytastic.flightActive}));
+  assert.equal((await snapshot()).mode,'map');
+  await page.click('#fly');await page.waitForFunction(()=>window.flytastic.flightActive);
+  await page.mouse.move(720,560);const flying=await snapshot();
+  await page.mouse.wheel(0,160);
+  await page.waitForFunction(()=>!window.flytastic.flightActive&&window.flytastic.navigationMode==='map');
+  const zoomed=await snapshot();assert.ok(zoomed.pose.eye[1]>flying.pose.eye[1],'First wheel gesture stops flight and zooms out');
+  await page.waitForTimeout(250);assert.deepEqual((await snapshot()).pose,zoomed.pose,'Flight cannot overwrite the map camera');
+  await page.mouse.click(720,560);assert.deepEqual((await snapshot()).pose,zoomed.pose,'Clicking to use the map does not jump');
+  await page.keyboard.down('w');await page.waitForFunction(()=>window.flytastic.navigationMode==='flight'&&window.flytastic.flightActive);await page.keyboard.up('w');
+  const resumed=await snapshot();
+  assert.ok(Math.hypot(...resumed.pose.eye.map((v,i)=>v-zoomed.pose.eye[i]))<.05,'Flight resumes from the map camera');
+  await page.mouse.move(720,560);await page.mouse.down();
+  await page.waitForFunction(()=>window.flytastic.navigationMode==='map'&&!window.flytastic.flightActive);
+  const start=await snapshot();await page.mouse.move(770,585,{steps:5});await page.mouse.up();await page.waitForTimeout(50);
+  const panned=await snapshot();assert.notDeepEqual(panned.pose.eye,start.pose.eye,'First drag pans immediately');
+  assert.equal(panned.pose.yaw,start.pose.yaw);assert.equal(panned.pose.pitch,start.pose.pitch);
+  await page.mouse.move(720,560);await page.mouse.down({button:'right'});await page.mouse.move(770,535,{steps:5});await page.mouse.up({button:'right'});await page.waitForTimeout(50);
+  const orbited=await snapshot();assert.notEqual(orbited.pose.yaw,panned.pose.yaw);assert.notEqual(orbited.pose.pitch,panned.pose.pitch);assert.notDeepEqual(orbited.pose.eye,panned.pose.eye);
+  await page.keyboard.down('Control');await page.mouse.move(720,560);await page.mouse.down();await page.mouse.move(695,545,{steps:3});await page.mouse.up();await page.keyboard.up('Control');await page.waitForTimeout(50);
+  assert.notEqual((await snapshot()).pose.yaw,orbited.pose.yaw,'Control drag also orbits');
+  await page.waitForTimeout(200);const linked=await snapshot();
+  const saved=JSON.parse(new URLSearchParams(new URL(page.url()).hash.slice(1)).get('camera'));
+  assert.deepEqual(saved,linked.pose,'Map camera is saved in the URL');
+  await page.locator('#flight-pitch-pad').focus();await page.locator('#flight-pitch-pad').press('ArrowDown');
+  await page.waitForFunction(()=>window.flytastic.navigationMode==='flight');
+  assert.deepEqual((await snapshot()).pose.eye,linked.pose.eye,'Pitch control switches modes without moving position');
+  await page.check('#winter');await page.waitForTimeout(50);assert.equal((await snapshot()).mode,'flight','Settings preserve mode');
+  await page.locator('#place-search').fill('Be');await page.locator('#place-search').press('Escape');await page.locator('#search-clear').click();
+  assert.equal((await snapshot()).mode,'flight','Search typing and dismissal preserve mode');
+  await page.uncheck('#winter');
+  await page.mouse.click(720,560);await page.waitForFunction(()=>window.flytastic.navigationMode==='map');
+  const client=await page.context().newCDPSession(page);
+  await client.send('Emulation.setTouchEmulationEnabled',{enabled:true,maxTouchPoints:2});
+  const beforePinch=await snapshot();
+  await client.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:680,y:560,id:1},{x:760,y:560,id:2}]});
+  await client.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:650,y:560,id:1},{x:790,y:560,id:2}]});
+  await client.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+  await page.waitForTimeout(100);assert.notDeepEqual((await snapshot()).pose.eye,beforePinch.pose.eye,'Two-finger pinch zooms');
+  await client.send('Emulation.setTouchEmulationEnabled',{enabled:false});await client.detach();
+  await page.screenshot({path:`.local/map-navigation-${label}.png`});
+  await page.click('#reset');await ready();await settled();
+  report[`mapNavigation-${label}`]=true;
+}
 async function checkSnowPhotoDetail() {
   const result=await page.evaluate(async()=>{
     const {snowGLSL}=await import('/snow.js');
@@ -111,6 +156,7 @@ try {
     assert.ok(!requests.some(r=>r.url.includes('geo.admin.ch')||r.url.includes('/vendor/cesium/')),'Original runs entirely on local Flytastic assets');
     await checkWinter('original');
     await checkPitch();report.originalPitchControl=true;
+    await checkMapNavigation('original');
     await page.selectOption('#model','swisstopo');
   }else await page.goto(`${base}/?model=swisstopo`);
   phase='ground';await ready();await settled();
@@ -118,6 +164,7 @@ try {
   assert.equal(await page.locator('#flattened').isChecked(),true);
   await checkWinter('ground');
   await checkPitch(true);report.cesiumPitchControl=true;
+  await checkMapNavigation('ground');
   report.ground=await page.evaluate(()=>({status:window.flytastic,pose:window.flytasticSession.camera(),height:window.flytasticSession.sampleHeight(632,173)}));
   assert.equal(report.ground.status.rendererId,'cesium');assert.equal(report.ground.status.model,'swisstopo');
   phase='surface';await page.uncheck('#flattened');await ready();
@@ -138,6 +185,7 @@ try {
   assert.deepEqual(await page.evaluate(()=>window.flytasticSession.camera()),report.surface.pose);
   report.warmSwitchMs=Date.now()-switched;
   await page.screenshot({path:'.local/swisstopo-surface.png'});
+  await checkMapNavigation('surface');
   await page.evaluate(()=>window.flytasticMetrics.reset());await page.click('#fly');await page.waitForTimeout(5000);await page.click('#fly');
   report.flight=await page.evaluate(()=>({status:window.flytastic,performance:window.flytasticMetrics.snapshot()}));assert.equal(report.flight.status.glError,0);
   await page.selectOption('#destination','lucerne');

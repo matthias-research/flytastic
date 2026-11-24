@@ -57,7 +57,7 @@ export function configureFlightControls({activate,brake,setHeight,setPitch}) {
       byId('flight-pitch-value').textContent=`${Math.round(status.pitch*180/Math.PI)}° pitch`;
       byId('flight-speed').textContent=`${Math.round(status.speed).toLocaleString()} km/h`;
       byId('flight-clearance').textContent=`${Math.round(status.clearance).toLocaleString()} m target`;
-      byId('flight-status').textContent=status.active?(status.cruise?'Cruise · Space to stop':'Manual flight'):'Paused · drag disk to fly';
+      byId('flight-status').textContent=status.active?(status.cruise?'Cruise · Space to stop':'Manual flight'):status.navigationMode==='map'?'Map · drag to pan, scroll to zoom':'Flight ready · drag disk to fly';
     },
   };
 }

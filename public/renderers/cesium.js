@@ -1,4 +1,4 @@
-import { swissToWgs } from '../swiss-coordinates.js';
+import { swissToWgs,wgsToSwiss } from '../swiss-coordinates.js';
 import { TERRAIN_URL } from '../models.js';
 import { createSurfaceProvider } from '../surface-provider.js';
 import { createFlightTerrain } from '../flight-terrain.js';
@@ -106,6 +106,12 @@ export function createRenderer({canvas,host,credits}) {
     prepare:(east,north)=>groundSampler.prepare(east,north),
     ground:(east,north)=>groundSampler.ground(east,north),
     reset(){},
+    pickTerrain(x,y) {
+      const ray=viewer.camera.getPickRay(new C.Cartesian2(x,y));
+      const hit=ray&&viewer.scene.globe.pick(ray,viewer.scene);if(!hit)return;
+      const point=C.Cartographic.fromCartesian(hit),[east,north]=wgsToSwiss(C.Math.toDegrees(point.longitude),C.Math.toDegrees(point.latitude));
+      return [east/1000,point.height/1000,-north/1000];
+    },
     frame(state,now) {
       viewer.resolutionScale=Math.min(devicePixelRatio,2)/devicePixelRatio;
       viewer.resize();

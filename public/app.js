@@ -4,6 +4,7 @@ import { configureFlightControls } from './flight-controls.js';
 import { FrameMetrics } from './frame-metrics.js';
 import { configurePlaceSearch } from './place-search.js';
 import { wgsToSwiss } from './swiss-coordinates.js';
+import { configureMapNavigation } from './map-navigation.js';
 
 const $=id=>document.getElementById(id),surface=$('viewport'),params=new URLSearchParams(location.search);
 const modelId=params.get('model')==='swisstopo'?'swisstopo':params.get('model')==='original'?'original':$('model').value;
@@ -16,11 +17,18 @@ const state={eye:[632,1,-173],yaw:Math.PI,pitch:-.03,roll:0};
 const destinations={interlaken:[632,173,Math.PI,-.03],zermatt:[625,100,Math.PI,-.03],lucerne:[668,213,Math.PI,-.03]};
 const keys=new Set(),metrics=new FrameMetrics();
 let models,model,renderer,flight=null,resetting=true,resetId=0,failure='',notice='',noticeUntil=0;
-let placeSearch;
+let placeSearch,mapNavigation,navigationMode='map',cameraSaveTimer;
 const camera=()=>({eye:[...state.eye],yaw:state.yaw,pitch:state.pitch,roll:state.roll,speed:+$('speed').value,destination:$('destination').value});
 const ground=()=>renderer.ground(state.eye[0],-state.eye[2])??((flight?.lastGround??(state.eye[1]*1000-650))/1000);
 function notify(text){$('message').textContent=text;$('message').hidden=!text;}
-function pauseFlight(){flight=null;keys.clear();controls.reset();$('fly').textContent='Start cruise →';}
+function pauseFlight(){flight=null;keys.clear();controls.reset();navigationMode='map';$('fly').textContent='Start cruise →';}
+function useFlightNavigation(){navigationMode='flight';mapNavigation?.cancel();placeSearch?.cancelNavigation();clearTimeout(cameraSaveTimer);}
+function saveMapCamera(){
+  clearTimeout(cameraSaveTimer);cameraSaveTimer=setTimeout(()=>{
+    if(navigationMode!=='map'||resetting)return;
+    const url=new URL(location.href);url.hash=cameraHash(camera());history.replaceState(null,'',url);
+  },150);
+}
 function switchView(target,flat=flattened) {
   placeSearch?.cancelNavigation();
   const pose=camera();pauseFlight();
@@ -47,13 +55,14 @@ $('snow-line').oninput=()=>{snowLine=+$('snow-line').value;updateWinter(true);};
 $('model').disabled=$('flattened').disabled=$('reset').disabled=true;
 $('model').onchange=()=>switchView($('model').value);
 $('flattened').onchange=()=>{
-  pauseFlight();flattened=$('flattened').checked;renderer.setFlattened(flattened);
+  flattened=$('flattened').checked;renderer.setFlattened(flattened);
   const url=new URL(location.href);url.searchParams.set('flattened',flattened?'1':'0');url.hash=cameraHash(camera());history.replaceState(null,'',url);
 };
 const controls=configureFlightControls({activate:()=>startFlight(false),brake:()=>{if(flight)flight.cruise=false;},setHeight:value=>{
   if(startFlight(false))flight.clearance=clamp(Math.round(value),100,2000);
 },setPitch:value=>{
   if(!renderer||resetting)return;
+  useFlightNavigation();
   state.pitch=clamp(value,MIN_PITCH,MAX_PITCH);
   if(flight){flight.viewPitch=state.pitch;flight.state.pitch=state.pitch;}
 }});
@@ -69,10 +78,12 @@ function startFlight(cruise=false) {
     flight=new FlightController({east:state.eye[0]*1000,north:-state.eye[2]*1000,height:state.eye[1]*1000,heading:state.yaw,pitch:state.pitch,roll:state.roll},sampleGround,model.bounds.map((v,i)=>v*1000+(i<2?50:-50)));
     flight.lastGround=height;flight.clearance=Math.max(100,state.eye[1]*1000-height);
   }
+  useFlightNavigation();
   if(cruise)flight.cruise=true;$('fly').textContent='Pause flight Ⅱ';return true;
 }
 async function reset(pose=null,place=null,isCurrent=()=>true) {
   if(!place)placeSearch?.cancelNavigation();
+  mapNavigation?.cancel();clearTimeout(cameraSaveTimer);
   const id=++resetId;pauseFlight();notice='';noticeUntil=0;resetting=true;$('fly').disabled=$('reset').disabled=true;
   let [x,y,yaw,pitch]=destinations[$('destination').value];
   if(place){x=place.east;y=place.north+place.offset;yaw=Math.PI;}
@@ -103,10 +114,10 @@ window.flytasticMetrics={reset:()=>metrics.reset(),snapshot:()=>metrics.snapshot
 if(globalThis.PerformanceObserver&&PerformanceObserver.supportedEntryTypes.includes('longtask'))new PerformanceObserver(list=>{
   if(!document.hidden)for(const entry of list.getEntries())metrics.longTask(entry.duration);
 }).observe({type:'longtask'});
-window.addEventListener('blur',pauseFlight);
+window.addEventListener('blur',()=>{pauseFlight();mapNavigation?.cancel();});
 document.addEventListener('visibilitychange',()=>{metrics.previous=undefined;if(document.hidden)pauseFlight();});
 window.addEventListener('keydown',e=>{
-  if(e.ctrlKey||e.metaKey||e.altKey)return;
+  if(e.defaultPrevented||e.ctrlKey||e.metaKey||e.altKey)return;
   if(e.code==='Escape'){e.preventDefault();pauseFlight();return;}
   if(e.target.closest('input,select,button,textarea,[contenteditable],[role="slider"]'))return;
   if(e.code==='Space'){e.preventDefault();if(!e.repeat){if(flight)flight.cruise=!flight.cruise;else startFlight(true);}return;}
@@ -115,10 +126,6 @@ window.addEventListener('keydown',e=>{
   }
 });
 window.addEventListener('keyup',e=>keys.delete(e.code));
-let drag=false;
-surface.addEventListener('pointerdown',e=>{pauseFlight();drag=true;surface.setPointerCapture(e.pointerId);surface.focus();});
-for(const event of ['pointerup','pointercancel','lostpointercapture'])surface.addEventListener(event,()=>drag=false);
-surface.addEventListener('pointermove',e=>{if(drag){state.roll=0;state.yaw+=e.movementX*.004;state.pitch=clamp(state.pitch-e.movementY*.004,MIN_PITCH,MAX_PITCH);}});
 $('speed').oninput=()=>{$('speed-value').textContent=`${$('speed').value} km/h`;};
 function frame(now) {
   if(!document.hidden)metrics.frame(now);else metrics.previous=undefined;
@@ -133,13 +140,13 @@ function frame(now) {
     if(flight.boundaryReached){pauseFlight();notice='Reached the edge of this map. Choose another departure.';noticeUntil=now+7000;}
   }
   const clearance=state.eye[1]-ground();
-  controls.render({active:Boolean(flight),cruise:flight?.cruise??false,x:flight?.x??0,y:flight?.y??0,speed:flight?flight.state.velocity*flight.speed:0,clearance:flight?.clearance??Math.max(1,clearance*1000),pitch:state.pitch});
+  controls.render({active:Boolean(flight),navigationMode,cruise:flight?.cruise??false,x:flight?.x??0,y:flight?.y??0,speed:flight?flight.state.velocity*flight.speed:0,clearance:flight?.clearance??Math.max(1,clearance*1000),pitch:state.pitch});
   const status=renderer.frame(state,now),error=failure||status.error;
   $('position').textContent=`${state.eye[0].toFixed(2)} E / ${(-state.eye[2]).toFixed(2)} N`;
   $('altitude').textContent=`${Math.round(state.eye[1]*1000).toLocaleString()} m`;
   $('heading').textContent=`${((state.yaw*180/Math.PI%360+360)%360).toFixed(0).padStart(3,'0')}°`;
   $('stats').textContent=status.description;notify(error||(resetting?'Loading departure…':'')||(now<noticeUntil?notice:'')||(status.loading?'Loading landscape…':''));
-  window.flytastic={...status,ready:!resetting,model:modelId,rendererId,winter,snowLine,flattened:modelId==='swisstopo'?flattened:undefined,eye:[...state.eye],yaw:state.yaw,pitch:state.pitch,roll:state.roll,flightActive:Boolean(flight),clearance,error};
+  window.flytastic={...status,ready:!resetting,model:modelId,rendererId,navigationMode,winter,snowLine,flattened:modelId==='swisstopo'?flattened:undefined,eye:[...state.eye],yaw:state.yaw,pitch:state.pitch,roll:state.roll,flightActive:Boolean(flight),clearance,error};
   requestAnimationFrame(frame);
 }
 window.flytasticSession={camera,sampleHeight:(east,north)=>renderer.ground(east,north)*1000,diagnostics:()=>renderer.diagnostics()};
@@ -158,6 +165,11 @@ async function boot() {
   if(pose){if(Object.hasOwn(destinations,pose.destination))$('destination').value=pose.destination;$('speed').value=pose.speed;$('speed').oninput();}
   await reset(pose);$('model').disabled=$('flattened').disabled=false;controls.enable();
   placeSearch=configurePlaceSearch(navigatePlace);$('place-search').disabled=false;
+  mapNavigation=configureMapNavigation({element:surface,state,
+    ground:(east,north)=>renderer.ground(east,north),bounds:()=>model.bounds,
+    pick:(x,y)=>renderer.pickTerrain?.(x,y),enabled:()=>navigationMode==='map'&&!resetting,
+    activate:()=>{if(resetting)return false;pauseFlight();placeSearch.cancelNavigation();return true;},onChange:saveMapCamera,
+  });
   $('fly').onclick=()=>{if(flight)pauseFlight();else startFlight(true);$('flight-pad').focus();};
   $('reset').onclick=()=>reset();$('destination').onchange=()=>reset();requestAnimationFrame(frame);
 }

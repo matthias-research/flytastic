@@ -36,8 +36,9 @@ The **Flattened** checkbox appears only in the Swisstopo version:
 - **Unchecked:** swissSURFACE3D Raster heights include roofs and tree canopies.
 
 Mountains retain their shape in both cases. Switching versions or the checkbox
-preserves the camera and speed limit, pauses flight, and saves the selection in
-the URL. Direct links are `/?model=original`, `/?model=swisstopo&flattened=1`, and
+preserves the camera and speed limit and saves the selection in the URL.
+Switching versions pauses flight; the checkbox keeps the navigation mode.
+Direct links are `/?model=original`, `/?model=swisstopo&flattened=1`, and
 `/?model=swisstopo&flattened=0`.
 
 The surface is a heightfield: small features are softened, and bridges have no
@@ -71,7 +72,17 @@ The Cesium integration passes its already sampled imagery color into the snow
 material through a guarded globe-shader source hook for pinned Cesium 1.146;
 check this hook when upgrading Cesium. No extra imagery samples are needed.
 
-Drag the landscape to look. Use **Start cruise**, Space, or the flight joystick
+Drag the landscape to pan, scroll to zoom toward/away from the cursor, and use
+right drag, middle drag or Ctrl + left drag to orbit and tilt around the terrain.
+On touch screens, drag to pan or pinch to zoom. A landscape click, drag or wheel
+gesture stops flight and controls the map immediately, without a separate pause
+or activation click. Map gestures work in both renderers and save the camera in
+the URL. Zoom stays above terrain and within the map bounds (up to 20 km altitude).
+Search input and settings leave the navigation mode alone; choosing a result
+opens its map view. Native Cesium camera inputs stay disabled so a shared
+terrain-anchored controller can preserve the same camera through every handoff.
+
+Use **Start cruise**, Space, or the flight joystick
 to fly; Escape pauses. W/A/S/D and arrow keys control movement, Q/E adjust target
 clearance. The left vertical control sets camera pitch (−60° to +60°), and the
 right vertical control sets height above the terrain. Pitch stays where you set
@@ -82,6 +93,8 @@ departure or Reset view to return. Flight pauses when the window loses focus.
 ## Implementation
 
 `public/app.js` owns the camera, flight controls and version selection.
+`public/map-navigation.js` handles shared map gestures; Cesium picks its loaded
+terrain directly, while the original version ray-marches its local height grid.
 `public/renderers/flytastic.js` handles only original local data;
 `public/renderers/cesium.js` handles only swisstopo. There is no independent
 renderer selection or prepared pilot.
